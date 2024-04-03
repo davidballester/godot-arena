@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://b54ahmhhh4dxr"]
+
+[ext_resource type="Script" path="res://scenes/example.gd" id="1_8ssei"]
+[ext_resource type="Script" path="res://model/battle/battle.gd" id="2_ldbwl"]
+[ext_resource type="Script" path="res://model/team/team.gd" id="3_ny0b6"]
+[ext_resource type="Script" path="res://model/combatant/combatant.gd" id="4_4prf8"]
+[ext_resource type="Script" path="res://model/utils/gauge.gd" id="5_0db2v"]
+[ext_resource type="Script" path="res://model/brain/stock_brain.gd" id="6_o2isu"]
+[ext_resource type="Script" path="res://model/combatant/combatant_stock_perception_component.gd" id="7_eoxx5"]
+
+[node name="Example" type="Node2D"]
+script = ExtResource("1_8ssei")
+
+[node name="Battle" type="Node" parent="."]
+script = ExtResource("2_ldbwl")
+
+[node name="AdventurersTeam" type="Node" parent="Battle"]
+script = ExtResource("3_ny0b6")
+id = "adventurers"
+
+[node name="Ignotus" type="Node2D" parent="Battle/AdventurersTeam" node_paths=PackedStringArray("battle")]
+script = ExtResource("4_4prf8")
+id = "ignotus"
+battle = NodePath("../..")
+
+[node name="Health" type="Node" parent="Battle/AdventurersTeam/Ignotus"]
+script = ExtResource("5_0db2v")
+
+[node name="Brain" type="Node" parent="Battle/AdventurersTeam/Ignotus"]
+script = ExtResource("6_o2isu")
+
+[node name="Perception" type="Node" parent="Battle/AdventurersTeam/Ignotus"]
+script = ExtResource("7_eoxx5")
+
+[node name="BarbariansTeam" type="Node" parent="Battle"]
+script = ExtResource("3_ny0b6")
+id = "barbarians"
+
+[node name="Alex" type="Node2D" parent="Battle/BarbariansTeam" node_paths=PackedStringArray("battle")]
+script = ExtResource("4_4prf8")
+id = "alex"
+battle = NodePath("../..")
+
+[node name="Health" type="Node" parent="Battle/BarbariansTeam/Alex"]
+script = ExtResource("5_0db2v")
+
+[node name="Brain" type="Node" parent="Battle/BarbariansTeam/Alex"]
+script = ExtResource("6_o2isu")
+
+[node name="Perception" type="Node" parent="Battle/BarbariansTeam/Alex"]
+script = ExtResource("7_eoxx5")
