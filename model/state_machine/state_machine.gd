@@ -1,6 +1,8 @@
 extends Node
 class_name StateMachine
 
+signal state_changed(State)
+
 var id: String = ""
 var class_to_state: Dictionary = {}
 var current_state: State
@@ -23,4 +25,4 @@ func transition_to_state(state_name: String, args: Array = []) -> void:
 		current_state.exit()
 	current_state = state
 	current_state.enter(args)
-	
+	state_changed.emit(current_state)

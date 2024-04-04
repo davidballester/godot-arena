@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwksfcr20awc4"]
+
+[ext_resource type="Script" path="res://view/combatant/combatant_view.gd" id="1_006eq"]
+[ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/fPlayer_ [dwarf].tres" id="2_dtf5a"]
+
+[node name="CombatantView" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = ExtResource("2_dtf5a")
+animation = &"idle"
+script = ExtResource("1_006eq")

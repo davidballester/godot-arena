@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://chqawlnduanri"]
+
+[ext_resource type="Script" path="res://controller/combatant/combatant_controller.gd" id="1_wt7c5"]
+[ext_resource type="PackedScene" uid="uid://dwksfcr20awc4" path="res://view/combatant/combatant_view.tscn" id="2_v02wb"]
+[ext_resource type="Script" path="res://model/combatant/combatant.gd" id="3_qprda"]
+[ext_resource type="Script" path="res://model/utils/gauge.gd" id="4_q6vjl"]
+[ext_resource type="Script" path="res://model/brain/stock_brain.gd" id="5_cgdmh"]
+[ext_resource type="Script" path="res://model/combatant/combatant_stock_perception_component.gd" id="6_anyqp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h54yl"]
+radius = 7.0
+height = 28.0
+
+[node name="CombatantController" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_wt7c5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_h54yl")
+
+[node name="CombatantView" parent="." instance=ExtResource("2_v02wb")]
+unique_name_in_owner = true
+
+[node name="CombatantModel" type="Node2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_qprda")
+
+[node name="Health" type="Node" parent="CombatantModel"]
+script = ExtResource("4_q6vjl")
+
+[node name="Brain" type="Node" parent="CombatantModel"]
+script = ExtResource("5_cgdmh")
+
+[node name="Perception" type="Node" parent="CombatantModel"]
+script = ExtResource("6_anyqp")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
+debug_enabled = true
+
+[node name="ApproachTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+autostart = true

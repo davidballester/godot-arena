@@ -4,15 +4,8 @@ class_name Battle
 var teams: Array[Team]= []
 var _id_to_combatant: Dictionary = {}
 
-func _ready() -> void:
-	for child in get_children():
-		if child is Team:
-			add_team(child)
-
-func add_team(team: Team) -> void:
-	teams.append(team)
-	for combatant in team.combatants:
-		_id_to_combatant[combatant.id] = combatant
+func add_combatant(combatant: Combatant) -> void:
+	_id_to_combatant[combatant.id] = combatant
 
 func get_oponents(combatant_id: String) -> Array[Combatant]:
 	var combatant = _id_to_combatant.get(combatant_id)
@@ -33,7 +26,7 @@ func is_in_attack_range(combatant_id: String, oponent_id: String) -> bool:
 		return false
 	var combatant = _id_to_combatant.get(combatant_id)
 	var oponent = _id_to_combatant.get(oponent_id)
-	return combatant.can_attack(oponent.position)
+	return combatant.can_attack(oponent.global_position)
 
 func get_combatant(combatant_id: String) -> Combatant:
 	return _id_to_combatant.get(combatant_id)
