@@ -12,7 +12,7 @@ func get_oponents(combatant_id: String) -> Array[Combatant]:
 	if not combatant:
 		return []
 	var oponents = _id_to_combatant.values().filter(func(c: Combatant):
-		return c.team_id != combatant.team_id
+		return c.is_alive() and c.team_id != combatant.team_id
 	)
 	var ans: Array[Combatant] = []
 	ans.assign(oponents)

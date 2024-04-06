@@ -2,7 +2,10 @@ extends AnimatedSprite2D
 class_name CombatantView
 
 func initialize() -> void:
-	_play_animation("idle")
+	idle()
+	
+func idle() -> Signal:
+	return _play_animation("idle")
 
 func die() -> Signal:
 	return _play_animation("death")

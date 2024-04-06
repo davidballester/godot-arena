@@ -6,10 +6,12 @@ class_name CombatantController
 @export var speed: float = 40.0
 @export var battle: Battle
 @export var sprite_frames: SpriteFrames
+@export var weapon_type: WeaponController.WeaponType
 @onready var view: CombatantView = %CombatantView
 @onready var model: Combatant = %CombatantModel
-@onready var navigation_agent: NavigationAgent2D = %NavigationAgent2D
-@onready var approach_timer: Timer = %ApproachTimer
+@onready var state_machine: CombatantControllerStateMachine = %StateMachine
+var facing_right: bool = true
+var weapon_view: WeaponView
 
 func _ready() -> void:
 	view.sprite_frames = sprite_frames
@@ -21,28 +23,58 @@ func _ready() -> void:
 	model.initialize()
 	battle.add_combatant(model)
 	model.state_machine.state_changed.connect(_on_state_changed)
+	var weapon = WeaponController.load_weapon_model(weapon_type)
+	model.weapon = weapon
+	model.add_child(weapon)
+	weapon_view = WeaponController.load_weapon_view(weapon_type)
+	weapon_view.position.x = 15
+	add_child(weapon_view)
+	state_machine.initialize(self)
+	state_machine.transition_to_state(CombatantControllerIdleState.get_state_name())
 	
-func _physics_process(_delta: float) -> void:
-	_navigate()
+func _process(_delta: float) -> void:
+	var has_turned_left = facing_right and velocity.x < 0
+	var has_turned_right = not facing_right and velocity.x > 0
+	if has_turned_left or has_turned_right:
+		_turn()
+		
+func attack(combatant: Combatant) -> void:
+	weapon_view.attack()
+	var damage = await model.attack(combatant.global_position)
+	combatant.take_damage(damage)
+		
+func _turn() -> void:
+	facing_right = not facing_right
+	await view.turn()
+	view.flip_h = not view.flip_h
+	weapon_view.position.x *= -1
+	weapon_view.rotation_degrees *= -1
 
 func _on_state_changed(state: State) -> void:
 	if state is CombatantApproachEnemyState:
-		view.start_running()
-		var combatant = battle.get_combatant(state.combatant_id)
-		approach_timer.timeout.connect(func(): _approach(combatant))
-		_approach(combatant)
+		state_machine.transition_to_state(
+			CombatantControllerApproachEnemyState.get_state_name(), 
+			[state.combatant_id]
+		)
 		return
-	SignalUtils.disconnect_everything(approach_timer.timeout)
-	view.stop_running()
-
-func _navigate() -> void:
-	if navigation_agent.is_navigation_finished():
+	if state is CombatantHitState:
+		state_machine.transition_to_state(
+			CombatantControllerHitState.get_state_name()
+		)
 		return
-	await get_tree().physics_frame
-	var next_path_position = navigation_agent.get_next_path_position()
-	var direction = global_position.direction_to(next_path_position)
-	velocity = direction * speed
-	move_and_slide()
-	
-func _approach(node: Node2D) -> void:
-	navigation_agent.target_position = node.global_position
+	if state is CombatantDeadState:
+		state_machine.transition_to_state(
+			CombatantControllerDeadState.get_state_name()
+		)
+		return
+	if state is CombatantEngageEnemyState:
+		state_machine.transition_to_state(
+			CombatantControllerEngageEnemyState.get_state_name(),
+			[state.combatant]
+		)
+		return
+	if state is CombatantVictoryState:
+		state_machine.transition_to_state(
+			CombatantControllerIdleState.get_state_name()
+		)
+		return

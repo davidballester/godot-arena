@@ -40,6 +40,9 @@ team = NodePath("..")
 battle = NodePath("../..")
 sprite_frames = ExtResource("6_2s5it")
 
+[node name="Camera2D" type="Camera2D" parent="Battle/AdventurersTeam/Ignotus"]
+zoom = Vector2(3, 3)
+
 [node name="BarbariansTeam" type="Node" parent="Battle"]
 script = ExtResource("3_ny0b6")
 id = "barbarians"
@@ -50,5 +53,3 @@ id = "alex1234"
 team = NodePath("..")
 battle = NodePath("../..")
 sprite_frames = ExtResource("11_07cwn")
-
-[node name="Camera2D" type="Camera2D" parent="."]

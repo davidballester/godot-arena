@@ -18,3 +18,7 @@ func exit() -> void:
 # virtual
 func process(_delta: float) -> void:
 	pass
+
+# virtual
+func physics_process(_delta: float) -> void:
+	pass

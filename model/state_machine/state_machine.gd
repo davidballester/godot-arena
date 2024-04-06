@@ -17,9 +17,14 @@ func _process(delta: float) -> void:
 	if not current_state:
 		return
 	current_state.process(delta)
+			
+func _physics_process(delta: float) -> void:
+	if not current_state:
+		return
+	current_state.physics_process(delta)
 
 func transition_to_state(state_name: String, args: Array = []) -> void:
-	print("StateMachine[" + id + "].transition_to_state " + state_name)
+	print("StateMachine[" + id + "].transition_to_state " + state_name + " " + str(args))
 	var state = class_to_state.get(state_name)
 	if current_state:
 		current_state.exit()

@@ -1,0 +1,84 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://cyj2jpkpuk3v6"]
+
+[ext_resource type="Texture2D" uid="uid://cm3lf7d4lnr0" path="res://assets/weapon/sword_ [iron].png" id="1_1ajiq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xf68p"]
+atlas = ExtResource("1_1ajiq")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n61f8"]
+atlas = ExtResource("1_1ajiq")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_moifd"]
+atlas = ExtResource("1_1ajiq")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exe5q"]
+atlas = ExtResource("1_1ajiq")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_evdbk"]
+atlas = ExtResource("1_1ajiq")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxtkg"]
+atlas = ExtResource("1_1ajiq")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klh5g"]
+atlas = ExtResource("1_1ajiq")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjcu4"]
+atlas = ExtResource("1_1ajiq")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3jx4"]
+atlas = ExtResource("1_1ajiq")
+region = Rect2(96, 64, 32, 32)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xf68p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n61f8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_moifd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exe5q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_evdbk")
+}],
+"loop": false,
+"name": &"swing",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxtkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klh5g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjcu4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3jx4")
+}],
+"loop": false,
+"name": &"thrust",
+"speed": 10.0
+}]

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dg4txblc4qefc"]
+
+[node name="CombatantControllerApproachEnemyState" type="Node2D"]
