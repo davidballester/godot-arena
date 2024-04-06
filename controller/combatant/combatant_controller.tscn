@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://controller/combatant/combatant_controller.gd" id="1_wt7c5"]
 [ext_resource type="PackedScene" uid="uid://dwksfcr20awc4" path="res://view/combatant/combatant_view.tscn" id="2_v02wb"]
 [ext_resource type="Script" path="res://model/combatant/combatant.gd" id="3_qprda"]
-[ext_resource type="Script" path="res://model/utils/gauge.gd" id="4_q6vjl"]
+[ext_resource type="Script" path="res://utils/gauge.gd" id="4_q6vjl"]
 [ext_resource type="Script" path="res://model/brain/stock_brain.gd" id="5_cgdmh"]
 [ext_resource type="Script" path="res://model/combatant/combatant_stock_perception_component.gd" id="6_anyqp"]
 [ext_resource type="Script" path="res://controller/combatant_state_machine/combatant_controller_state_machine.gd" id="7_olu6d"]

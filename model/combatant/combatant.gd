@@ -3,10 +3,12 @@ class_name Combatant
 
 var team_id: String = "adventurers1234"
 var state_machine: CombatantStateMachine
+var inmune: bool = false
 @export var id: String = "ignotus1234"
 @export var speed: float = 40.0
 @export var battle: Battle
 @export var weapon: Weapon
+@export var inmune_time_s: MinMaxFloat = MinMaxFloat.create(0.6, 1.3)
 @onready var health: Gauge = $Health
 @onready var brain: Brain = $Brain
 @onready var perception: CombatantPerceptionComponent = $Perception
@@ -38,8 +40,11 @@ func attack(pos: Vector2) -> int:
 	return weapon.get_damage() if can_attack(pos) else 0
 	
 func take_damage(damage: int) -> void:
-	if not is_alive():
+	if not is_alive() or inmune:
 		return
+	inmune = true
+	var random_inmune_time_s = inmune_time_s.get_random_value()
+	get_tree().create_timer(random_inmune_time_s).timeout.connect(func(): inmune = false)
 	state_machine.transition_to_state(
 		CombatantHitState.get_state_name(), 
 		[damage]
