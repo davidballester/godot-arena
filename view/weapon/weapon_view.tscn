@@ -6,5 +6,5 @@
 [node name="Weapon" type="AnimatedSprite2D"]
 texture_filter = 1
 sprite_frames = ExtResource("1_s7vm3")
-animation = &"thrust"
+animation = &"idle"
 script = ExtResource("2_a8pi0")

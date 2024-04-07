@@ -25,6 +25,7 @@ script = ExtResource("1_wt7c5")
 
 [node name="CombatantView" parent="." instance=ExtResource("2_v02wb")]
 unique_name_in_owner = true
+z_index = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6)

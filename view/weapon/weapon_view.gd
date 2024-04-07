@@ -1,11 +1,15 @@
-extends AnimatedSprite2D
+extends Node2D
 class_name WeaponView
 
-func _ready() -> void:
-	animation = "idle"
-	play()
+var animated_sprite: AnimatedSprite2D
 
-func attack() -> Signal:
-	animation = "idle"
-	play()
-	return animation_finished
+func _ready() -> void:
+	idle()
+
+# virtual
+func attack() -> void:
+	await get_tree().create_timer(0.1).timeout
+	pass
+
+func idle() -> void:
+	animated_sprite.play("idle")

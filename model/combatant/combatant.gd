@@ -36,7 +36,6 @@ func can_attack(pos: Vector2) -> bool:
 	return distance < 30
 	
 func attack(pos: Vector2) -> int:
-	await weapon.wait_attack_duration()
 	return weapon.get_damage() if can_attack(pos) else 0
 	
 func take_damage(damage: int) -> void:

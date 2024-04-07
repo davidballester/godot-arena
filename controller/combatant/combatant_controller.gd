@@ -12,6 +12,7 @@ class_name CombatantController
 @onready var state_machine: CombatantControllerStateMachine = %StateMachine
 var facing_right: bool = true
 var weapon_view: WeaponView
+var attacking: bool = false
 
 func _ready() -> void:
 	view.sprite_frames = sprite_frames
@@ -27,8 +28,8 @@ func _ready() -> void:
 	model.weapon = weapon
 	model.add_child(weapon)
 	weapon_view = WeaponController.load_weapon_view(weapon_type)
-	weapon_view.position.x = 15
 	add_child(weapon_view)
+	weapon_view.position.x = 6
 	state_machine.initialize(self)
 	state_machine.transition_to_state(CombatantControllerIdleState.get_state_name())
 	
@@ -39,16 +40,28 @@ func _process(_delta: float) -> void:
 		_turn()
 		
 func attack(combatant: Combatant) -> void:
-	weapon_view.attack()
-	var damage = await model.attack(combatant.global_position)
-	combatant.take_damage(damage)
+	if attacking:
+		await get_tree().create_timer(0.3).timeout
+		return
+	attacking = true
+	var weapon_animation_start_time_ms = Time.get_ticks_msec()
+	await weapon_view.attack()
+	var weapon_animation_time_ms = Time.get_ticks_msec() - weapon_animation_start_time_ms
+	var weapon_animation_time_s = weapon_animation_time_ms / 1e3
+	var attack_time_s = model.weapon.attack_duration_s
+	var remaining_time_s = attack_time_s - weapon_animation_time_s
+	await get_tree().create_timer(remaining_time_s).timeout
+	if state_machine.current_state is CombatantControllerEngageEnemyState:
+		var damage = model.attack(combatant.global_position)
+		combatant.take_damage(damage)
+	attacking = false
 		
 func _turn() -> void:
 	facing_right = not facing_right
 	await view.turn()
 	view.flip_h = not view.flip_h
 	weapon_view.position.x *= -1
-	weapon_view.rotation_degrees *= -1
+	weapon_view.scale.x *= -1
 
 func _on_state_changed(state: State) -> void:
 	if state is CombatantApproachEnemyState:
