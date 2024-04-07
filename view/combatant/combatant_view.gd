@@ -22,12 +22,14 @@ func die() -> void:
 	await _play_animation("death")
 	
 func hit() -> void:
+	var prev_animation = combatant.animation
 	await _play_animation("hit")
-	_play_animation("idle")
+	_play_animation(prev_animation)
 	
 func roll() -> void:
+	var prev_animation = combatant.animation
 	await _play_animation("roll")
-	await _play_animation("idle")
+	await _play_animation(prev_animation)
 	
 func start_running() -> void:
 	_play_animation("run")
@@ -36,12 +38,14 @@ func stop_running() -> void:
 	_play_animation("idle")
 	
 func turn() -> void:
+	var prev_animation = combatant.animation
 	await _play_animation("turn")
-	_play_animation("idle")
+	_play_animation(prev_animation)
 	
 func _play_animation(animation_name: String) -> void:
 	combatant.play(animation_name)
 	var dust_animation_name = animation_name if DUST_ANIMATIONS.has(animation_name) else "idle"
-	print("_play_animation ", dust_animation_name)
 	dust.play(dust_animation_name)
 	await combatant.animation_finished
+	if animation_name == "death":
+		dust.play("idle")

@@ -17,4 +17,4 @@ animation = &"idle"
 [node name="Dust" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 sprite_frames = ExtResource("3_5yruy")
-animation = &"death"
+animation = &"idle"
