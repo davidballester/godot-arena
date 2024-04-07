@@ -1,34 +1,47 @@
-extends AnimatedSprite2D
+extends Node2D
 class_name CombatantView
 
+const DUST_ANIMATIONS = ["death", "hit", "roll", "run", "idle"]
+
+@onready var combatant: AnimatedSprite2D = %Combatant
+@onready var dust: AnimatedSprite2D = %Dust
+var sprite_frames: SpriteFrames
+var flip_h: bool:
+	set(val):
+		combatant.flip_h = val
+		dust.flip_h = val
+
 func initialize() -> void:
+	combatant.sprite_frames = sprite_frames
 	idle()
 	
-func idle() -> Signal:
-	return _play_animation("idle")
+func idle() -> void:
+	await _play_animation("idle")
 
-func die() -> Signal:
-	return _play_animation("death")
+func die() -> void:
+	await _play_animation("death")
 	
-func hit() -> Signal:
+func hit() -> void:
 	await _play_animation("hit")
-	return _play_animation("idle")
+	_play_animation("idle")
 	
-func roll() -> Signal:
+func roll() -> void:
 	await _play_animation("roll")
-	return _play_animation("idle")
+	await _play_animation("idle")
 	
-func start_running() -> Signal:
-	return _play_animation("run")
+func start_running() -> void:
+	_play_animation("run")
 	
-func stop_running() -> Signal:
-	return _play_animation("idle")
+func stop_running() -> void:
+	_play_animation("idle")
 	
-func turn() -> Signal:
+func turn() -> void:
 	await _play_animation("turn")
-	return _play_animation("idle")
+	_play_animation("idle")
 	
-func _play_animation(animation_name: String) -> Signal:
-	animation = animation_name
-	play()
-	return animation_finished
+func _play_animation(animation_name: String) -> void:
+	combatant.play(animation_name)
+	var dust_animation_name = animation_name if DUST_ANIMATIONS.has(animation_name) else "idle"
+	print("_play_animation ", dust_animation_name)
+	dust.play(dust_animation_name)
+	await combatant.animation_finished
