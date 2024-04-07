@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbr080568dqyo"]
+
+[ext_resource type="Script" path="res://view/weapon/staff/staff_view.gd" id="1_pdc0j"]
+[ext_resource type="SpriteFrames" uid="uid://cx253aqg1u4x2" path="res://assets/weapon/staff_ [merlin].tres" id="2_eyuo2"]
+
+[node name="StaffView" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_pdc0j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, 8)
+sprite_frames = ExtResource("2_eyuo2")
+animation = &"idle"
+offset = Vector2(0, -8)

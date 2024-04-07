@@ -47,9 +47,10 @@ zoom = Vector2(3, 3)
 script = ExtResource("3_ny0b6")
 id = "barbarians"
 
-[node name="CombatantController" parent="Battle/BarbariansTeam" node_paths=PackedStringArray("team", "battle") instance=ExtResource("4_xha0t")]
+[node name="Alex" parent="Battle/BarbariansTeam" node_paths=PackedStringArray("team", "battle") instance=ExtResource("4_xha0t")]
 position = Vector2(150, 0)
 id = "alex1234"
 team = NodePath("..")
 battle = NodePath("../..")
 sprite_frames = ExtResource("11_07cwn")
+weapon_type = 1
