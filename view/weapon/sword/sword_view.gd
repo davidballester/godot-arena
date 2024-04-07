@@ -3,14 +3,8 @@ class_name SwordView
 
 const ATTACKS = ["swing", "swing", "thrust"]
 
-@onready var animation_player: AnimationPlayer = %AnimationPlayer
-var id: String
-
 func _ready() -> void:
 	animated_sprite = %AnimatedSprite2D
-	animation_player.animation_finished.connect(func(_anim_name): 
-		idle()
-	)
 	super._ready()
 
 func attack() -> void:
