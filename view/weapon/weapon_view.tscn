@@ -3,7 +3,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cyj2jpkpuk3v6" path="res://assets/weapon/sword_ [iron].tres" id="1_s7vm3"]
 [ext_resource type="Script" path="res://view/weapon/weapon_view.gd" id="2_a8pi0"]
 
-[node name="Weapon" type="AnimatedSprite2D"]
+[node name="WeaponView" type="AnimatedSprite2D"]
 texture_filter = 1
 sprite_frames = ExtResource("1_s7vm3")
 animation = &"idle"
