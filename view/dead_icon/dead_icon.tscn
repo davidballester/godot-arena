@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://br0qy7noclsru"]
+
+[ext_resource type="SpriteFrames" uid="uid://bfednql4tmvf6" path="res://assets/other/skeleton_.tres" id="1_nghec"]
+[ext_resource type="Script" path="res://view/dead_icon/dead_icon.gd" id="2_qepr0"]
+
+[node name="DeadIcon" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = ExtResource("1_nghec")
+script = ExtResource("2_qepr0")
