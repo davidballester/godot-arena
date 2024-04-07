@@ -3,11 +3,13 @@ class_name CombatantHitState
 
 const HIT_DURATION_S: float = 0.4
 
+var damage
+
 static func get_state_name() -> String:
 	return "CombatantHitState"
 
 func enter(args: Array) -> void:
-	var damage = args[0]
+	damage = args[0]
 	var combatant = datastore.battle.get_combatant(datastore.combatant_id)
 	combatant.health.current_value -= damage
 	await get_tree().create_timer(HIT_DURATION_S).timeout

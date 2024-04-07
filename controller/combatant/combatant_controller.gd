@@ -72,7 +72,8 @@ func _on_state_changed(state: State) -> void:
 		return
 	if state is CombatantHitState:
 		state_machine.transition_to_state(
-			CombatantControllerHitState.get_state_name()
+			CombatantControllerHitState.get_state_name(),
+			[state.damage]
 		)
 		return
 	if state is CombatantDeadState:

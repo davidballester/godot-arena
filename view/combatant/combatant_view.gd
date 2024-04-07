@@ -5,6 +5,7 @@ const DUST_ANIMATIONS = ["death", "hit", "roll", "run", "idle"]
 
 @onready var combatant: AnimatedSprite2D = %Combatant
 @onready var dust: AnimatedSprite2D = %Dust
+@onready var damage_label: DamageLabel = %DamageLabel
 var sprite_frames: SpriteFrames
 var flip_h: bool:
 	set(val):
@@ -21,8 +22,9 @@ func idle() -> void:
 func die() -> void:
 	await _play_animation("death")
 	
-func hit() -> void:
+func hit(damage: int) -> void:
 	var prev_animation = combatant.animation
+	damage_label.show_damage(damage)
 	await _play_animation("hit")
 	_play_animation(prev_animation)
 	
