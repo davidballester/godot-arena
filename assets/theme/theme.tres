@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cgj53xbuypu2k"]
+
+[ext_resource type="FontFile" uid="uid://birw8oglmhe74" path="res://assets/theme/monogram.ttf" id="1_nfbf5"]
+
+[resource]
+Label/font_sizes/font_size = 30
+Label/fonts/font = ExtResource("1_nfbf5")
