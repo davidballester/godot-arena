@@ -6,3 +6,4 @@ func _ready() -> void:
 	damage.min_value = 1
 	damage.max_value = 2
 	attack_duration_s = 1.0
+	reach = 30

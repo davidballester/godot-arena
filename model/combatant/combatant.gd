@@ -33,7 +33,7 @@ func is_alive() -> bool:
 
 func can_attack(pos: Vector2) -> bool:
 	var distance = global_position.distance_to(pos)
-	return distance < 30
+	return distance < weapon.reach
 	
 func attack(pos: Vector2) -> int:
 	return weapon.get_damage() if can_attack(pos) else 0

@@ -3,6 +3,7 @@ class_name Weapon
 
 var damage: MinMax
 var attack_duration_s: float
+var reach: int
 
 func get_damage() -> int:
 	return damage.get_random_value()
