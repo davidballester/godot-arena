@@ -28,7 +28,7 @@ func _ready() -> void:
 	model.weapon = weapon
 	model.add_child(weapon)
 	weapon_view = WeaponController.load_weapon_view(weapon_type)
-	add_child(weapon_view)
+	view.add_child(weapon_view)
 	weapon_view.position.x = 6
 	state_machine.initialize(self)
 	state_machine.transition_to_state(CombatantControllerIdleState.get_state_name())

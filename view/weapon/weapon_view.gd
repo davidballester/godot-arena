@@ -14,7 +14,3 @@ func attack() -> void:
 func idle() -> void:
 	animated_sprite.play("idle")
 
-func dissapear() -> void:
-	var tween = get_tree().create_tween()
-	tween.tween_property(animated_sprite, "modulate:a", 0, 0.5)
-	await tween.finished

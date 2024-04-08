@@ -24,6 +24,9 @@ func die() -> void:
 	dead_icon.flip_h = combatant.flip_h
 	dead_icon.display()
 	await _play_animation("death")
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate:a", 0, 0.5)
+	await tween.finished
 	
 func hit(damage: int) -> void:
 	var prev_animation = combatant.animation
