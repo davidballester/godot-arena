@@ -8,6 +8,7 @@ var combatant: Combatant
 	
 func enter(args: Array) -> void:
 	var combatant_id: String = args[0]
+	datastore.last_oponent_id = combatant_id
 	combatant = datastore.battle.get_combatant(combatant_id)
 	
 func exit() -> void:

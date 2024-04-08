@@ -10,6 +10,9 @@ func choose_oponent(
 		return b.distance < a.distance
 	)
 	return oponents_sorted_by_distance.pop_back()
+	
+func should_keep_fighting(_combatant: PerceivedCombatant) -> bool:
+	return true
 
 func engage(_combatant: PerceivedCombatant, _oponent: PerceivedCombatant) -> EngageAction:
 	return EngageAction.FIGHT
