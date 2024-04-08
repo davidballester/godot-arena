@@ -60,9 +60,3 @@ func _play_animation(animation_name: String) -> void:
 	await combatant.animation_finished
 	if animation_name == "death":
 		dust.play("idle")
-
-func _on_mouse_entered():
-	health_bar.fade_in()
-
-func _on_mouse_exited():
-	health_bar.fade_out()
