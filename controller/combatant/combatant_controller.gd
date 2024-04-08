@@ -16,6 +16,7 @@ var attacking: bool = false
 
 func _ready() -> void:
 	view.sprite_frames = sprite_frames
+	view.health = model.health
 	view.initialize()
 	model.id = id
 	model.team_id = team.id

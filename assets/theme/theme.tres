@@ -1,9 +1,24 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cgj53xbuypu2k"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cgj53xbuypu2k"]
 
 [ext_resource type="FontFile" uid="uid://birw8oglmhe74" path="res://assets/theme/monogram.ttf" id="1_nfbf5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qag64"]
+bg_color = Color(0.12549, 0.12549, 0.113725, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2ent"]
+bg_color = Color(0.74902, 0.129412, 0.243137, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.12549, 0.12549, 0.113725, 1)
 
 [resource]
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_nfbf5")
 Label/font_sizes/font_size = 30
 Label/fonts/font = ExtResource("1_nfbf5")
+ProgressBar/font_sizes/font_size = 16
+ProgressBar/fonts/font = ExtResource("1_nfbf5")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_qag64")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_q2ent")

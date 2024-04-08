@@ -1,14 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwksfcr20awc4"]
+[gd_scene load_steps=8 format=3 uid="uid://dwksfcr20awc4"]
 
 [ext_resource type="Script" path="res://view/combatant/combatant_view.gd" id="1_006eq"]
 [ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/fPlayer_ [dwarf].tres" id="2_dtf5a"]
 [ext_resource type="SpriteFrames" uid="uid://dbih1mil420y7" path="res://assets/combatant/playerDust_.tres" id="3_5yruy"]
 [ext_resource type="PackedScene" uid="uid://bibsmcflcpstk" path="res://view/damage_label/damage_label.tscn" id="4_w5edl"]
 [ext_resource type="PackedScene" uid="uid://br0qy7noclsru" path="res://view/dead_icon/dead_icon.tscn" id="5_itqw1"]
+[ext_resource type="PackedScene" uid="uid://d0h41bxbb8qvu" path="res://view/health_bar/health_bar.tscn" id="5_sr5ki"]
 
-[node name="CombatantView" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd10k"]
+size = Vector2(20, 28)
+
+[node name="CombatantView" type="Area2D"]
 texture_filter = 1
 script = ExtResource("1_006eq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_jd10k")
 
 [node name="Combatant" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -23,26 +31,37 @@ z_index = 1
 sprite_frames = ExtResource("3_5yruy")
 animation = &"idle"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="DeadIcon" parent="." instance=ExtResource("5_itqw1")]
+unique_name_in_owner = true
 z_index = 1
+
+[node name="UI" type="VBoxContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -8.0
+offset_top = -18.0
+offset_right = 8.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 6
 alignment = 1
 
-[node name="DamageLabel" parent="VBoxContainer" instance=ExtResource("4_w5edl")]
+[node name="DamageLabel" parent="UI" instance=ExtResource("4_w5edl")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="DeadIcon" parent="." instance=ExtResource("5_itqw1")]
+[node name="HealthBar" parent="UI" instance=ExtResource("5_sr5ki")]
 unique_name_in_owner = true
-z_index = 1
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_vertical = 10
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="UI" to="." method="_on_ui_mouse_entered"]
+[connection signal="mouse_exited" from="UI" to="." method="_on_ui_mouse_exited"]

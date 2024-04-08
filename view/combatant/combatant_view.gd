@@ -7,6 +7,8 @@ const DUST_ANIMATIONS = ["death", "hit", "roll", "run", "idle"]
 @onready var dust: AnimatedSprite2D = %Dust
 @onready var damage_label: DamageLabel = %DamageLabel
 @onready var dead_icon: DeadIcon = %DeadIcon
+@onready var health_bar: HealthBar = %HealthBar
+var health: Gauge
 var sprite_frames: SpriteFrames
 var flip_h: bool:
 	set(val):
@@ -15,6 +17,7 @@ var flip_h: bool:
 
 func initialize() -> void:
 	combatant.sprite_frames = sprite_frames
+	health_bar.initialize(health)
 	idle()
 	
 func idle() -> void:
@@ -57,3 +60,9 @@ func _play_animation(animation_name: String) -> void:
 	await combatant.animation_finished
 	if animation_name == "death":
 		dust.play("idle")
+
+func _on_mouse_entered():
+	health_bar.fade_in()
+
+func _on_mouse_exited():
+	health_bar.fade_out()

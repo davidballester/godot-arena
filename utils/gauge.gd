@@ -16,3 +16,10 @@ func get_ratio() -> float :
 
 func get_random_value() -> int:
 	return randi_range(min_value, current_value)
+
+func _to_string() -> String:
+	return "Gauge(min={min}, max={max}, current={current})".format({
+		"min": str(min_value),
+		"max": str(max_value),
+		"current": str(current_value)
+	})
