@@ -3,5 +3,7 @@
 [ext_resource type="FontFile" uid="uid://birw8oglmhe74" path="res://assets/theme/monogram.ttf" id="1_nfbf5"]
 
 [resource]
+Button/font_sizes/font_size = 30
+Button/fonts/font = ExtResource("1_nfbf5")
 Label/font_sizes/font_size = 30
 Label/fonts/font = ExtResource("1_nfbf5")

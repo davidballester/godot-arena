@@ -9,5 +9,8 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Combatant:
 			var combatant: Combatant = child
-			combatant.team_id = id
-			combatants.append(combatant)
+			add_combatant(combatant)
+			
+func add_combatant(combatant: Combatant) -> void:
+	combatant.team_id = id
+	combatants.append(combatant)
