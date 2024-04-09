@@ -27,4 +27,5 @@ func physics_process(_delta: float) -> void:
 	
 func _approach(node: Node2D) -> void:
 	navigation_agent.target_position = node.global_position
+	controller.weapon_view.face_position(node.global_position)
 	
