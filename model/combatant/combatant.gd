@@ -39,7 +39,7 @@ func attack(pos: Vector2) -> int:
 	return weapon.get_damage() if can_attack(pos) else 0
 	
 func take_damage(damage: int) -> void:
-	if not is_alive() or inmune:
+	if damage == 0 or not is_alive() or inmune:
 		return
 	inmune = true
 	var random_inmune_time_s = inmune_time_s.get_random_value()
