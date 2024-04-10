@@ -14,7 +14,7 @@ var facing_right: bool = true
 var weapon_view: WeaponView
 var attacking: bool = false
 
-func _ready() -> void:
+func initialize() -> void:
 	view.sprite_frames = sprite_frames
 	view.health = model.health
 	view.initialize()

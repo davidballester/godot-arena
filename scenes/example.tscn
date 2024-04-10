@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scenes/example.gd" id="1_8ssei"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_0icbv"]
-[ext_resource type="Script" path="res://model/battle/battle.gd" id="2_ldbwl"]
 [ext_resource type="TileSet" uid="uid://fkxjgn27jf6m" path="res://assets/terrain/tundraSwampTaigaForestDesert_1.tres" id="2_pwe64"]
 [ext_resource type="Script" path="res://model/team/team.gd" id="3_ny0b6"]
 [ext_resource type="PackedScene" uid="uid://chqawlnduanri" path="res://controller/combatant/combatant_controller.tscn" id="4_xha0t"]
+[ext_resource type="PackedScene" uid="uid://rr0trrk61o2d" path="res://controller/battle/battle_controller.tscn" id="4_ydik6"]
 [ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/fPlayer_ [dwarf].tres" id="6_2s5it"]
 [ext_resource type="SpriteFrames" uid="uid://cbsl0mqoauj5s" path="res://assets/combatant/fPlayer_ [elf].tres" id="11_07cwn"]
 
@@ -65,31 +65,30 @@ navigation_polygon = SubResource("NavigationPolygon_d4rpl")
 position = Vector2(250, 140)
 zoom = Vector2(2, 2)
 
-[node name="Battle" type="Node" parent="Arena"]
+[node name="BattleController" parent="Arena" instance=ExtResource("4_ydik6")]
 unique_name_in_owner = true
-script = ExtResource("2_ldbwl")
 
-[node name="AdventurersTeam" type="Node" parent="Arena/Battle"]
+[node name="AdventurersTeam" type="Node" parent="Arena/BattleController"]
 unique_name_in_owner = true
 script = ExtResource("3_ny0b6")
 id = "adventurers"
 
-[node name="Ignotus" parent="Arena/Battle/AdventurersTeam" node_paths=PackedStringArray("team", "battle") instance=ExtResource("4_xha0t")]
+[node name="Ignotus" parent="Arena/BattleController/AdventurersTeam" node_paths=PackedStringArray("team", "battle") instance=ExtResource("4_xha0t")]
 position = Vector2(195, 125)
 team = NodePath("..")
-battle = NodePath("../..")
+battle = NodePath("")
 sprite_frames = ExtResource("6_2s5it")
 
-[node name="BarbariansTeam" type="Node" parent="Arena/Battle"]
+[node name="BarbariansTeam" type="Node" parent="Arena/BattleController"]
 unique_name_in_owner = true
 script = ExtResource("3_ny0b6")
 id = "barbarians"
 
-[node name="Alex" parent="Arena/Battle/BarbariansTeam" node_paths=PackedStringArray("team", "battle") instance=ExtResource("4_xha0t")]
+[node name="Alex" parent="Arena/BattleController/BarbariansTeam" node_paths=PackedStringArray("team", "battle") instance=ExtResource("4_xha0t")]
 position = Vector2(293, 126)
 id = "alex1234"
 team = NodePath("..")
-battle = NodePath("../..")
+battle = NodePath("")
 sprite_frames = ExtResource("11_07cwn")
 weapon_type = 1
 
