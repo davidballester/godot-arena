@@ -12,10 +12,7 @@ func attack() -> void:
 	pass
 	
 func face_position(g_position: Vector2) -> void:
-	if g_position.x > global_position.x:
-		rotation = global_position.angle_to_point(g_position)  
-	else: 
-		rotation = g_position.angle_to_point(global_position)
+	rotation = global_position.angle_to_point(g_position)
 
 func idle() -> void:
 	animated_sprite.play("idle")

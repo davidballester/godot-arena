@@ -4,15 +4,20 @@ class_name CombatantControllerApproachEnemyState
 @export var navigation_agent: NavigationAgent2D
 @export var approach_timer: Timer
 
+var _combatant: Combatant
+
 static func get_state_name() -> String:
 	return "CombatantControllerApproachEnemyState"
 
 func enter(args: Array) -> void:
 	controller.view.start_running()
 	var combatant_id = args[0]
-	var combatant = controller.battle.get_combatant(combatant_id)
-	approach_timer.timeout.connect(func(): _approach(combatant))
-	_approach(combatant)
+	_combatant = controller.battle.get_combatant(combatant_id)
+	approach_timer.timeout.connect(func(): _approach(_combatant))
+	_approach(_combatant)
+	
+func process(_delta: float) -> void:
+	controller.face(_combatant.global_position)
 	
 func exit() -> void:
 	controller.view.stop_running()
@@ -27,5 +32,4 @@ func physics_process(_delta: float) -> void:
 	
 func _approach(node: Node2D) -> void:
 	navigation_agent.target_position = node.global_position
-	controller.weapon_view.face_position(node.global_position)
 	

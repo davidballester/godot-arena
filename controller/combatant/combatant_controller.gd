@@ -33,12 +33,6 @@ func initialize() -> void:
 	weapon_view.position.x = 6
 	state_machine.initialize(self)
 	state_machine.transition_to_state(CombatantControllerIdleState.get_state_name())
-	
-func _process(_delta: float) -> void:
-	var has_turned_left = facing_right and velocity.x < 0
-	var has_turned_right = not facing_right and velocity.x > 0
-	if has_turned_left or has_turned_right:
-		_turn()
 		
 func attack(combatant: Combatant) -> void:
 	if attacking:
@@ -56,13 +50,21 @@ func attack(combatant: Combatant) -> void:
 		var damage = model.attack(combatant.global_position)
 		combatant.take_damage(damage)
 	attacking = false
+	
+func face(pos: Vector2) -> void:
+	weapon_view.face_position(pos)
+	var should_face_right = global_position.x < pos.x
+	var should_turn = (should_face_right and not facing_right) or (not should_face_right and facing_right)
+	if not should_turn:
+		return
+	_turn()
 		
 func _turn() -> void:
 	facing_right = not facing_right
-	await view.turn()
-	view.flip_h = not view.flip_h
 	weapon_view.position.x *= -1
-	weapon_view.scale.x *= -1
+	weapon_view.scale.y *= -1
+	view.flip_h = not view.flip_h
+	await view.turn()
 
 func _on_state_changed(state: State) -> void:
 	if state is CombatantApproachEnemyState:

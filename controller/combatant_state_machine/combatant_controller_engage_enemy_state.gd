@@ -19,11 +19,15 @@ func exit() -> void:
 	_combatant = null
 	controller.view.stop_running()
 	
+func process(_delta: float) -> void:
+	if not _combatant:
+		return
+	controller.face(_combatant.global_position)
+	
 func physics_process(delta: float) -> void:
 	if not _navigator or not _combatant:
 		return
 	_navigator.physics_process(delta)
-	controller.weapon_view.face_position(_combatant.global_position)
 	
 func _attack_loop() -> void:
 	while _combatant:
