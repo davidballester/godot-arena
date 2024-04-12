@@ -48,13 +48,14 @@ func start_running() -> void:
 func stop_running() -> void:
 	_play_animation("idle")
 	
-func turn() -> void:
+func turn(play_backwards: bool = false) -> void:
 	var prev_animation = combatant.animation
-	await _play_animation("turn")
+	await _play_animation("turn", play_backwards)
 	_play_animation(prev_animation)
 	
-func _play_animation(animation_name: String) -> void:
-	combatant.play(animation_name)
+func _play_animation(animation_name: String, play_backwards: bool = false) -> void:
+	var custom_speed = 1.0 if not play_backwards else -1.0
+	combatant.play(animation_name, custom_speed, play_backwards)
 	var dust_animation_name = animation_name if DUST_ANIMATIONS.has(animation_name) else "idle"
 	dust.play(dust_animation_name)
 	await combatant.animation_finished

@@ -63,8 +63,8 @@ func _turn() -> void:
 	facing_right = not facing_right
 	weapon_view.position.x *= -1
 	weapon_view.scale.y *= -1
-	view.flip_h = not view.flip_h
-	await view.turn()
+	view.flip_h = not facing_right
+	await view.turn(true)
 
 func _on_state_changed(state: State) -> void:
 	if state is CombatantApproachEnemyState:
