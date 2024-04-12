@@ -10,6 +10,7 @@ class_name CombatantController
 @onready var view: CombatantView = %CombatantView
 @onready var model: Combatant = %CombatantModel
 @onready var state_machine: CombatantControllerStateMachine = %StateMachine
+@onready var collision_shape: CollisionShape2D = %CollisionShape2D
 var facing_right: bool = true
 var weapon_view: WeaponView
 var attacking: bool = false
@@ -58,6 +59,10 @@ func face(pos: Vector2) -> void:
 	if not should_turn:
 		return
 	_turn()
+	
+func die() -> void:
+	collision_shape.disabled = true
+	await view.die()
 		
 func _turn() -> void:
 	facing_right = not facing_right
