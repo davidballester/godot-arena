@@ -4,8 +4,13 @@ class_name BattleController
 var _battle: Battle
 var _id_to_team: Dictionary
 var _id_to_combatant: Dictionary
+var _weapons_data: WeaponsData
+var _database: SQLite
 
 func _ready() -> void:
+	_database = SQLController.get_database()
+	_database.open_db()
+	_weapons_data = WeaponsData.new(_database)
 	_battle = Battle.new()
 	for child in get_children():
 		if not child is Team:
@@ -18,6 +23,9 @@ func _ready() -> void:
 			var combatant: CombatantController = team_child
 			team.remove_child(combatant)
 			add_combatant(team.id, combatant)
+			
+func _exit_tree() -> void:
+	_database.close_db()
 			
 func _physics_process(_delta: float) -> void:
 	var combatants: Array = _id_to_combatant.values()
@@ -37,6 +45,8 @@ func add_combatant(team_id: String, combatant: CombatantController) -> void:
 	var team: Team = _id_to_team[team_id]
 	combatant.team = team
 	combatant.battle = _battle
+	if not combatant.weapon:
+		combatant.weapon = _weapons_data.get_random_weapon()
 	team.add_child(combatant)
 	combatant.initialize()
 	team.add_combatant(combatant.model)

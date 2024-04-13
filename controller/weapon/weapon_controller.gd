@@ -1,31 +1,22 @@
-extends Object
+extends Node2D
 class_name WeaponController
 
-enum WeaponType {
-	SWORD,
-	STAFF
-}
+var model: Weapon
+var view: WeaponView
 
-static func load_weapon_model(type: WeaponType) -> Weapon:
-	var weapon_node = Node.new()
-	var script: Variant
-	match type:
-		WeaponType.SWORD:
-			script = load("res://model/weapon/sword.gd")
-		WeaponType.STAFF:
-			script = load("res://model/weapon/staff.gd")
-	weapon_node.set_script(script)
-	return weapon_node
+func _init(model: Weapon, view: WeaponView) -> void:
+	self.model = model
+	self.view = view
+	add_child(model)
+	add_child(view)
+	view.position.x = 6
 	
-static func load_weapon_view(type: WeaponType) -> WeaponView:
-	var weapon_view_node: WeaponView
-	match type:
-		WeaponType.SWORD:
-			weapon_view_node = load(
-				"res://view/weapon/sword/sword_view.tscn"
-			).instantiate()
-		WeaponType.STAFF:
-			weapon_view_node = load(
-				"res://view/weapon/staff/staff_view.tscn"
-			).instantiate()
-	return weapon_view_node
+func attack() -> void:
+	await view.attack()
+
+func face(pos: Vector2) -> void:
+	view.face_position(pos)
+	
+func turn() -> void:
+	view.position.x *= -1
+	view.scale.y *= -1

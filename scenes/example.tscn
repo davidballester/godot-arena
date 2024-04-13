@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b54ahmhhh4dxr"]
+[gd_scene load_steps=11 format=3 uid="uid://b54ahmhhh4dxr"]
 
 [ext_resource type="Script" path="res://scenes/example.gd" id="1_8ssei"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_0icbv"]
+[ext_resource type="Script" path="res://controller/game/game_controller.gd" id="2_hp43h"]
 [ext_resource type="TileSet" uid="uid://fkxjgn27jf6m" path="res://assets/terrain/tundraSwampTaigaForestDesert_1.tres" id="2_pwe64"]
 [ext_resource type="Script" path="res://model/team/team.gd" id="3_ny0b6"]
 [ext_resource type="PackedScene" uid="uid://chqawlnduanri" path="res://controller/combatant/combatant_controller.tscn" id="4_xha0t"]
@@ -19,6 +20,9 @@ agent_radius = 7.0
 
 [node name="Example" type="Node2D"]
 script = ExtResource("1_8ssei")
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource("2_hp43h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -73,24 +77,24 @@ unique_name_in_owner = true
 script = ExtResource("3_ny0b6")
 id = "adventurers"
 
-[node name="Ignotus" parent="Arena/BattleController/AdventurersTeam" node_paths=PackedStringArray("team", "battle") instance=ExtResource("4_xha0t")]
+[node name="Ignotus" parent="Arena/BattleController/AdventurersTeam" instance=ExtResource("4_xha0t")]
 position = Vector2(195, 125)
-team = NodePath("..")
-battle = NodePath("")
 sprite_frames = ExtResource("6_2s5it")
+team = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("3_ny0b6"),"id":"adventurers")
+
 
 [node name="BarbariansTeam" type="Node" parent="Arena/BattleController"]
 unique_name_in_owner = true
 script = ExtResource("3_ny0b6")
 id = "barbarians"
 
-[node name="Alex" parent="Arena/BattleController/BarbariansTeam" node_paths=PackedStringArray("team", "battle") instance=ExtResource("4_xha0t")]
-position = Vector2(293, 126)
+[node name="Alex" parent="Arena/BattleController/BarbariansTeam" instance=ExtResource("4_xha0t")]
+position = Vector2(305, 72)
 id = "alex1234"
-team = NodePath("..")
-battle = NodePath("")
 sprite_frames = ExtResource("11_07cwn")
 weapon_type = 1
+team = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":true,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("3_ny0b6"),"id":"barbarians")
+
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/AddAventurer" to="." method="_on_add_aventurer_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/AddBarbarian" to="." method="_on_add_barbarian_pressed"]

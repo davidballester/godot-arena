@@ -6,13 +6,12 @@ class_name CombatantController
 @export var speed: float = 40.0
 @export var battle: Battle
 @export var sprite_frames: SpriteFrames
-@export var weapon_type: WeaponController.WeaponType
+@export var weapon: WeaponController
 @onready var view: CombatantView = %CombatantView
 @onready var model: Combatant = %CombatantModel
 @onready var state_machine: CombatantControllerStateMachine = %StateMachine
 @onready var collision_shape: CollisionShape2D = %CollisionShape2D
 var facing_right: bool = true
-var weapon_view: WeaponView
 var attacking: bool = false
 
 func initialize() -> void:
@@ -26,12 +25,8 @@ func initialize() -> void:
 	model.initialize()
 	battle.add_combatant(model)
 	model.state_machine.state_changed.connect(_on_state_changed)
-	var weapon = WeaponController.load_weapon_model(weapon_type)
-	model.weapon = weapon
-	model.add_child(weapon)
-	weapon_view = WeaponController.load_weapon_view(weapon_type)
-	view.add_child(weapon_view)
-	weapon_view.position.x = 6
+	model.weapon = weapon.model
+	view.add_child(weapon)
 	state_machine.initialize(self)
 	state_machine.transition_to_state(CombatantControllerIdleState.get_state_name())
 		
@@ -41,7 +36,7 @@ func attack(combatant: Combatant) -> void:
 		return
 	attacking = true
 	var weapon_animation_start_time_ms = Time.get_ticks_msec()
-	await weapon_view.attack()
+	await weapon.attack()
 	var weapon_animation_time_ms = Time.get_ticks_msec() - weapon_animation_start_time_ms
 	var weapon_animation_time_s = weapon_animation_time_ms / 1e3
 	var attack_time_s = model.weapon.attack_duration_s
@@ -53,7 +48,7 @@ func attack(combatant: Combatant) -> void:
 	attacking = false
 	
 func face(pos: Vector2) -> void:
-	weapon_view.face_position(pos)
+	weapon.face(pos)
 	var should_face_right = global_position.x < pos.x
 	var should_turn = (should_face_right and not facing_right) or (not should_face_right and facing_right)
 	if not should_turn:
@@ -66,8 +61,7 @@ func die() -> void:
 		
 func _turn() -> void:
 	facing_right = not facing_right
-	weapon_view.position.x *= -1
-	weapon_view.scale.y *= -1
+	weapon.turn()
 	view.flip_h = not facing_right
 	await view.turn(true)
 

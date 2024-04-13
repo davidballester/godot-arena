@@ -10,13 +10,6 @@ const COMBATANT_SPRITES = [
 	"res://assets/combatant/mPlayer_ [human].tres",
 ]
 
-const WEAPON_TYPES = [
-	WeaponController.WeaponType.SWORD,
-	WeaponController.WeaponType.SWORD,
-	WeaponController.WeaponType.SWORD,
-	WeaponController.WeaponType.STAFF
-]
-
 @onready var battle: BattleController = %BattleController
 
 func _process(_delta: float) -> void:
@@ -52,6 +45,4 @@ func _create_combatant() -> CombatantController:
 	combatant.id = str(randi_range(1, 99999))
 	var sprite_frames_path = COMBATANT_SPRITES.pick_random()
 	combatant.sprite_frames = load(sprite_frames_path)
-	var weapon_type = WEAPON_TYPES.pick_random()
-	combatant.weapon_type = weapon_type
 	return combatant
