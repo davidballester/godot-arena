@@ -8,9 +8,14 @@ const CONTROLLER_RESOURCE = preload(
 
 var _database: SQLite
 var _type_to_ids: Dictionary
+var _combatants_names_data: CombatantsNamesData
 
-func _init(database: SQLite) -> void:
+func _init(
+	database: SQLite,
+	combatants_names_data: CombatantsNamesData
+) -> void:
 	_database = database
+	_combatants_names_data = combatants_names_data
 	var query_result = _database.select_rows(TABLE_NAME, "", ["type", "id"])
 	_type_to_ids = query_result.reduce(
 		func(type_to_ids, row):
@@ -45,8 +50,9 @@ func create_random_combatant(
 	var brain = StockBrain.new()
 	var perception = CombatantStockPerceptionComponent.new()
 	var health = Gauge.create(0, type_template.health)
+	var id = _combatants_names_data.get_random_name(type)
 	var combatant = Combatant.new(
-		str(randi()),
+		id,
 		battle,
 		team.id,
 		type_template.speed,

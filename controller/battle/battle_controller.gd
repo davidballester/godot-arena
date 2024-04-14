@@ -12,7 +12,11 @@ func _ready() -> void:
 	_database = SQLController.get_database()
 	_database.open_db()
 	_weapons_data = WeaponsData.new(_database)
-	_combatants_templates_data = CombatantsTemplatesData.new(_database)
+	var combatants_names_data = CombatantsNamesData.new(_database)
+	_combatants_templates_data = CombatantsTemplatesData.new(
+		_database,
+		combatants_names_data,
+	)
 	_battle = Battle.new()
 	for child in get_children():
 		if not child is Team:
