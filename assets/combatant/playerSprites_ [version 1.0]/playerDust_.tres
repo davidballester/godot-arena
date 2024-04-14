@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=24 format=3 uid="uid://dbih1mil420y7"]
 
-[ext_resource type="Texture2D" uid="uid://cxtl6ci600ftw" path="res://assets/combatant/playerDust_.png" id="1_lt802"]
-[ext_resource type="Texture2D" uid="uid://bf8i03hiie8ut" path="res://assets/combatant/fPlayer_ [dwarf].png" id="2_4r1bd"]
+[ext_resource type="Texture2D" uid="uid://cxtl6ci600ftw" path="res://assets/combatant/playerSprites_ [version 1.0]/playerDust_.png" id="1_lt802"]
+[ext_resource type="Texture2D" uid="uid://bf8i03hiie8ut" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].png" id="2_4r1bd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5j487"]
 atlas = ExtResource("1_lt802")

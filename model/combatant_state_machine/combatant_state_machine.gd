@@ -1,11 +1,19 @@
 extends StateMachine
 class_name CombatantStateMachine
 
-func initialize(
+var _combatant: Combatant
+var _battle: Battle
+
+func _init(
 	combatant: Combatant,
 	battle: Battle
 ) -> void:
-	var datastore = _compose_datastore(combatant, battle)
+	_combatant = combatant
+	_battle = battle
+
+func initialize() -> void:
+	super.initialize()
+	var datastore = _compose_datastore(_combatant, _battle)
 	for state in _get_states():
 		state.datastore = datastore
 	

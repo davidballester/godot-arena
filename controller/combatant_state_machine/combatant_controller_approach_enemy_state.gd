@@ -12,7 +12,7 @@ static func get_state_name() -> String:
 func enter(args: Array) -> void:
 	controller.view.start_running()
 	var combatant_id = args[0]
-	_combatant = controller.battle.get_combatant(combatant_id)
+	_combatant = controller.model.battle.get_combatant(combatant_id)
 	approach_timer.timeout.connect(func(): _approach(_combatant))
 	_approach(_combatant)
 	
@@ -27,7 +27,7 @@ func physics_process(_delta: float) -> void:
 	await get_tree().physics_frame
 	var next_path_position = navigation_agent.get_next_path_position()
 	var direction = controller.global_position.direction_to(next_path_position)
-	controller.velocity = direction * controller.speed
+	controller.velocity = direction * controller.model.speed
 	controller.move_and_slide()
 	
 func _approach(node: Node2D) -> void:

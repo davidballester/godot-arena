@@ -1,22 +1,40 @@
 extends Node2D
 class_name Combatant
 
-var team_id: String = "adventurers1234"
+var id: String
+var team_id: String
+var speed: float = 40.0
+var weapon: Weapon
+var brain: Brain
+var perception: CombatantPerceptionComponent
 var state_machine: CombatantStateMachine
-var inmune: bool = false
-@export var id: String = "ignotus1234"
-@export var speed: float = 40.0
-@export var battle: Battle
-@export var weapon: Weapon
-@export var inmune_time_s: MinMaxFloat = MinMaxFloat.create(0.6, 1.3)
-@onready var health: Gauge = $Health
-@onready var brain: Brain = $Brain
-@onready var perception: CombatantPerceptionComponent = $Perception
+var health: Gauge
+var battle: Battle
 
-func initialize() -> void:
+var _inmune: bool = false
+var _inmune_time_s: MinMaxFloat = MinMaxFloat.create(0.6, 1.3)
+
+func _init(
+	id: String,
+	battle: Battle,
+	team_id: String,
+	speed: float,
+	weapon: Weapon,
+	brain: Brain,
+	perception: CombatantPerceptionComponent,
+	health: Gauge
+) -> void:
+	self.id = id
+	self.team_id = team_id
+	self.speed = speed
+	self.weapon = weapon
+	self.brain = brain
+	self.perception = perception
+	self.health = health
+	self.battle = battle
 	perception.self_combatant = self
-	state_machine = CombatantStateMachine.new()
-	state_machine.id = id + "_state_machine"
+	state_machine = CombatantStateMachine.new(self, battle)
+	state_machine.id = id + "state_machine"
 	state_machine.add_child(CombatantApproachEnemyState.new())
 	state_machine.add_child(CombatantEngageEnemyState.new())
 	state_machine.add_child(CombatantEscapeState.new())
@@ -25,7 +43,7 @@ func initialize() -> void:
 	state_machine.add_child(CombatantDeadState.new())
 	state_machine.add_child(CombatantHitState.new())
 	add_child(state_machine)
-	state_machine.initialize(self, battle)
+	state_machine.initialize()
 	state_machine.transition_to_state(CombatantSeekEnemyState.get_state_name())
 
 func is_alive() -> bool:
@@ -39,11 +57,13 @@ func attack(pos: Vector2) -> int:
 	return weapon.get_damage() if can_attack(pos) else 0
 	
 func take_damage(damage: int) -> void:
-	if damage == 0 or not is_alive() or inmune:
+	if damage == 0 or not is_alive() or _inmune:
 		return
-	inmune = true
-	var random_inmune_time_s = inmune_time_s.get_random_value()
-	get_tree().create_timer(random_inmune_time_s).timeout.connect(func(): inmune = false)
+	_inmune = true
+	var random_inmune_time_s = _inmune_time_s.get_random_value()
+	get_tree().create_timer(random_inmune_time_s).timeout.connect(
+		func(): _inmune = false
+	)
 	state_machine.transition_to_state(
 		CombatantHitState.get_state_name(), 
 		[damage]

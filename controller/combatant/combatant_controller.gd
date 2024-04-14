@@ -1,40 +1,38 @@
 extends CharacterBody2D
 class_name CombatantController
 
-@export var id: String = "ignotus1234"
-@export var team: Team
-@export var speed: float = 40.0
-@export var battle: Battle
-@export var sprite_frames: SpriteFrames
-@export var weapon: WeaponController
 @onready var view: CombatantView = %CombatantView
-@onready var model: Combatant = %CombatantModel
-@onready var state_machine: CombatantControllerStateMachine = %StateMachine
-@onready var collision_shape: CollisionShape2D = %CollisionShape2D
-var facing_right: bool = true
-var attacking: bool = false
+@onready var _state_machine: CombatantControllerStateMachine = %StateMachine
+@onready var _collision_shape: CollisionShape2D = %CollisionShape2D
 
-func initialize() -> void:
-	view.sprite_frames = sprite_frames
-	view.health = model.health
-	view.initialize()
-	model.id = id
-	model.team_id = team.id
-	model.speed = speed
-	model.battle = battle
-	model.initialize()
-	battle.add_combatant(model)
+var id: String
+var weapon: WeaponController
+var model: Combatant
+var _facing_right: bool = true
+var _attacking: bool = false
+
+func initialize(
+	model: Combatant,
+	weapon: WeaponController,
+	sprite_frames: SpriteFrames,
+	dust_sprite_frames: SpriteFrames
+) -> void:
+	self.model = model
+	self.weapon = weapon
+	id = "%s_controller" % model.id
 	model.state_machine.state_changed.connect(_on_state_changed)
 	model.weapon = weapon.model
+	add_child(model)
+	view.initialize(sprite_frames, dust_sprite_frames, model.health)
 	view.add_child(weapon)
-	state_machine.initialize(self)
-	state_machine.transition_to_state(CombatantControllerIdleState.get_state_name())
+	_state_machine.initialize()
+	_state_machine.transition_to_state(CombatantControllerIdleState.get_state_name())
 		
 func attack(combatant: Combatant) -> void:
-	if attacking:
+	if _attacking:
 		await get_tree().create_timer(0.3).timeout
 		return
-	attacking = true
+	_attacking = true
 	var weapon_animation_start_time_ms = Time.get_ticks_msec()
 	await weapon.attack()
 	var weapon_animation_time_ms = Time.get_ticks_msec() - weapon_animation_start_time_ms
@@ -42,55 +40,55 @@ func attack(combatant: Combatant) -> void:
 	var attack_time_s = model.weapon.attack_duration_s
 	var remaining_time_s = attack_time_s - weapon_animation_time_s
 	await get_tree().create_timer(remaining_time_s).timeout
-	if state_machine.current_state is CombatantControllerEngageEnemyState:
+	if _state_machine.current_state is CombatantControllerEngageEnemyState:
 		var damage = model.attack(combatant.global_position)
 		combatant.take_damage(damage)
-	attacking = false
+	_attacking = false
 	
 func face(pos: Vector2) -> void:
 	weapon.face(pos)
 	var should_face_right = global_position.x < pos.x
-	var should_turn = (should_face_right and not facing_right) or (not should_face_right and facing_right)
+	var should_turn = (should_face_right and not _facing_right) or (not should_face_right and _facing_right)
 	if not should_turn:
 		return
 	_turn()
 	
 func die() -> void:
-	collision_shape.disabled = true
+	_collision_shape.disabled = true
 	await view.die()
 		
 func _turn() -> void:
-	facing_right = not facing_right
+	_facing_right = not _facing_right
 	weapon.turn()
-	view.flip_h = not facing_right
+	view.flip_h = not _facing_right
 	await view.turn(true)
 
 func _on_state_changed(state: State) -> void:
 	if state is CombatantApproachEnemyState:
-		state_machine.transition_to_state(
+		_state_machine.transition_to_state(
 			CombatantControllerApproachEnemyState.get_state_name(), 
 			[state.combatant_id]
 		)
 		return
 	if state is CombatantHitState:
-		state_machine.transition_to_state(
+		_state_machine.transition_to_state(
 			CombatantControllerHitState.get_state_name(),
 			[state.damage]
 		)
 		return
 	if state is CombatantDeadState:
-		state_machine.transition_to_state(
+		_state_machine.transition_to_state(
 			CombatantControllerDeadState.get_state_name()
 		)
 		return
 	if state is CombatantEngageEnemyState:
-		state_machine.transition_to_state(
+		_state_machine.transition_to_state(
 			CombatantControllerEngageEnemyState.get_state_name(),
 			[state.combatant]
 		)
 		return
 	if state is CombatantVictoryState:
-		state_machine.transition_to_state(
+		_state_machine.transition_to_state(
 			CombatantControllerIdleState.get_state_name()
 		)
 		return

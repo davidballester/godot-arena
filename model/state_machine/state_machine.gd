@@ -7,7 +7,7 @@ var id: String = ""
 var class_to_state: Dictionary = {}
 var current_state: State
 
-func _ready() -> void:
+func initialize() -> void:
 	for child in get_children():
 		if child is State:
 			child.state_machine = self

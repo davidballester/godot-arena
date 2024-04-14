@@ -5,24 +5,20 @@ var _battle: Battle
 var _id_to_team: Dictionary
 var _id_to_combatant: Dictionary
 var _weapons_data: WeaponsData
+var _combatants_templates_data: CombatantsTemplatesData
 var _database: SQLite
 
 func _ready() -> void:
 	_database = SQLController.get_database()
 	_database.open_db()
 	_weapons_data = WeaponsData.new(_database)
+	_combatants_templates_data = CombatantsTemplatesData.new(_database)
 	_battle = Battle.new()
 	for child in get_children():
 		if not child is Team:
 			continue
 		var team: Team = child
 		_id_to_team[team.id] = team
-		for team_child in team.get_children():
-			if not team_child is CombatantController:
-				continue
-			var combatant: CombatantController = team_child
-			team.remove_child(combatant)
-			add_combatant(team.id, combatant)
 			
 func _exit_tree() -> void:
 	_database.close_db()
@@ -40,13 +36,17 @@ func add_team(team: Team) -> void:
 	_id_to_team[team.id] = team
 	add_child(team)
 	
-func add_combatant(team_id: String, combatant: CombatantController) -> void:
-	_id_to_combatant[combatant.id] = combatant
+func add_combatant(
+	team_id: String,
+) -> CombatantController:
 	var team: Team = _id_to_team[team_id]
-	combatant.team = team
-	combatant.battle = _battle
-	if not combatant.weapon:
-		combatant.weapon = _weapons_data.get_random_weapon()
-	team.add_child(combatant)
-	combatant.initialize()
-	team.add_combatant(combatant.model)
+	var combatant_type = _combatants_templates_data.get_random_type()
+	var weapon = _weapons_data.get_random_weapon()
+	var combatant = _combatants_templates_data.create_random_combatant(
+		team,
+		combatant_type,
+		_battle,
+		weapon
+	)
+	_id_to_combatant[combatant.id] = combatant
+	return combatant

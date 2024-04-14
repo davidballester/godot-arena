@@ -8,15 +8,18 @@ const DUST_ANIMATIONS = ["death", "hit", "roll", "run", "idle"]
 @onready var damage_label: DamageLabel = %DamageLabel
 @onready var dead_icon: DeadIcon = %DeadIcon
 @onready var health_bar: HealthBar = %HealthBar
-var health: Gauge
-var sprite_frames: SpriteFrames
 var flip_h: bool:
 	set(val):
 		combatant.flip_h = val
 		dust.flip_h = val
 
-func initialize() -> void:
+func initialize(
+	sprite_frames: SpriteFrames, 
+	dust_sprite_frames: SpriteFrames,
+	health: Gauge
+) -> void:
 	combatant.sprite_frames = sprite_frames
+	dust.sprite_frames = dust_sprite_frames
 	health_bar.initialize(health)
 	idle()
 	

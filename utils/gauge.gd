@@ -1,6 +1,13 @@
 extends MinMax
 class_name Gauge
 
+static func create(minv: int, maxv: int) -> Gauge:
+	var gauge = Gauge.new()
+	gauge.min_value = minv
+	gauge.max_value = maxv
+	gauge.current_value = maxv
+	return gauge
+
 @export var current_value: int = 10:
 	set(new_value):
 		if new_value > max_value:

@@ -1,11 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://chqawlnduanri"]
+[gd_scene load_steps=10 format=3 uid="uid://chqawlnduanri"]
 
 [ext_resource type="Script" path="res://controller/combatant/combatant_controller.gd" id="1_wt7c5"]
 [ext_resource type="PackedScene" uid="uid://dwksfcr20awc4" path="res://view/combatant/combatant_view.tscn" id="2_v02wb"]
-[ext_resource type="Script" path="res://model/combatant/combatant.gd" id="3_qprda"]
-[ext_resource type="Script" path="res://utils/gauge.gd" id="4_q6vjl"]
-[ext_resource type="Script" path="res://model/brain/stock_brain.gd" id="5_cgdmh"]
-[ext_resource type="Script" path="res://model/combatant/combatant_stock_perception_component.gd" id="6_anyqp"]
 [ext_resource type="Script" path="res://controller/combatant_state_machine/combatant_controller_state_machine.gd" id="7_olu6d"]
 [ext_resource type="Script" path="res://controller/combatant_state_machine/combatant_controller_idle_state.gd" id="8_hbmft"]
 [ext_resource type="Script" path="res://controller/combatant_state_machine/combatant_controller_approach_enemy_state.gd" id="9_8x70j"]
@@ -31,25 +27,13 @@ unique_name_in_owner = true
 position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_r30q3")
 
-[node name="CombatantModel" type="Node2D" parent="."]
-unique_name_in_owner = true
-script = ExtResource("3_qprda")
-
-[node name="Health" type="Node" parent="CombatantModel"]
-script = ExtResource("4_q6vjl")
-
-[node name="Brain" type="Node" parent="CombatantModel"]
-script = ExtResource("5_cgdmh")
-
-[node name="Perception" type="Node" parent="CombatantModel"]
-script = ExtResource("6_anyqp")
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controller")]
 unique_name_in_owner = true
 script = ExtResource("7_olu6d")
+controller = NodePath("..")
 
 [node name="IdleState" type="Node" parent="StateMachine"]
 script = ExtResource("8_hbmft")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bt5i0ufburefs"
-path="res://.godot/imported/fPlayer_ [elf].png-63d11671b82373deea61291e52e8d650.ctex"
+uid="uid://dkgb6b2uyqo53"
+path="res://.godot/imported/fPlayer_ [human].png-9db90420f64117537376c2c43eb6e6f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/combatant/fPlayer_ [elf].png"
-dest_files=["res://.godot/imported/fPlayer_ [elf].png-63d11671b82373deea61291e52e8d650.ctex"]
+source_file="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [human].png"
+dest_files=["res://.godot/imported/fPlayer_ [human].png-9db90420f64117537376c2c43eb6e6f0.ctex"]
 
 [params]
 
