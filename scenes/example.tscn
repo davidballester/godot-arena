@@ -38,19 +38,19 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_vertical = 10
 
-[node name="AddAventurer" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+[node name="AddBoneBeater" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_0icbv")
 theme_override_font_sizes/font_size = 16
-text = "Add Adventurer (A)"
+text = "Add Bone Beater (A)"
 
-[node name="AddBarbarian" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+[node name="AddBlackSwan" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme = ExtResource("2_0icbv")
 theme_override_font_sizes/font_size = 16
-text = "Add Barbarian (B)"
+text = "Add Black Swan (B)"
 
 [node name="Arena" type="Node2D" parent="."]
 
@@ -71,15 +71,15 @@ zoom = Vector2(2, 2)
 [node name="BattleController" parent="Arena" instance=ExtResource("4_ydik6")]
 unique_name_in_owner = true
 
-[node name="AdventurersTeam" type="Node" parent="Arena/BattleController"]
+[node name="BoneBeatersTeam" type="Node" parent="Arena/BattleController"]
 unique_name_in_owner = true
 script = ExtResource("3_ny0b6")
-id = "adventurers"
+id = "Bone Beaters"
 
-[node name="BarbariansTeam" type="Node" parent="Arena/BattleController"]
+[node name="BlackSwansTeam" type="Node" parent="Arena/BattleController"]
 unique_name_in_owner = true
 script = ExtResource("3_ny0b6")
-id = "barbarians"
+id = "Black Swans"
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/AddAventurer" to="." method="_on_add_aventurer_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/AddBarbarian" to="." method="_on_add_barbarian_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/AddBoneBeater" to="." method="_on_add_aventurer_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/HBoxContainer/AddBlackSwan" to="." method="_on_add_barbarian_pressed"]

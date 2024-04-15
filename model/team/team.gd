@@ -1,9 +1,10 @@
 extends Node
 class_name Team
 
-@export var id: String = "team1234"
-var team_name: String = "Adventurers"
+@export var id: String
+var team_name: String
 var combatants: Array[Combatant]= []
+var color: Color
 
 func _ready() -> void:
 	for child in get_children():

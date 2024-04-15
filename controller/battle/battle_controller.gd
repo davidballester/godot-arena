@@ -1,6 +1,11 @@
 extends Node
 class_name BattleController
 
+static var team_colors = [
+	Color.from_string("#f77622", Color.DARK_RED),
+	Color.from_string("#ff0044", Color.DARK_RED)
+]
+
 @onready var _hud: HUD = %HUD
 
 var _battle: Battle
@@ -24,7 +29,8 @@ func _ready() -> void:
 		if not child is Team:
 			continue
 		var team: Team = child
-		_id_to_team[team.id] = team
+		remove_child(team)
+		add_team(team)
 		
 func initialize() -> void:
 	var first_team_id = _id_to_team.keys()[0]
@@ -47,6 +53,9 @@ func _physics_process(_delta: float) -> void:
 	
 func add_team(team: Team) -> void:
 	_id_to_team[team.id] = team
+	var teams_count = _id_to_team.keys().size()
+	var color = team_colors[teams_count % team_colors.size()]
+	team.color = color
 	add_child(team)
 	
 func add_combatant(

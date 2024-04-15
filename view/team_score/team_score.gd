@@ -14,9 +14,13 @@ enum Position {
 
 var _team: Team
 
-func initialize(team: Team) -> void:
+func initialize(team: Team, health_bar_color: Color) -> void:
 	_team = team
 	_team_name.text = team.id
+	var fill_style_box: StyleBoxFlat = _health_bar.get_theme_stylebox("fill")
+	var new_fill_style_box = fill_style_box.duplicate(true)
+	new_fill_style_box.bg_color = health_bar_color
+	_health_bar.add_theme_stylebox_override("fill", new_fill_style_box)
 	if custom_position == Position.BOTTOM:
 		_image.flip_v = true
 		_team_name.position.y = 10
