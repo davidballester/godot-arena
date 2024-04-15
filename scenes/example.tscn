@@ -10,7 +10,7 @@
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_d4rpl"]
 vertices = PackedVector2Array(318, 143, -164, 143, -164, -115, 318, -115)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-112, -64, 256, -64, 256, 80, -112, 80)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-151, -101, 312, -103, 312, 135, -151, 135)])
 source_geometry_mode = 1
 source_geometry_group_name = &"navigation"
 agent_radius = 7.0
@@ -42,12 +42,14 @@ size_flags_vertical = 10
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("2_0icbv")
+theme_override_font_sizes/font_size = 16
 text = "Add Adventurer (A)"
 
 [node name="AddBarbarian" type="Button" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 10
 theme = ExtResource("2_0icbv")
+theme_override_font_sizes/font_size = 16
 text = "Add Barbarian (B)"
 
 [node name="Arena" type="Node2D" parent="."]

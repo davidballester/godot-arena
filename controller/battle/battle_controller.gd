@@ -1,6 +1,8 @@
 extends Node
 class_name BattleController
 
+@onready var _hud: HUD = %HUD
+
 var _battle: Battle
 var _id_to_team: Dictionary
 var _id_to_combatant: Dictionary
@@ -23,6 +25,13 @@ func _ready() -> void:
 			continue
 		var team: Team = child
 		_id_to_team[team.id] = team
+		
+func initialize() -> void:
+	var first_team_id = _id_to_team.keys()[0]
+	var first_team = _id_to_team.get(first_team_id)
+	var second_team_id = _id_to_team.keys()[1]
+	var second_team = _id_to_team.get(second_team_id)
+	_hud.initialize(first_team, second_team)
 			
 func _exit_tree() -> void:
 	_database.close_db()

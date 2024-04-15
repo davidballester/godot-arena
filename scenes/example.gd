@@ -3,6 +3,9 @@ class_name Example
 
 @onready var battle: BattleController = %BattleController
 
+func _ready() -> void:
+	battle.initialize()
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("spawn_adventurer"):
 		_add_aventurer()

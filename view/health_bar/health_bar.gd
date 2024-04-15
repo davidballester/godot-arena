@@ -11,4 +11,3 @@ func initialize(health: Gauge) -> void:
 	
 func _physics_process(_delta: float) -> void:
 	value = _health.current_value
-

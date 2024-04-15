@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://bilyy5eu7pu25"]
+
+[ext_resource type="Script" path="res://view/team_score/team_score.gd" id="1_qs5se"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_6y6k0"]
+[ext_resource type="Texture2D" uid="uid://cq12u5noapyny" path="res://assets/hud/team_score.png" id="3_5n37l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3wtpj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xq7"]
+bg_color = Color(1, 0, 0.266667, 1)
+
+[node name="TeamScore" type="Control"]
+texture_filter = 1
+custom_minimum_size = Vector2(128, 24)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_qs5se")
+
+[node name="TeamName" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 27.0
+offset_top = -1.0
+offset_right = 127.0
+offset_bottom = 12.0
+theme = ExtResource("2_6y6k0")
+theme_override_font_sizes/font_size = 16
+text = "The Black Swans"
+
+[node name="Image" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("3_5n37l")
+offset = Vector2(64, 12)
+
+[node name="HealthBarContainer" type="Node2D" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="HealthBarContainer"]
+unique_name_in_owner = true
+offset_left = 26.0
+offset_top = 15.0
+offset_right = 125.0
+offset_bottom = 21.0
+theme = ExtResource("2_6y6k0")
+theme_override_styles/background = SubResource("StyleBoxEmpty_3wtpj")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r0xq7")
+value = 50.0
+show_percentage = false
