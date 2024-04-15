@@ -13,6 +13,7 @@ var _attacking: bool = false
 
 func initialize(
 	model: Combatant,
+	team: Team,
 	weapon: WeaponController,
 	sprite_frames: SpriteFrames,
 	dust_sprite_frames: SpriteFrames
@@ -23,7 +24,7 @@ func initialize(
 	model.state_machine.state_changed.connect(_on_state_changed)
 	model.weapon = weapon.model
 	add_child(model)
-	view.initialize(sprite_frames, dust_sprite_frames, model.health)
+	view.initialize(sprite_frames, dust_sprite_frames, model.health, team)
 	view.add_child(weapon)
 	_state_machine.initialize()
 	_state_machine.transition_to_state(CombatantControllerIdleState.get_state_name())

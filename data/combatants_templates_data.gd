@@ -67,5 +67,11 @@ func create_random_combatant(
 	var dust_animated_sprite = load(type_template.dust_animated_sprite_path)
 	team.add_combatant(combatant)
 	team.add_child(controller)
-	controller.initialize(combatant, weapon, animated_sprite, dust_animated_sprite)
+	controller.initialize(
+		combatant, 
+		team, 
+		weapon, 
+		animated_sprite, 
+		dust_animated_sprite
+	)
 	return controller

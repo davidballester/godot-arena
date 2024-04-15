@@ -16,11 +16,12 @@ var flip_h: bool:
 func initialize(
 	sprite_frames: SpriteFrames, 
 	dust_sprite_frames: SpriteFrames,
-	health: Gauge
+	health: Gauge,
+	team: Team
 ) -> void:
 	combatant.sprite_frames = sprite_frames
 	dust.sprite_frames = dust_sprite_frames
-	health_bar.initialize(health)
+	health_bar.initialize(health, team.color)
 	idle()
 	
 func idle() -> void:

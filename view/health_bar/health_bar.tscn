@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0h41bxbb8qvu"]
+[gd_scene load_steps=4 format=3 uid="uid://d0h41bxbb8qvu"]
 
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="1_priu1"]
 [ext_resource type="Script" path="res://view/health_bar/health_bar.gd" id="2_ew7qi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nc2oc"]
 
 [node name="HealthBar" type="ProgressBar"]
 modulate = Color(1, 1, 1, 0.392157)
@@ -14,6 +16,7 @@ offset_bottom = -642.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_priu1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nc2oc")
 value = 50.0
 show_percentage = false
 script = ExtResource("2_ew7qi")
