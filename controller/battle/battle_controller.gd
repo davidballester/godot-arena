@@ -13,6 +13,7 @@ var _id_to_team: Dictionary
 var _id_to_combatant: Dictionary
 var _weapons_data: WeaponsData
 var _combatants_templates_data: CombatantsTemplatesData
+var _teams_data: TeamsData
 var _database: SQLite
 
 func _ready() -> void:
@@ -24,6 +25,7 @@ func _ready() -> void:
 		_database,
 		combatants_names_data,
 	)
+	_teams_data = TeamsData.new()
 	_battle = Battle.new()
 	for child in get_children():
 		if not child is Team:
@@ -54,8 +56,8 @@ func _physics_process(_delta: float) -> void:
 func add_team(team: Team) -> void:
 	_id_to_team[team.id] = team
 	var teams_count = _id_to_team.keys().size()
-	var color = team_colors[teams_count % team_colors.size()]
-	team.color = color
+	team.color = team_colors[teams_count % team_colors.size()]
+	team.icon = _teams_data.get_random_icon()
 	add_child(team)
 	
 func add_combatant(

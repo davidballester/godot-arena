@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bilyy5eu7pu25"]
+[gd_scene load_steps=7 format=3 uid="uid://bilyy5eu7pu25"]
 
 [ext_resource type="Script" path="res://view/team_score/team_score.gd" id="1_qs5se"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_6y6k0"]
 [ext_resource type="Texture2D" uid="uid://cq12u5noapyny" path="res://assets/hud/team_score.png" id="3_5n37l"]
+[ext_resource type="Texture2D" uid="uid://cefef8mvxtsxd" path="res://assets/teams_icons/Beer.png" id="4_l7n47"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3wtpj"]
 
@@ -27,10 +28,18 @@ theme = ExtResource("2_6y6k0")
 theme_override_font_sizes/font_size = 16
 text = "The Black Swans"
 
-[node name="Image" type="Sprite2D" parent="."]
+[node name="Layout" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 texture = ExtResource("3_5n37l")
 offset = Vector2(64, 12)
+
+[node name="TeamIcon" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.752941, 0.796078, 0.862745, 1)
+self_modulate = Color(0.752941, 0.796078, 0.862745, 1)
+position = Vector2(13, 12)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_l7n47")
 
 [node name="HealthBarContainer" type="Node2D" parent="."]
 

@@ -5,6 +5,7 @@ class_name Team
 var team_name: String
 var combatants: Array[Combatant]= []
 var color: Color
+var icon: Texture2D
 
 func _ready() -> void:
 	for child in get_children():

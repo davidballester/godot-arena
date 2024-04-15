@@ -8,7 +8,8 @@ enum Position {
 
 @onready var _team_name: Label = %TeamName
 @onready var _health_bar: ProgressBar = %HealthBar
-@onready var _image: Sprite2D = %Image
+@onready var _layout: Sprite2D = %Layout
+@onready var _team_icon: Sprite2D = %TeamIcon
 
 @export var custom_position: Position
 
@@ -17,12 +18,13 @@ var _team: Team
 func initialize(team: Team, health_bar_color: Color) -> void:
 	_team = team
 	_team_name.text = team.id
+	_team_icon.texture = team.icon
 	var fill_style_box: StyleBoxFlat = _health_bar.get_theme_stylebox("fill")
 	var new_fill_style_box = fill_style_box.duplicate(true)
 	new_fill_style_box.bg_color = health_bar_color
 	_health_bar.add_theme_stylebox_override("fill", new_fill_style_box)
 	if custom_position == Position.BOTTOM:
-		_image.flip_v = true
+		_layout.flip_v = true
 		_team_name.position.y = 10
 		_health_bar.position.y = 3
 	
