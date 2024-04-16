@@ -7,25 +7,27 @@ func _ready() -> void:
 	battle.initialize()
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("spawn_bone_beater"):
-		_add_bone_beater()
-	if Input.is_action_just_pressed("spawn_black_swan"):
-		_add_black_swan()
+	if Input.is_action_just_pressed("spawn_team_a"):
+		_add_combatant_to_team_a()
+	if Input.is_action_just_pressed("spawn_team_b"):
+		_add_combatant_to_team_b()
 
-func _on_add_bone_beater_pressed() -> void:
-	_add_bone_beater()
+func _on_add_combatant_to_team_a_pressed() -> void:
+	_add_combatant_to_team_a()
 	
-func _on_add_black_swan_pressed() -> void:
-	_add_black_swan()
+func _on_add_combatant_to_team_b_pressed() -> void:
+	_add_combatant_to_team_b()
 	
-func _add_bone_beater() -> void:
-	var combatant = battle.add_combatant("Bone Beaters")
+func _add_combatant_to_team_a() -> void:
+	var team_a_id = battle.get_teams_ids()[0]
+	var combatant = battle.add_combatant(team_a_id)
 	var x = 25
 	var y = randf_range(50, 150) + 50
 	combatant.position = Vector2(x, y)
 	
-func _add_black_swan() -> void:
-	var combatant = battle.add_combatant("Black Swans")
+func _add_combatant_to_team_b() -> void:
+	var team_b_id = battle.get_teams_ids()[1]
+	var combatant = battle.add_combatant(team_b_id)
 	var x = 468
 	var y = randf_range(50, 150) + 50
 	combatant.position = Vector2(x, y)

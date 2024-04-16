@@ -25,7 +25,7 @@ func _ready() -> void:
 		_database,
 		combatants_names_data,
 	)
-	_teams_data = TeamsData.new()
+	_teams_data = TeamsData.new(_database)
 	_battle = Battle.new()
 	for child in get_children():
 		if not child is Team:
@@ -54,6 +54,7 @@ func _physics_process(_delta: float) -> void:
 		combatant.z_index = i
 	
 func add_team(team: Team) -> void:
+	team.id = _teams_data.get_random_team_name()
 	_id_to_team[team.id] = team
 	var teams_count = _id_to_team.keys().size()
 	team.color = team_colors[teams_count % team_colors.size()]
@@ -74,3 +75,6 @@ func add_combatant(
 	)
 	_id_to_combatant[combatant.id] = combatant
 	return combatant
+
+func get_teams_ids() -> Array:
+	return _id_to_team.keys()
