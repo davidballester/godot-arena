@@ -21,13 +21,13 @@ func _on_add_combatant_to_team_b_pressed() -> void:
 func _add_combatant_to_team_a() -> void:
 	var team_a_id = battle.get_teams_ids()[0]
 	var combatant = battle.add_combatant(team_a_id)
-	var x = 25
-	var y = randf_range(50, 150) + 50
+	var x = -25
+	var y = randf_range(50, 385)
 	combatant.position = Vector2(x, y)
 	
 func _add_combatant_to_team_b() -> void:
 	var team_b_id = battle.get_teams_ids()[1]
 	var combatant = battle.add_combatant(team_b_id)
-	var x = 468
-	var y = randf_range(50, 150) + 50
+	var x = 720
+	var y = randf_range(50, 385)
 	combatant.position = Vector2(x, y)
