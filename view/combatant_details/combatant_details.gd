@@ -9,9 +9,10 @@ const SLIDE_DURATION_S = 0.15
 @onready var _team_name_label: Label = %TeamNameLabel
 @onready var _health_bar: HealthBar = %HealthBar
 @onready var _health_label: Label = %HealthLabel
-@onready var _weapon_animated_sprite = %WeaponAnimatedSprite
-@onready var _type_value = %TypeValue
-@onready var _weapon_value = %WeaponValue
+@onready var _weapon_animated_sprite: AnimatedSprite2D = %WeaponAnimatedSprite
+@onready var _type_value: Label = %TypeValue
+@onready var _weapon_value: Label = %WeaponValue
+@onready var _close_buton: BaseButton = %CloseButton
 
 @export var slide_offset: int = 16
 
@@ -21,6 +22,7 @@ var _open: bool
 func _ready() -> void:
 	position.x = WIDTH + slide_offset
 	_open = false
+	_close_buton.pressed.connect(hide_details)
 
 func show_details(combatant: Combatant, team: Team) -> void:
 	if _combatant:

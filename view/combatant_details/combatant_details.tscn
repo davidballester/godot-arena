@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfv115rx3u3fr"]
+[gd_scene load_steps=9 format=3 uid="uid://cfv115rx3u3fr"]
 
 [ext_resource type="TileSet" uid="uid://c4wakeswnolih" path="res://assets/hud/popup.tres" id="1_hyaox"]
 [ext_resource type="Script" path="res://view/combatant_details/combatant_details.gd" id="1_t7seu"]
 [ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].tres" id="3_8ks2h"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="3_aaw82"]
+[ext_resource type="PackedScene" uid="uid://duyi711p3up7p" path="res://view/small_button/small_button.tscn" id="3_jysv8"]
 [ext_resource type="SpriteFrames" uid="uid://cyj2jpkpuk3v6" path="res://assets/weapon/sword_ [iron].tres" id="5_ht5kw"]
 [ext_resource type="PackedScene" uid="uid://d0h41bxbb8qvu" path="res://view/health_bar/health_bar.tscn" id="5_xlhoo"]
 
@@ -41,6 +42,12 @@ theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+
+[node name="CloseButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_jysv8")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 
 [node name="CombatantNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
