@@ -44,8 +44,9 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="CombatantDetails" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_6i1ko")]
-unique_name_in_owner = true
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(150, 285)
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
+
+[node name="CombatantDetails" parent="MarginContainer/HBoxContainer/Control" instance=ExtResource("3_6i1ko")]
+unique_name_in_owner = true
