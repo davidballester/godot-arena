@@ -14,4 +14,6 @@ func initialize(health: Gauge, color: Color) -> void:
 	add_theme_stylebox_override("fill", new_fill_style_box)
 	
 func _physics_process(_delta: float) -> void:
+	if not _health:
+		return
 	value = _health.current_value

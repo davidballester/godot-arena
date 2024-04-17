@@ -2,6 +2,7 @@ extends Node2D
 class_name Combatant
 
 var id: String
+var type: String
 var team_id: String
 var speed: float = 40.0
 var weapon: Weapon
@@ -10,21 +11,25 @@ var perception: CombatantPerceptionComponent
 var state_machine: CombatantStateMachine
 var health: Gauge
 var battle: Battle
+var sprite_frames: SpriteFrames
 
 var _inmune: bool = false
 var _inmune_time_s: MinMaxFloat = MinMaxFloat.create(0.6, 1.3)
 
 func _init(
 	id: String,
+	type: String,
 	battle: Battle,
 	team_id: String,
 	speed: float,
 	weapon: Weapon,
 	brain: Brain,
 	perception: CombatantPerceptionComponent,
-	health: Gauge
+	health: Gauge,
+	sprite_frames: SpriteFrames
 ) -> void:
 	self.id = id
+	self.type = type
 	self.team_id = team_id
 	self.speed = speed
 	self.weapon = weapon
@@ -32,6 +37,7 @@ func _init(
 	self.perception = perception
 	self.health = health
 	self.battle = battle
+	self.sprite_frames = sprite_frames
 	perception.self_combatant = self
 	state_machine = CombatantStateMachine.new(self, battle)
 	state_machine.id = id + "state_machine"

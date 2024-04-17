@@ -51,27 +51,28 @@ func create_random_combatant(
 	var perception = CombatantStockPerceptionComponent.new()
 	var health = Gauge.create(0, type_template.health)
 	var id = _combatants_names_data.get_random_name(type)
+	var animated_sprite = load(type_template.animated_sprite_path)
 	var combatant = Combatant.new(
 		id,
+		type,
 		battle,
 		team.id,
 		type_template.speed,
 		weapon.model,
 		brain,
 		perception,
-		health
+		health,
+		animated_sprite
 	)
 	battle.add_combatant(combatant)
 	var controller: CombatantController = CONTROLLER_RESOURCE.instantiate()
-	var animated_sprite = load(type_template.animated_sprite_path)
 	var dust_animated_sprite = load(type_template.dust_animated_sprite_path)
 	team.add_combatant(combatant)
 	team.add_child(controller)
 	controller.initialize(
 		combatant, 
 		team, 
-		weapon, 
-		animated_sprite, 
+		weapon,
 		dust_animated_sprite
 	)
 	return controller

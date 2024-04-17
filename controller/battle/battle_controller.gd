@@ -74,6 +74,11 @@ func add_combatant(
 		weapon
 	)
 	_id_to_combatant[combatant.id] = combatant
+	combatant.input_event.connect(func(_viewport, event, _shape_idx):
+		if not event is InputEventMouseButton or not event.pressed:
+			return
+		_hud.show_combatant_details(combatant.model, team)
+	)
 	return combatant
 
 func get_teams_ids() -> Array:

@@ -17,6 +17,7 @@ func get_random_weapon() -> WeaponController:
 		TABLE_NAME, 
 		"id = " + str(id), 
 		[
+			"name",
 			"min_damage",
 			"max_damage",
 			"attack_duration_s",
@@ -25,15 +26,22 @@ func get_random_weapon() -> WeaponController:
 			"animated_sprite_path"
 		]
 	)
+	var weapon_name = query_result[0].name
 	var min_damage = query_result[0].min_damage
 	var max_damage = query_result[0].max_damage
 	var attack_duration_s = query_result[0].attack_duration_s
 	var reach = query_result[0].reach
 	var damage = MinMax.create(min_damage, max_damage)
-	var weapon_model = Weapon.new(damage, attack_duration_s, reach)
-	var view_path = query_result[0].view_path
-	var weapon_view: WeaponView = load(view_path).instantiate()
 	var animated_sprite_path = query_result[0].animated_sprite_path
 	var animated_sprite = load(animated_sprite_path)
+	var weapon_model = Weapon.new(
+		weapon_name, 
+		damage, 
+		attack_duration_s, 
+		reach, 
+		animated_sprite
+	)
+	var view_path = query_result[0].view_path
+	var weapon_view: WeaponView = load(view_path).instantiate()
 	weapon_view.animated_sprite = animated_sprite
 	return WeaponController.new(weapon_model, weapon_view)

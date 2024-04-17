@@ -1,0 +1,154 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfv115rx3u3fr"]
+
+[ext_resource type="TileSet" uid="uid://c4wakeswnolih" path="res://assets/hud/popup.tres" id="1_hyaox"]
+[ext_resource type="Script" path="res://view/combatant_details/combatant_details.gd" id="1_t7seu"]
+[ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].tres" id="3_8ks2h"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="3_aaw82"]
+[ext_resource type="SpriteFrames" uid="uid://cyj2jpkpuk3v6" path="res://assets/weapon/sword_ [iron].tres" id="5_ht5kw"]
+[ext_resource type="PackedScene" uid="uid://d0h41bxbb8qvu" path="res://view/health_bar/health_bar.tscn" id="5_xlhoo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4dath"]
+bg_color = Color(0.0941176, 0.0823529, 0.145098, 1)
+border_color = Color(0.12549, 0.12549, 0.113725, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="CombatantDetails" type="Control"]
+texture_filter = 1
+custom_minimum_size = Vector2(150, 285)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 285.0
+script = ExtResource("1_t7seu")
+
+[node name="Popup" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = ExtResource("1_hyaox")
+format = 2
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 65537, 0, 2, 65537, 0, 3, 65537, 0, 4, 65537, 0, 5, 65537, 0, 65536, 1, 1, 131072, 1, 1, 196608, 1, 1, 262144, 1, 1, 327680, 1, 1, 393216, 1, 1, 458752, 1, 1, 524288, 1, 1, 589824, 1, 1, 655360, 1, 1, 655361, 65537, 1, 655362, 65537, 1, 655363, 65537, 1, 655364, 65537, 1, 655365, 65537, 1, 65537, 65537, 1, 131073, 65537, 1, 196609, 65537, 1, 262145, 65537, 1, 327681, 65537, 1, 393217, 65537, 1, 458753, 65537, 1, 524289, 65537, 1, 589825, 65537, 1, 65538, 65537, 1, 131074, 65537, 1, 196610, 65537, 1, 262146, 65537, 1, 327682, 65537, 1, 393218, 65537, 1, 458754, 65537, 1, 524290, 65537, 1, 589826, 65537, 1, 65539, 65537, 1, 131075, 65537, 1, 196611, 65537, 1, 262147, 65537, 1, 327683, 65537, 1, 393219, 65537, 1, 458755, 65537, 1, 524291, 65537, 1, 589827, 65537, 1, 65540, 65537, 1, 131076, 65537, 1, 196612, 65537, 1, 262148, 65537, 1, 327684, 65537, 1, 393220, 65537, 1, 458756, 65537, 1, 524292, 65537, 1, 589828, 65537, 1, 65541, 65537, 1, 131077, 65537, 1, 196613, 65537, 1, 262149, 65537, 1, 327685, 65537, 1, 393221, 65537, 1, 458757, 65537, 1, 524293, 65537, 1, 589829, 65537, 1, 720896, 1, 1, 786432, 1, 1, 851968, 1, 1, 917504, 1, 1, 983040, 1, 1, 1048576, 1, 1, 1114112, 1, 1, 1179648, 1, 2, 1179649, 65537, 2, 1179650, 65537, 2, 1179651, 65537, 2, 1179652, 65537, 2, 1179653, 65537, 2, 720897, 65537, 1, 786433, 65537, 1, 851969, 65537, 1, 917505, 65537, 1, 983041, 65537, 1, 1048577, 65537, 1, 1114113, 65537, 1, 720898, 65537, 1, 786434, 65537, 1, 851970, 65537, 1, 917506, 65537, 1, 983042, 65537, 1, 1048578, 65537, 1, 1114114, 65537, 1, 720899, 65537, 1, 786435, 65537, 1, 851971, 65537, 1, 917507, 65537, 1, 983043, 65537, 1, 1048579, 65537, 1, 1114115, 65537, 1, 720900, 65537, 1, 786436, 65537, 1, 851972, 65537, 1, 917508, 65537, 1, 983044, 65537, 1, 1048580, 65537, 1, 1114116, 65537, 1, 720901, 65537, 1, 786437, 65537, 1, 851973, 65537, 1, 917509, 65537, 1, 983045, 65537, 1, 1048581, 65537, 1, 1114117, 65537, 1, 9, 131073, 0, 65545, 131073, 1, 131081, 131073, 1, 196617, 131073, 1, 262153, 131073, 1, 327689, 131073, 1, 393225, 131073, 1, 458761, 131073, 1, 524297, 131073, 1, 589833, 131073, 1, 655369, 131073, 1, 720905, 131073, 1, 786441, 131073, 1, 851977, 131073, 1, 917513, 131073, 1, 983049, 131073, 1, 1048585, 131073, 1, 1114121, 131073, 1, 1179657, 131073, 2, 6, 65537, 0, 65542, 65537, 1, 131078, 65537, 1, 196614, 65537, 1, 262150, 65537, 1, 327686, 65537, 1, 393222, 65537, 1, 458758, 65537, 1, 524294, 65537, 1, 589830, 65537, 1, 655366, 65537, 1, 720902, 65537, 1, 786438, 65537, 1, 851974, 65537, 1, 917510, 65537, 1, 983046, 65537, 1, 1048582, 65537, 1, 1114118, 65537, 1, 1179654, 65537, 2, 7, 65537, 0, 65543, 65537, 1, 131079, 65537, 1, 196615, 65537, 1, 262151, 65537, 1, 327687, 65537, 1, 393223, 65537, 1, 458759, 65537, 1, 524295, 65537, 1, 589831, 65537, 1, 655367, 65537, 1, 720903, 65537, 1, 786439, 65537, 1, 851975, 65537, 1, 917511, 65537, 1, 983047, 65537, 1, 1048583, 65537, 1, 1114119, 65537, 1, 1179655, 65537, 2, 8, 65537, 0, 65544, 65537, 1, 131080, 65537, 1, 196616, 65537, 1, 262152, 65537, 1, 327688, 65537, 1, 393224, 65537, 1, 458760, 65537, 1, 524296, 65537, 1, 589832, 65537, 1, 655368, 65537, 1, 720904, 65537, 1, 786440, 65537, 1, 851976, 65537, 1, 917512, 65537, 1, 983048, 65537, 1, 1048584, 65537, 1, 1114120, 65537, 1, 1179656, 65537, 2)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_right = 150.0
+offset_bottom = 32.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CombatantNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 5
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme = ExtResource("3_aaw82")
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.145098, 1)
+theme_override_font_sizes/font_size = 16
+text = "Ignotus"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TeamNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+z_index = 5
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme = ExtResource("3_aaw82")
+theme_override_colors/font_color = Color(1, 0, 0.266667, 1)
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.145098, 1)
+theme_override_font_sizes/font_size = 16
+text = "Black Swans"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="CombatantAnimatedSprite" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+position = Vector2(78, 64)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("3_8ks2h")
+animation = &"death"
+offset = Vector2(0, -8)
+flip_h = true
+
+[node name="WeaponAnimatedSprite" type="AnimatedSprite2D" parent="MarginContainer/VBoxContainer/Control"]
+unique_name_in_owner = true
+position = Vector2(36, 28)
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("5_ht5kw")
+animation = &"idle"
+flip_h = true
+
+[node name="HealthBar" parent="MarginContainer/VBoxContainer" instance=ExtResource("5_xlhoo")]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 1)
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_4dath")
+
+[node name="HealthLabel" type="Label" parent="MarginContainer/VBoxContainer/HealthBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+offset_right = 134.0
+offset_bottom = 16.0
+theme = ExtResource("3_aaw82")
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.145098, 1)
+theme_override_font_sizes/font_size = 16
+text = "5/10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="TypeLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_aaw82")
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.145098, 1)
+theme_override_font_sizes/font_size = 16
+text = "Type:"
+
+[node name="TypeValue" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_aaw82")
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.145098, 1)
+theme_override_font_sizes/font_size = 16
+text = "Dwarf"
+
+[node name="WeaponLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_aaw82")
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.145098, 1)
+theme_override_font_sizes/font_size = 16
+text = "Weapon:"
+
+[node name="WeaponValue" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_aaw82")
+theme_override_colors/font_shadow_color = Color(0.0941176, 0.0823529, 0.145098, 1)
+theme_override_font_sizes/font_size = 16
+text = "Sword"
