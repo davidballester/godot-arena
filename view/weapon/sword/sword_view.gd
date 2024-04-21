@@ -27,7 +27,7 @@ func _swing() -> void:
 func _thrust() -> void:
 	animated_sprite.play("thrust")
 	var tween: Tween = get_tree().create_tween()
-	var position_x = animated_sprite.position.y
+	var position_x = animated_sprite.position.x
 	var position_y = animated_sprite.position.y
 	var initial_rotation_degrees = animated_sprite.rotation_degrees
 	tween.tween_property(animated_sprite, "rotation_degrees", initial_rotation_degrees + 90, 0.1)

@@ -25,6 +25,7 @@ func initialize(
 	add_child(model)
 	view.initialize(model.sprite_frames, dust_sprite_frames, model.health, team)
 	view.add_child(weapon)
+	view.move_child(weapon, 0)
 	_state_machine.initialize()
 	_state_machine.transition_to_state(CombatantControllerIdleState.get_state_name())
 		
