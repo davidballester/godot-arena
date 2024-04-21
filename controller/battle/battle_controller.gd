@@ -8,6 +8,8 @@ static var team_colors = [
 
 @onready var _hud: HUD = %HUD
 
+@export var combatants_container: Node2D
+
 var _battle: Battle
 var _id_to_team: Dictionary
 var _id_to_combatant: Dictionary
@@ -43,15 +45,6 @@ func initialize() -> void:
 			
 func _exit_tree() -> void:
 	_database.close_db()
-			
-func _physics_process(_delta: float) -> void:
-	var combatants: Array = _id_to_combatant.values()
-	combatants.sort_custom(func(c0: CombatantController, c1: CombatantController):
-		return c0.global_position.y < c1.global_position.y
-	)
-	for i in range(0, combatants.size()):
-		var combatant: CombatantController = combatants[i]
-		combatant.z_index = i
 	
 func add_team(team: Team) -> void:
 	team.id = _teams_data.get_random_team_name()
@@ -68,6 +61,7 @@ func add_combatant(
 	var combatant_type = _combatants_templates_data.get_random_type()
 	var weapon = _weapons_data.get_random_weapon()
 	var combatant = _combatants_templates_data.create_random_combatant(
+		combatants_container,
 		team,
 		combatant_type,
 		_battle,

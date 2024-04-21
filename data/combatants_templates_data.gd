@@ -31,6 +31,7 @@ func get_random_type() -> String:
 	return types.pick_random()
 	
 func create_random_combatant(
+	container: Node2D,
 	team: Team,
 	type: String, 
 	battle: Battle,
@@ -68,7 +69,7 @@ func create_random_combatant(
 	var controller: CombatantController = CONTROLLER_RESOURCE.instantiate()
 	var dust_animated_sprite = load(type_template.dust_animated_sprite_path)
 	team.add_combatant(combatant)
-	team.add_child(controller)
+	container.add_child(controller)
 	controller.initialize(
 		combatant, 
 		team, 

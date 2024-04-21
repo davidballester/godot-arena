@@ -4,12 +4,13 @@
 [ext_resource type="Script" path="res://view/weapon/sword/sword_view.gd" id="2_fuvrl"]
 
 [node name="Sword" type="Node2D"]
-position = Vector2(0, 7)
+position = Vector2(0, -15)
 script = ExtResource("2_fuvrl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 texture_filter = 1
+position = Vector2(0, 7)
 sprite_frames = ExtResource("1_xlt4m")
 animation = &"idle"
 autoplay = "idle"
