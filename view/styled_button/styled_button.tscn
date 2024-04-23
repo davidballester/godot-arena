@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3hgujhlslrnh"]
+
+[ext_resource type="Texture2D" uid="uid://drhcolq5aqgoi" path="res://assets/hud/small_button_normal.png" id="1_41yks"]
+[ext_resource type="Texture2D" uid="uid://dd0madi0yvxi2" path="res://assets/hud/small_button_pressed.png" id="2_7v1a4"]
+[ext_resource type="Script" path="res://view/styled_button/styled_button.gd" id="3_nls1w"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_q0mtv"]
+
+[node name="StyledButton" type="TextureButton"]
+texture_filter = 1
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = ExtResource("1_41yks")
+texture_pressed = ExtResource("2_7v1a4")
+script = ExtResource("3_nls1w")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_q0mtv")
+theme_override_font_sizes/font_size = 16
+text = "X"
+horizontal_alignment = 1

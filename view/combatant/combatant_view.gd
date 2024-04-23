@@ -12,17 +12,23 @@ var flip_h: bool:
 	set(val):
 		combatant.flip_h = val
 		dust.flip_h = val
+var _hud_enabled: bool = true
 
 func initialize(
 	sprite_frames: SpriteFrames, 
 	dust_sprite_frames: SpriteFrames,
 	health: Gauge,
-	team: Team
+	team: Team,
+	hud_enabled: bool = true
 ) -> void:
 	combatant.sprite_frames = sprite_frames
 	dust.sprite_frames = dust_sprite_frames
 	health_bar.initialize(health, team.color)
 	idle()
+	_hud_enabled = hud_enabled
+	if not hud_enabled:
+		health_bar.hide()
+		dead_icon.hide()
 	
 func idle() -> void:
 	await _play_animation("idle")
@@ -37,7 +43,8 @@ func die() -> void:
 	
 func hit(damage: int) -> void:
 	var prev_animation = combatant.animation
-	damage_label.show_damage(damage)
+	if _hud_enabled:
+		damage_label.show_damage(damage)
 	await _play_animation("hit")
 	_play_animation(prev_animation)
 	

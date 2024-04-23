@@ -35,7 +35,8 @@ func create_random_combatant(
 	team: Team,
 	type: String, 
 	battle: Battle,
-	weapon: WeaponController
+	weapon: WeaponController,
+	hud_enabled: bool = true
 ) -> CombatantController:
 	var type_templates = _database.select_rows(
 		TABLE_NAME, 
@@ -70,10 +71,12 @@ func create_random_combatant(
 	var dust_animated_sprite = load(type_template.dust_animated_sprite_path)
 	team.add_combatant(combatant)
 	container.add_child(controller)
+	await container.get_tree().process_frame
 	controller.initialize(
 		combatant, 
 		team, 
 		weapon,
-		dust_animated_sprite
+		dust_animated_sprite,
+		hud_enabled
 	)
 	return controller

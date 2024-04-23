@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfruwelxpa3ih"]
+
+[ext_resource type="Script" path="res://controller/game/game_controller.gd" id="1_pfcox"]
+[ext_resource type="Script" path="res://controller/game_state_machine/game_state_machine.gd" id="1_u1ebq"]
+[ext_resource type="Script" path="res://controller/game_state_machine/game_main_menu_state.gd" id="2_ujaf0"]
+
+[node name="GameController" type="Node2D"]
+script = ExtResource("1_pfcox")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("game_controller")]
+unique_name_in_owner = true
+script = ExtResource("1_u1ebq")
+game_controller = NodePath("..")
+
+[node name="MainMenuState" type="Node" parent="StateMachine"]
+script = ExtResource("2_ujaf0")

@@ -3,10 +3,8 @@ class_name GameStateMachine
 
 @export var game_controller: GameController
 
-func _ready() -> void:
-	for child in get_children():
-		if not child is GameState:
-			continue
-		var state: GameState = child
+func initialize() -> void:
+	super.initialize()
+	for state: GameState in class_to_state.values():
 		state.game_controller = game_controller
-	transition_to_state(GameBattleState.get_state_name())
+	transition_to_state(GameMainMenuState.get_state_name())

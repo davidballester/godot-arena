@@ -29,6 +29,8 @@ func initialize(team: Team, health_bar_color: Color) -> void:
 		_health_bar.position.y = 3
 	
 func _process(_delta: float) -> void:
+	if not _team:
+		return
 	_health_bar.max_value = _get_team_max_health()
 	_health_bar.value = _get_team_current_health()
 	

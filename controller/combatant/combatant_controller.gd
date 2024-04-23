@@ -15,7 +15,8 @@ func initialize(
 	model: Combatant,
 	team: Team,
 	weapon: WeaponController,
-	dust_sprite_frames: SpriteFrames
+	dust_sprite_frames: SpriteFrames,
+	hud_enabled: bool = true
 ) -> void:
 	self.model = model
 	self.weapon = weapon
@@ -23,7 +24,13 @@ func initialize(
 	model.state_machine.state_changed.connect(_on_state_changed)
 	model.weapon = weapon.model
 	add_child(model)
-	view.initialize(model.sprite_frames, dust_sprite_frames, model.health, team)
+	view.initialize(
+		model.sprite_frames, 
+		dust_sprite_frames, 
+		model.health, 
+		team, 
+		hud_enabled
+	)
 	view.add_child(weapon)
 	view.move_child(weapon, 0)
 	_state_machine.initialize()

@@ -22,7 +22,7 @@ offset = Vector2(0, -12)
 unique_name_in_owner = true
 sprite_frames = ExtResource("3_5yruy")
 animation = &"idle"
-offset = Vector2(0, -4)
+offset = Vector2(0, -12)
 
 [node name="DeadIcon" parent="." instance=ExtResource("5_itqw1")]
 unique_name_in_owner = true
