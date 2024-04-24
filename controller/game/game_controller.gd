@@ -8,6 +8,9 @@ var _current_menu: Node
 func _ready() -> void:
 	state_machine.id = "Game"
 	state_machine.initialize()
+			
+func _exit_tree() -> void:
+	GameGlobals.exit()
 
 func display_menu(menu: Node) -> void:
 	if _current_menu:

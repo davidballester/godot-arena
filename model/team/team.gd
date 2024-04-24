@@ -3,16 +3,22 @@ class_name Team
 
 @export var id: String
 var team_name: String
-var combatants: Array[Combatant]= []
+var combatants: Array[Combatant]
 var color: Color
 var icon: Texture2D
 
-func _ready() -> void:
-	for child in get_children():
-		if child is Combatant:
-			var combatant: Combatant = child
-			add_combatant(combatant)
-			
+func _init(
+	id: String,
+	team_name: String,
+	color: Color,
+	icon: Texture2D
+):
+	self.id = id
+	self.team_name = team_name
+	self.color = color
+	self.icon = icon
+	self.combatants = []
+
 func add_combatant(combatant: Combatant) -> void:
 	combatant.team_id = id
 	combatants.append(combatant)

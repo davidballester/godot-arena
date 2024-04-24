@@ -11,6 +11,9 @@ var _team_index: int = 0
 
 func start() -> void:
 	_battle.initialize()
+	for i in range(0, 4):
+		var team = _create_team()
+		_battle.add_team(team)
 	for _i in range(0, INITIAL_COMBATANTS):
 		await _spawn_combatant_for_current_team()
 	_combatant_spawn_timer.timeout.connect(_spawn_combatant_for_current_team)
@@ -25,6 +28,14 @@ func _spawn_combatant_for_current_team() -> void:
 	var combatant = await _battle.add_combatant(team_id)
 	combatant.position = _get_current_team_spawn_position()
 	_team_index = (_team_index + 1) % 4
+	
+func _create_team() -> Team:
+	return Team.new(
+		str(randi()), 
+		str(randi()), 
+		Color.BLACK, 
+		load("res://assets/teams_icons/Arrow.png")
+	)
 	
 func _get_current_team_spawn_position() -> Vector2:
 	var random_x_wiggle = randf_range(
