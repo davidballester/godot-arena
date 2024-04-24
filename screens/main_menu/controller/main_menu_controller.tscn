@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsgaaq8x72avo"]
+
+[ext_resource type="Script" path="res://screens/main_menu/controller/main_menu_controller.gd" id="1_lh02t"]
+[ext_resource type="PackedScene" uid="uid://0xb1eevxjdhm" path="res://screens/main_menu/views/random_battle/random_battle.tscn" id="2_ypuat"]
+[ext_resource type="Script" path="res://screens/main_menu/state_machine/state_machine.gd" id="3_rhqig"]
+[ext_resource type="Script" path="res://screens/main_menu/state_machine/initial_state.gd" id="4_pwowr"]
+[ext_resource type="Script" path="res://screens/main_menu/state_machine/team_creation_state.gd" id="5_4fm0y"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="5_cmy86"]
+
+[node name="MainMenuController" type="CanvasLayer"]
+script = ExtResource("1_lh02t")
+
+[node name="RandomBattle" parent="." instance=ExtResource("2_ypuat")]
+unique_name_in_owner = true
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controller")]
+unique_name_in_owner = true
+script = ExtResource("3_rhqig")
+controller = NodePath("..")
+
+[node name="InitialState" type="Node" parent="StateMachine"]
+script = ExtResource("4_pwowr")
+
+[node name="TeamCreationState" type="Node" parent="StateMachine"]
+script = ExtResource("5_4fm0y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 128
+
+[node name="TitleContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 64
+
+[node name="Title" type="Label" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+theme = ExtResource("5_cmy86")
+theme_override_colors/font_shadow_color = Color(0.14902, 0.164706, 0.270588, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 128
+text = "Arena"
+horizontal_alignment = 1
+
+[node name="CurrentMenuContainer" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(135, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8

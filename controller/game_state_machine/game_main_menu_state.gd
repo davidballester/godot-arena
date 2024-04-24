@@ -1,13 +1,13 @@
 extends GameState
 class_name GameMainMenuState
 
-var _main_menu: MainMenu
-
-func _init() -> void:
-	_main_menu = load("res://view/main_menu/main_menu.tscn").instantiate()
-
 static func get_state_name() -> String:
 	return "GameMainMenuState"
+	
+var _main_menu: MainMenuController
+
+func _init() -> void:
+	_main_menu = load("res://screens/main_menu/controller/main_menu_controller.tscn").instantiate()
 
 func enter(_args: Array) -> void:
 	game_controller.display_menu(_main_menu)
