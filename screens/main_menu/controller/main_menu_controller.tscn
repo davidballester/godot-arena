@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bsgaaq8x72avo"]
+[gd_scene load_steps=6 format=3 uid="uid://bsgaaq8x72avo"]
 
 [ext_resource type="Script" path="res://screens/main_menu/controller/main_menu_controller.gd" id="1_lh02t"]
-[ext_resource type="PackedScene" uid="uid://0xb1eevxjdhm" path="res://screens/main_menu/views/random_battle/random_battle.tscn" id="2_ypuat"]
 [ext_resource type="Script" path="res://screens/main_menu/state_machine/state_machine.gd" id="3_rhqig"]
 [ext_resource type="Script" path="res://screens/main_menu/state_machine/initial_state.gd" id="4_pwowr"]
 [ext_resource type="Script" path="res://screens/main_menu/state_machine/team_creation_state.gd" id="5_4fm0y"]
@@ -9,9 +8,6 @@
 
 [node name="MainMenuController" type="CanvasLayer"]
 script = ExtResource("1_lh02t")
-
-[node name="RandomBattle" parent="." instance=ExtResource("2_ypuat")]
-unique_name_in_owner = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controller")]
 unique_name_in_owner = true
