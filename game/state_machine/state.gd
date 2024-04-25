@@ -1,4 +1,4 @@
 extends State
 class_name GameState
 
-var game_controller: GameController
+var controller: GameController

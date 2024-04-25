@@ -18,7 +18,7 @@ func exit() -> void:
 	controller.stop_displaying_menu()
 	
 func _start_game(team: Team) -> void:
-	print("XXX", team)
+	controller.set_team(team)
 	
 func _go_to_initial() -> void:
 	state_machine.transition_to_state(MainMenuInitialState.get_state_name())

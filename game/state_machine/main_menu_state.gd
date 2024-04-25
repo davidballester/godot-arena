@@ -8,11 +8,17 @@ var _main_menu: MainMenuController
 
 func _init() -> void:
 	_main_menu = load("res://screens/main_menu/controller/main_menu_controller.tscn").instantiate()
+	_main_menu.team_created.connect(
+		func(team: Team): 
+			controller.player_team = team
+			state_machine.transition_to_state(GameBattleState.get_state_name()),
+		CONNECT_ONE_SHOT
+	)
 
 func enter(_args: Array) -> void:
-	game_controller.display_menu(_main_menu)
+	controller.display_menu(_main_menu)
 	_main_menu.start()
 	
 func exit() -> void:
-	game_controller.hide_current_menu()
+	controller.hide_current_menu()
 	_main_menu.stop()

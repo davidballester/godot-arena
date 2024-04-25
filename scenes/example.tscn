@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/example.gd" id="1_8ssei"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_0icbv"]
-[ext_resource type="Script" path="res://controller/game/game_controller.gd" id="2_hp43h"]
+[ext_resource type="Script" path="res://game/controller/controller.gd" id="2_hp43h"]
 [ext_resource type="Script" path="res://model/team/team.gd" id="3_ny0b6"]
 [ext_resource type="TileSet" uid="uid://dqswnggvxf1s3" path="res://assets/terrain/forest.tres" id="4_sy1g8"]
 [ext_resource type="PackedScene" uid="uid://rr0trrk61o2d" path="res://controller/battle/battle_controller.tscn" id="4_ydik6"]

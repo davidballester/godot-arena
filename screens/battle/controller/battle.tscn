@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx06bab6els6c"]
+
+[ext_resource type="Script" path="res://screens/battle/controller/battle.gd" id="1_uhxcx"]
+[ext_resource type="Script" path="res://screens/battle/state_machine/state_machine.gd" id="2_ql6w6"]
+[ext_resource type="Script" path="res://screens/battle/state_machine/preparation_state.gd" id="3_osthn"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1_uhxcx")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controller")]
+script = ExtResource("2_ql6w6")
+controller = NodePath("..")
+
+[node name="PreparationState" type="Node" parent="StateMachine"]
+script = ExtResource("3_osthn")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hello, world!"
