@@ -31,13 +31,11 @@ func get_random_type() -> String:
 	return types.pick_random()
 	
 func create_random_combatant(
-	container: Node2D,
-	team: Team,
-	type: String, 
+	team: Team, 
+	type: String,
 	battle: Battle,
-	weapon: WeaponController,
-	hud_enabled: bool = true
-) -> CombatantController:
+	weapon: Weapon
+) -> Combatant:
 	var type_templates = _database.select_rows(
 		TABLE_NAME, 
 		"type = '%s'" % type, 
@@ -54,21 +52,37 @@ func create_random_combatant(
 	var health = Gauge.create(0, type_template.health)
 	var id = _combatants_names_data.get_random_name(type)
 	var animated_sprite = load(type_template.animated_sprite_path)
-	var combatant = Combatant.new(
+	var dust_animated_sprite = load(type_template.dust_animated_sprite_path)
+	return Combatant.new(
 		id,
 		type,
 		battle,
 		team.id,
 		type_template.speed,
-		weapon.model,
+		weapon,
 		brain,
 		perception,
 		health,
-		animated_sprite
+		animated_sprite,
+		dust_animated_sprite
+	)
+	
+func create_random_combatant_controller(
+	container: Node2D,
+	team: Team,
+	type: String, 
+	battle: Battle,
+	weapon: WeaponController,
+	hud_enabled: bool = true
+) -> CombatantController:
+	var combatant = create_random_combatant(
+		team,
+		type,
+		battle,
+		weapon.model
 	)
 	battle.add_combatant(combatant)
 	var controller: CombatantController = CONTROLLER_RESOURCE.instantiate()
-	var dust_animated_sprite = load(type_template.dust_animated_sprite_path)
 	team.add_combatant(combatant)
 	container.add_child(controller)
 	await container.get_tree().process_frame
@@ -76,7 +90,6 @@ func create_random_combatant(
 		combatant, 
 		team, 
 		weapon,
-		dust_animated_sprite,
 		hud_enabled
 	)
 	return controller

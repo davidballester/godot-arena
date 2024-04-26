@@ -12,6 +12,7 @@ var state_machine: CombatantStateMachine
 var health: Gauge
 var battle: Battle
 var sprite_frames: SpriteFrames
+var dust_sprite_frames: SpriteFrames
 
 var _inmune: bool = false
 var _inmune_time_s: MinMaxFloat = MinMaxFloat.create(0.6, 1.3)
@@ -26,7 +27,8 @@ func _init(
 	brain: Brain,
 	perception: CombatantPerceptionComponent,
 	health: Gauge,
-	sprite_frames: SpriteFrames
+	sprite_frames: SpriteFrames,
+	dust_sprite_frames: SpriteFrames
 ) -> void:
 	self.id = id
 	self.type = type
@@ -38,6 +40,7 @@ func _init(
 	self.health = health
 	self.battle = battle
 	self.sprite_frames = sprite_frames
+	self.dust_sprite_frames = dust_sprite_frames
 	perception.self_combatant = self
 	state_machine = CombatantStateMachine.new(self, battle)
 	state_machine.id = id + "state_machine"
@@ -49,8 +52,9 @@ func _init(
 	state_machine.add_child(CombatantDeadState.new())
 	state_machine.add_child(CombatantHitState.new())
 	add_child(state_machine)
-	state_machine.initialize()
-	state_machine.transition_to_state(CombatantSeekEnemyState.get_state_name())
+	if battle:
+		state_machine.initialize()
+		state_machine.transition_to_state(CombatantSeekEnemyState.get_state_name())
 
 func is_alive() -> bool:
 	return health.current_value > 0

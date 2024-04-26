@@ -1,0 +1,21 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cxbr8p4cloyh3"]
+
+[ext_resource type="Texture2D" uid="uid://db28m6nbwqvn7" path="res://assets/hud/overlay.png" id="1_6whwa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pw7k8"]
+texture = ExtResource("1_6whwa")
+texture_region_size = Vector2i(10, 10)
+use_texture_padding = false
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[resource]
+tile_size = Vector2i(10, 10)
+sources/1 = SubResource("TileSetAtlasSource_pw7k8")

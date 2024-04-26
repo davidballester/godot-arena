@@ -15,7 +15,6 @@ func initialize(
 	model: Combatant,
 	team: Team,
 	weapon: WeaponController,
-	dust_sprite_frames: SpriteFrames,
 	hud_enabled: bool = true
 ) -> void:
 	self.model = model
@@ -26,7 +25,7 @@ func initialize(
 	add_child(model)
 	view.initialize(
 		model.sprite_frames, 
-		dust_sprite_frames, 
+		model.dust_sprite_frames, 
 		model.health, 
 		team, 
 		hud_enabled

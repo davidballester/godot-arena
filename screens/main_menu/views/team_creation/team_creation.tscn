@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://screens/main_menu/views/team_creation/team_creation.gd" id="1_kedc4"]
 [ext_resource type="TileSet" uid="uid://c4wakeswnolih" path="res://assets/hud/popup.tres" id="2_6ttip"]
-[ext_resource type="Texture2D" uid="uid://bdlp8wkff2hna" path="res://assets/teams_icons/Blue Potion 3.png" id="3_o1d24"]
+[ext_resource type="PackedScene" uid="uid://cvuubvi6735jn" path="res://view/team_label/team_label.tscn" id="4_8gmaw"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_d4406"]
 [ext_resource type="PackedScene" uid="uid://d3hgujhlslrnh" path="res://view/styled_button/styled_button.tscn" id="5_tt4t7"]
 [ext_resource type="Texture2D" uid="uid://dfgpnjp3w7ab0" path="res://assets/hud/larg_button_normal.png" id="6_aal3g"]
@@ -35,23 +35,9 @@ theme_override_font_sizes/font_size = 48
 text = "Choose your team"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_constants/separation = 16
-
-[node name="TeamIcon" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+[node name="TeamLabel" parent="VBoxContainer" instance=ExtResource("4_8gmaw")]
 unique_name_in_owner = true
-texture_filter = 1
 layout_mode = 2
-texture = ExtResource("3_o1d24")
-
-[node name="TeamName" type="Label" parent="VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-texture_filter = 1
-layout_mode = 2
-theme = ExtResource("4_d4406")
-text = "Black Swans"
 
 [node name="AnotherTeamButton" parent="VBoxContainer" instance=ExtResource("5_tt4t7")]
 unique_name_in_owner = true

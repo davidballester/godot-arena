@@ -8,13 +8,9 @@
 script = ExtResource("1_uhxcx")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("controller")]
+unique_name_in_owner = true
 script = ExtResource("2_ql6w6")
 controller = NodePath("..")
 
 [node name="PreparationState" type="Node" parent="StateMachine"]
 script = ExtResource("3_osthn")
-
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Hello, world!"

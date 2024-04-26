@@ -41,7 +41,7 @@ func add_combatant(
 	var team: Team = _id_to_team[team_id]
 	var combatant_type = GameGlobals.get_combatants_templates_data().get_random_type()
 	var weapon = GameGlobals.get_weapons_data().get_random_weapon()
-	var combatant = await  GameGlobals.get_combatants_templates_data().create_random_combatant(
+	var combatant = await  GameGlobals.get_combatants_templates_data().create_random_combatant_controller(
 		combatants_container,
 		team,
 		combatant_type,
