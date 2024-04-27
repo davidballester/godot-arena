@@ -7,8 +7,15 @@ const COMBATANT_THUMBNAIl_RESOURCE = preload(
 
 @onready var _team_label: TeamLabel = %TeamLabel
 @onready var _combatants_container: Control = %CombatantsContainer
+@onready var _combatant_details: PreparationCombatantDetails = %PreparationCombatantDetails
 
 var _team: Team
+
+func _ready() -> void:
+	_combatant_details.hide()
+	_combatant_details.closed.connect(func():
+		_combatant_details.hide()
+	)
 
 func initialize(team: Team) -> void:
 	_team = team
@@ -24,4 +31,5 @@ func _add_combatant_thumbnail(combatant: Combatant) -> void:
 	)
 	
 func _show_combatant_details(combatant: Combatant) -> void:
-	print("TeamView._show_combatant_details ", combatant)
+	_combatant_details.show_details(combatant, _team)
+	_combatant_details.show()
