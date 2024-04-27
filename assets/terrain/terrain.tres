@@ -1,16 +1,16 @@
 [gd_resource type="TileSet" load_steps=26 format=3 uid="uid://dqswnggvxf1s3"]
 
-[ext_resource type="Texture2D" uid="uid://yrgiaancv6w7" path="res://assets/terrain/forestPath_.png" id="1_x7kqj"]
-[ext_resource type="Texture2D" uid="uid://dt1dpt5sqjjpm" path="res://assets/terrain/forest_ [resources].png" id="2_ea72g"]
-[ext_resource type="Texture2D" uid="uid://cac5rjm563y0d" path="res://assets/terrain/forest_.png" id="3_3uy23"]
-[ext_resource type="Texture2D" uid="uid://dp4rotw307va3" path="res://assets/terrain/forest_ [fencesAndWalls].png" id="4_2s6nb"]
-[ext_resource type="Texture2D" uid="uid://cgoagi3hjao" path="res://assets/terrain/forest_ [bridgeHorizontal].png" id="5_rcfrk"]
-[ext_resource type="Texture2D" uid="uid://c3mvnpdmfh8qc" path="res://assets/terrain/tundra_.png" id="6_m4g3r"]
-[ext_resource type="Texture2D" uid="uid://d3xvrsqedke65" path="res://assets/terrain/tundraSwampTaigaForestDesert_0.png" id="7_843s0"]
-[ext_resource type="Texture2D" uid="uid://dxnyxqbt0rv7u" path="res://assets/terrain/tundraSwampTaigaForestDesert_1.png" id="8_f75rh"]
+[ext_resource type="Texture2D" uid="uid://yrgiaancv6w7" path="res://assets/terrain/forestPath_.png" id="1_i3662"]
+[ext_resource type="Texture2D" uid="uid://dt1dpt5sqjjpm" path="res://assets/terrain/forest_ [resources].png" id="2_5yyva"]
+[ext_resource type="Texture2D" uid="uid://cac5rjm563y0d" path="res://assets/terrain/forest_.png" id="3_retpy"]
+[ext_resource type="Texture2D" uid="uid://dp4rotw307va3" path="res://assets/terrain/forest_ [fencesAndWalls].png" id="4_848tm"]
+[ext_resource type="Texture2D" uid="uid://cgoagi3hjao" path="res://assets/terrain/forest_ [bridgeHorizontal].png" id="5_pfn7a"]
+[ext_resource type="Texture2D" uid="uid://c3mvnpdmfh8qc" path="res://assets/terrain/tundra_.png" id="6_rdhn1"]
+[ext_resource type="Texture2D" uid="uid://d3xvrsqedke65" path="res://assets/terrain/tundraSwampTaigaForestDesert_0.png" id="7_dpm53"]
+[ext_resource type="Texture2D" uid="uid://dxnyxqbt0rv7u" path="res://assets/terrain/tundraSwampTaigaForestDesert_1.png" id="8_mc6cy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3y2al"]
-texture = ExtResource("1_x7kqj")
+texture = ExtResource("1_i3662")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -70,7 +70,7 @@ texture = ExtResource("1_x7kqj")
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4t340"]
-texture = ExtResource("2_ea72g")
+texture = ExtResource("2_5yyva")
 7:1/0 = 0
 7:1/0/y_sort_origin = 2
 7:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -318,7 +318,7 @@ texture = ExtResource("2_ea72g")
 4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-6, 6.25, 5.625, 6.5, 5.625, 10.875, -5.875, 10.875)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m82m6"]
-texture = ExtResource("3_3uy23")
+texture = ExtResource("3_retpy")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -693,6 +693,7 @@ texture = ExtResource("3_3uy23")
 4:7/0 = 0
 4:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:7/0/physics_layer_0/angular_velocity = 0.0
+4:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 6:7/0 = 0
 6:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:7/0/physics_layer_0/angular_velocity = 0.0
@@ -708,6 +709,7 @@ texture = ExtResource("3_3uy23")
 9:7/0 = 0
 9:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 9:7/0/physics_layer_0/angular_velocity = 0.0
+9:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 11:7/0 = 0
 11:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:7/0/physics_layer_0/angular_velocity = 0.0
@@ -723,6 +725,7 @@ texture = ExtResource("3_3uy23")
 14:7/0 = 0
 14:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 14:7/0/physics_layer_0/angular_velocity = 0.0
+14:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 16:7/0 = 0
 16:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 16:7/0/physics_layer_0/angular_velocity = 0.0
@@ -738,9 +741,10 @@ texture = ExtResource("3_3uy23")
 19:7/0 = 0
 19:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 19:7/0/physics_layer_0/angular_velocity = 0.0
+19:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5btq"]
-texture = ExtResource("4_2s6nb")
+texture = ExtResource("4_848tm")
 11:0/0 = 0
 11:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 11:0/0/physics_layer_0/angular_velocity = 0.0
@@ -1236,7 +1240,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kctks"]
-texture = ExtResource("5_rcfrk")
+texture = ExtResource("5_pfn7a")
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
@@ -1406,7 +1410,7 @@ texture = ExtResource("5_rcfrk")
 7:4/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iun55"]
-texture = ExtResource("6_m4g3r")
+texture = ExtResource("6_rdhn1")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -1754,7 +1758,7 @@ texture = ExtResource("6_m4g3r")
 19:7/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_152hg"]
-texture = ExtResource("7_843s0")
+texture = ExtResource("7_dpm53")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -2027,7 +2031,7 @@ texture = ExtResource("7_843s0")
 15:6/0/physics_layer_0/angular_velocity = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2whd"]
-texture = ExtResource("8_f75rh")
+texture = ExtResource("8_mc6cy")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
