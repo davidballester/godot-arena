@@ -11,7 +11,7 @@ func _init() -> void:
 	_main_menu.new_game_started.connect(
 		func(): 
 			controller.create_player_team()
-			state_machine.transition_to_state(GameBattleState.get_state_name()),
+			state_machine.transition_to_state(GamePreparationState.get_state_name()),
 		CONNECT_ONE_SHOT
 	)
 

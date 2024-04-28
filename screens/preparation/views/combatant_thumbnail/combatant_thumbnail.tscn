@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://cstovdutfj2np"]
+
+[ext_resource type="Script" path="res://screens/preparation/views/combatant_thumbnail/combatant_thumbnail.gd" id="1_ctkfe"]
+[ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="2_4oqbw"]
+[ext_resource type="SpriteFrames" uid="uid://cyj2jpkpuk3v6" path="res://assets/weapon/sword_ [iron].tres" id="2_wsobi"]
+[ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].tres" id="3_dkxcf"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_xf2lu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1h1pt"]
+
+[node name="CombatantThumbnail" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ctkfe")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_4oqbw")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Panel" type="Panel" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_1h1pt")
+
+[node name="CombatantWeaponSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/HBoxContainer/Panel"]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_wsobi")
+animation = &"idle"
+offset = Vector2(26, 16)
+
+[node name="CombatantSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/HBoxContainer/Panel"]
+unique_name_in_owner = true
+position = Vector2(16, 16)
+sprite_frames = ExtResource("3_dkxcf")
+animation = &"idle"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="CombatantName" type="Label" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_xf2lu")
+theme_override_font_sizes/font_size = 16
+text = "Ignotus"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CombatantType" type="Label" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_xf2lu")
+theme_override_font_sizes/font_size = 16
+text = "Dwarf"
+
+[node name="CombatantWeapon" type="Label" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_xf2lu")
+theme_override_font_sizes/font_size = 16
+text = "Axe"
