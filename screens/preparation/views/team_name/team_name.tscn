@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=3 uid="uid://cruqoxl3trb06"]
+
+[ext_resource type="Script" path="res://screens/preparation/views/team_name/team_name.gd" id="1_ca04a"]
+[ext_resource type="Texture2D" uid="uid://bdlp8wkff2hna" path="res://assets/teams_icons/Blue Potion 3.png" id="1_f3183"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_r37lr"]
+[ext_resource type="PackedScene" uid="uid://d3hgujhlslrnh" path="res://view/styled_button/styled_button.tscn" id="4_78gdd"]
+
+[node name="TeamName" type="Control"]
+texture_filter = 1
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+script = ExtResource("1_ca04a")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="TeamIcon" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_f3183")
+expand_mode = 3
+
+[node name="TeamName" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_r37lr")
+theme_override_font_sizes/font_size = 32
+text = "Black Swans"
+
+[node name="ChangeButton" parent="HBoxContainer" instance=ExtResource("4_78gdd")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 32)
+layout_mode = 2
+text = "Change"
