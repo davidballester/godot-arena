@@ -1,20 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3hgujhlslrnh"]
+[gd_scene load_steps=10 format=3 uid="uid://d3hgujhlslrnh"]
 
-[ext_resource type="Texture2D" uid="uid://drhcolq5aqgoi" path="res://assets/hud/small_button_normal.png" id="1_41yks"]
-[ext_resource type="Texture2D" uid="uid://dd0madi0yvxi2" path="res://assets/hud/small_button_pressed.png" id="2_7v1a4"]
 [ext_resource type="Script" path="res://view/styled_button/styled_button.gd" id="3_nls1w"]
+[ext_resource type="Texture2D" uid="uid://drhcolq5aqgoi" path="res://assets/hud/button_normal.png" id="3_u12t2"]
+[ext_resource type="Texture2D" uid="uid://dd0madi0yvxi2" path="res://assets/hud/button_pressed.png" id="4_mtkle"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_q0mtv"]
 
-[node name="StyledButton" type="TextureButton"]
-texture_filter = 1
-shortcut_feedback = false
-shortcut_in_tooltip = false
-texture_normal = ExtResource("1_41yks")
-texture_pressed = ExtResource("2_7v1a4")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_u5aei"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tprup"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g2bo1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_58q7n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qvtrl"]
+
+[node name="StyledButton" type="Control"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 3
+anchor_right = 0.031
+anchor_bottom = 0.056
+offset_right = -4.76
+offset_bottom = -5.24
 script = ExtResource("3_nls1w")
 
-[node name="Label" type="Label" parent="."]
+[node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
+texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +34,58 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_q0mtv")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_u5aei")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_tprup")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_g2bo1")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_58q7n")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qvtrl")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+flat = true
+
+[node name="NormalTexture" type="NinePatchRect" parent="Button"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_u12t2")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="PressedTexture" type="NinePatchRect" parent="Button"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mtkle")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="Button"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 3
+
+[node name="Label" type="Label" parent="Button/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
 theme_override_font_sizes/font_size = 16
 text = "X"
 horizontal_alignment = 1
+vertical_alignment = 1

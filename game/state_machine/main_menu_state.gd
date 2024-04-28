@@ -7,10 +7,10 @@ static func get_state_name() -> String:
 var _main_menu: MainMenuController
 
 func _init() -> void:
-	_main_menu = load("res://screens/main_menu/controller/main_menu_controller.tscn").instantiate()
-	_main_menu.team_created.connect(
-		func(team: Team): 
-			controller.set_player_team(team)
+	_main_menu = load("res://screens/main_menu/main_menu.tscn").instantiate()
+	_main_menu.new_game_started.connect(
+		func(): 
+			controller.create_player_team()
 			state_machine.transition_to_state(GameBattleState.get_state_name()),
 		CONNECT_ONE_SHOT
 	)

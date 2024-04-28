@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsgaaq8x72avo"]
+
+[ext_resource type="Script" path="res://screens/main_menu/main_menu.gd" id="1_l1hjt"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="5_sf0jk"]
+[ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="6_mrwhv"]
+[ext_resource type="PackedScene" uid="uid://d3hgujhlslrnh" path="res://view/styled_button/styled_button.tscn" id="7_jyi60"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_l1hjt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="TitleContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 48
+
+[node name="Title" type="Label" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+theme = ExtResource("5_sf0jk")
+theme_override_colors/font_shadow_color = Color(0.14902, 0.164706, 0.270588, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_font_sizes/font_size = 128
+text = "Arena"
+horizontal_alignment = 1
+
+[node name="CurrentMenuContainer" type="MarginContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(135, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="InitialMenu" type="Control" parent="VBoxContainer/CurrentMenuContainer"]
+custom_minimum_size = Vector2(150, 80)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer/CurrentMenuContainer/InitialMenu"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_mrwhv")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/CurrentMenuContainer/InitialMenu/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CurrentMenuContainer/InitialMenu/NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="NewGameButton" parent="VBoxContainer/CurrentMenuContainer/InitialMenu/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("7_jyi60")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "New Game"
+
+[node name="QuitGameButton" parent="VBoxContainer/CurrentMenuContainer/InitialMenu/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("7_jyi60")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 6
+text = "Quit"

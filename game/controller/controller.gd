@@ -46,8 +46,16 @@ func start_random_battle() -> void:
 func stop_random_battle() -> void:
 	_random_battle.stop()
 
-func set_player_team(player_team: Team) -> void:
-	self.player_team = player_team
+func create_player_team() -> void:
+	var team_name = GameGlobals.get_teams_data().get_random_team_name()
+	var team_icon_path = GameGlobals.get_teams_data().get_random_icon_path()
+	var team_icon = load(team_icon_path)
+	player_team = Team.new(
+		"player_team",
+		team_name,
+		Color.from_string("#f77622", Color.DARK_RED),
+		team_icon
+	)
 	for i in range(INITIAL_COMBATANTS):
 		var combatant_type = GameGlobals.get_combatants_templates_data().get_random_type()
 		var weapon = GameGlobals.get_weapons_data().get_random_weapon()

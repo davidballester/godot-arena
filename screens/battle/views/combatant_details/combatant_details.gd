@@ -11,7 +11,7 @@ signal closed()
 @onready var _weapon_animated_sprite: AnimatedSprite2D = %WeaponAnimatedSprite
 @onready var _type_value: Label = %TypeValue
 @onready var _weapon_value: Label = %WeaponValue
-@onready var _close_buton: BaseButton = %CloseButton
+@onready var _close_buton: StyledButton = %CloseButton
 
 var _combatant: Combatant
 
