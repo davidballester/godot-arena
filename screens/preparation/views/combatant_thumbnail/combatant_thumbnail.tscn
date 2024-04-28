@@ -1,10 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://cstovdutfj2np"]
+[gd_scene load_steps=12 format=3 uid="uid://cstovdutfj2np"]
 
 [ext_resource type="Script" path="res://screens/preparation/views/combatant_thumbnail/combatant_thumbnail.gd" id="1_ctkfe"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="2_4oqbw"]
 [ext_resource type="SpriteFrames" uid="uid://cyj2jpkpuk3v6" path="res://assets/weapon/sword_ [iron].tres" id="2_wsobi"]
 [ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].tres" id="3_dkxcf"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_xf2lu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4h45l"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7b5nl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ajnjn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yt7yh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j12lj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1h1pt"]
 
@@ -18,7 +28,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ctkfe")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4h45l")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7b5nl")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ajnjn")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_yt7yh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j12lj")
+flat = true
+
+[node name="PopUp" type="NinePatchRect" parent="Button"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,7 +57,7 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Button/PopUp"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,51 +69,54 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Button/PopUp/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Panel" type="Panel" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="Panel" type="Panel" parent="Button/PopUp/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_1h1pt")
 
-[node name="CombatantWeaponSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/HBoxContainer/Panel"]
+[node name="CombatantWeaponSprite" type="AnimatedSprite2D" parent="Button/PopUp/MarginContainer/HBoxContainer/Panel"]
 unique_name_in_owner = true
 sprite_frames = ExtResource("2_wsobi")
 animation = &"idle"
 offset = Vector2(26, 16)
 
-[node name="CombatantSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/HBoxContainer/Panel"]
+[node name="CombatantSprite" type="AnimatedSprite2D" parent="Button/PopUp/MarginContainer/HBoxContainer/Panel"]
 unique_name_in_owner = true
 position = Vector2(16, 16)
 sprite_frames = ExtResource("3_dkxcf")
 animation = &"idle"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Button/PopUp/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="CombatantName" type="Label" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="CombatantName" type="Label" parent="Button/PopUp/MarginContainer/HBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4_xf2lu")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Ignotus"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Button/PopUp/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="CombatantType" type="Label" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="CombatantType" type="Label" parent="Button/PopUp/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4_xf2lu")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Dwarf"
 
-[node name="CombatantWeapon" type="Label" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="CombatantWeapon" type="Label" parent="Button/PopUp/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("4_xf2lu")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 16
 text = "Axe"
