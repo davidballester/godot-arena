@@ -7,8 +7,7 @@ static var _colors: Array = [
 	"#ff0044",
 	"#0095e9",
 	"#ead4aa",
-	"#fee761",
-	"#181425"
+	"#fee761"
 ].map(func(hex_color): return Color.from_string(hex_color, Color.BLACK))
 
 static func get_color(id: String) -> Color:
