@@ -13,6 +13,7 @@ var health: Gauge
 var battle: Battle
 var sprite_frames: SpriteFrames
 var dust_sprite_frames: SpriteFrames
+var price: int
 
 var _inmune: bool = false
 var _inmune_time_s: MinMaxFloat = MinMaxFloat.create(0.6, 1.3)
@@ -27,6 +28,7 @@ func _init(
 	brain: Brain,
 	perception: CombatantPerceptionComponent,
 	health: Gauge,
+	price: int,
 	sprite_frames: SpriteFrames,
 	dust_sprite_frames: SpriteFrames
 ) -> void:
@@ -39,6 +41,7 @@ func _init(
 	self.perception = perception
 	self.health = health
 	self.battle = battle
+	self.price = price
 	self.sprite_frames = sprite_frames
 	self.dust_sprite_frames = dust_sprite_frames
 	perception.self_combatant = self

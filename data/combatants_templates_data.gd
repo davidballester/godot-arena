@@ -1,7 +1,6 @@
 extends Node
 class_name CombatantsTemplatesData
 
-const TABLE_NAME = "combatants_templates"
 const CONTROLLER_RESOURCE = preload(
 	"res://controller/combatant/combatant_controller.tscn"
 )
@@ -16,7 +15,7 @@ func _init(
 ) -> void:
 	_database = database
 	_combatants_names_data = combatants_names_data
-	var query_result = _database.select_rows(TABLE_NAME, "", ["type", "id"])
+	var query_result = _database.select_rows("combatants_types", "", ["type", "id"])
 	_type_to_ids = query_result.reduce(
 		func(type_to_ids, row):
 			if not type_to_ids.get(row.type):
@@ -36,33 +35,46 @@ func create_random_combatant(
 	battle: Battle,
 	weapon: Weapon
 ) -> Combatant:
-	var type_templates = _database.select_rows(
-		TABLE_NAME, 
-		"type = '%s'" % type, 
+	var type_id = _type_to_ids.get(type)
+	var type_record = _database.select_rows(
+		"combatants_types", 
+		"id = %s" % type_id, 
 		[
-			"animated_sprite_path",
-			"dust_animated_sprite_path",
 			"speed",
-			"health"
+			"min_health",
+			"max_health",
+			"min_price",
+			"max_price"
+		]
+	)[0]
+	var sprites_records = _database.select_rows(
+		"combatants_sprites",
+		"type = %s" % type_id,
+		[
+			"animated_sprite",
+			"dust_animated_sprite"
 		]
 	)
-	var type_template = type_templates.pick_random()
+	var sprite_record = sprites_records.pick_random()
 	var brain = StockBrain.new()
 	var perception = CombatantStockPerceptionComponent.new()
-	var health = Gauge.create(0, type_template.health)
+	var max_health = randi_range(type_record.min_health, type_record.max_health)
+	var health = Gauge.create(0, max_health)
+	var price = randi_range(type_record.min_price, type_record.max_price)
 	var id = _combatants_names_data.get_random_name(type)
-	var animated_sprite = load(type_template.animated_sprite_path)
-	var dust_animated_sprite = load(type_template.dust_animated_sprite_path)
+	var animated_sprite = load(sprite_record.animated_sprite)
+	var dust_animated_sprite = load(sprite_record.dust_animated_sprite)
 	return Combatant.new(
 		id,
 		type,
 		battle,
 		team.id,
-		type_template.speed,
+		type_record.speed,
 		weapon,
 		brain,
 		perception,
 		health,
+		price,
 		animated_sprite,
 		dust_animated_sprite
 	)
