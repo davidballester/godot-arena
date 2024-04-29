@@ -2,7 +2,7 @@ extends Control
 class_name PreparationScreenCombatantThumbnail
 
 const NOT_SELECTED_POPUP_TEXTURE_PATH = preload("res://assets/hud/popup.png")
-const SELECTED_POPUP_TEXTURE_PATH = preload("res://assets/hud/grey_overlay.png")
+const SELECTED_POPUP_TEXTURE_PATH = preload("res://assets/hud/popup_highlighted.png")
 
 signal pressed()
 

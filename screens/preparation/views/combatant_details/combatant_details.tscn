@@ -106,6 +106,7 @@ text = "Name:"
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("5_jd8cs")
+theme_override_colors/font_color = Color(0.894118, 0.65098, 0.447059, 1)
 theme_override_font_sizes/font_size = 16
 text = "Ignotus"
 
