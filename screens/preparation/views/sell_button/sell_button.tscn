@@ -1,0 +1,116 @@
+[gd_scene load_steps=11 format=3 uid="uid://bpddpej0qo1sh"]
+
+[ext_resource type="Script" path="res://screens/preparation/views/sell_button/sell_button.gd" id="1_1b4ng"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="1_helf2"]
+[ext_resource type="Texture2D" uid="uid://drhcolq5aqgoi" path="res://assets/hud/button_normal.png" id="3_w0udi"]
+[ext_resource type="Texture2D" uid="uid://rvub6ox7u3q1" path="res://assets/hud/coin.png" id="4_5leby"]
+[ext_resource type="Texture2D" uid="uid://dd0madi0yvxi2" path="res://assets/hud/button_pressed.png" id="4_u184m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ulda"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5eod"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rxwic"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_y147v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pil4m"]
+
+[node name="SellButton" type="Control"]
+custom_minimum_size = Vector2(65, 25)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_1b4ng")
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_helf2")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_3ulda")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_t5eod")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rxwic")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_y147v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pil4m")
+shortcut_feedback = false
+shortcut_in_tooltip = false
+flat = true
+
+[node name="NormalTexture" type="NinePatchRect" parent="Button"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_w0udi")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="PressedTexture" type="NinePatchRect" parent="Button"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_u184m")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ButtonContents" type="MarginContainer" parent="Button"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Button/ButtonContents"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="SellLabel" type="Label" parent="Button/ButtonContents/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "Sell"
+
+[node name="CoinIcon" type="Control" parent="Button/ButtonContents/HBoxContainer"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Button/ButtonContents/HBoxContainer/CoinIcon"]
+modulate = Color(0.992157, 0.992157, 0.992157, 1)
+position = Vector2(-93, 13)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_5leby")
+offset = Vector2(40.2, -2.2)
+
+[node name="PriceTag" type="Label" parent="Button/ButtonContents/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 16
+text = "4"
+horizontal_alignment = 1
+vertical_alignment = 1

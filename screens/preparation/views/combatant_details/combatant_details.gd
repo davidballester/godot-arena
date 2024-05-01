@@ -8,6 +8,7 @@ class_name PreparationScreenCombatantDetails
 @onready var _hp: Label = %HPDd
 @onready var _weapon: Label = %WeaponDd
 @onready var _damage: Label = %DamageDd
+@onready var _sell_button: SellButton = %SellButton
 
 func initialize(combatant: Combatant) -> void:
 	_combatant_sprite.sprite_frames = combatant.sprite_frames
@@ -23,3 +24,6 @@ func initialize(combatant: Combatant) -> void:
 	_type.add_theme_color_override("font_color", ColorsData.get_color(combatant.type))
 	_weapon.text = combatant.weapon.weapon_name.capitalize()
 	_weapon.add_theme_color_override("font_color", ColorsData.get_color(combatant.weapon.weapon_name))
+	@warning_ignore("integer_division")
+	var sell_price = int(floor(combatant.price / 2))
+	_sell_button.initialize(sell_price)
