@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://didvxta854283"]
+[gd_scene load_steps=5 format=3 uid="uid://didvxta854283"]
 
 [ext_resource type="Script" path="res://screens/preparation/preparation.gd" id="1_pi6pd"]
 [ext_resource type="PackedScene" uid="uid://bid0wwcy1e8gy" path="res://screens/preparation/views/team_panel/team_panel.tscn" id="2_eu5sn"]
 [ext_resource type="PackedScene" uid="uid://dnt6n70w4pfk1" path="res://screens/preparation/views/combatant_details/combatant_details.tscn" id="3_lupn2"]
+[ext_resource type="PackedScene" uid="uid://53upwgx135gx" path="res://screens/preparation/views/combatants_for_sale/combatants_for_sale.tscn" id="3_tmm4c"]
 
 [node name="Preparation" type="CanvasLayer"]
 script = ExtResource("1_pi6pd")
@@ -24,10 +25,17 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = 16
 
 [node name="TeamPanel" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_eu5sn")]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="CombatantsForSale" parent="MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_tmm4c")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 156)
+layout_mode = 2
+size_flags_vertical = 8
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
