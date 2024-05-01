@@ -8,4 +8,3 @@ script = ExtResource("1_r7lbk")
 
 [node name="HUD" parent="." instance=ExtResource("2_4l0qi")]
 unique_name_in_owner = true
-visible = false

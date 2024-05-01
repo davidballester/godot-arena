@@ -11,7 +11,10 @@ var _preparation_screen: PreparationScreen
 func enter(_args: Array) -> void:
 	_preparation_screen = PREPARATION_SCREEN_RESOURCE.instantiate()
 	_preparation_screen.ready.connect(func():
-		_preparation_screen.initialize(controller.player_team)
+		_preparation_screen.initialize(
+			controller.player_team, 
+			controller.enemy_team
+		)
 	)
 	controller.display_menu(_preparation_screen)
 	

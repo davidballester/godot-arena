@@ -1,0 +1,106 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs18n1kad74p4"]
+
+[ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="1_6gv1c"]
+[ext_resource type="Script" path="res://screens/preparation/views/enemy_team/enemy_team.gd" id="1_wvjvs"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_janl2"]
+[ext_resource type="Texture2D" uid="uid://bdlp8wkff2hna" path="res://assets/teams_icons/Blue Potion 3.png" id="3_scqv8"]
+[ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/views/price_button/price_button.tscn" id="5_1iv1v"]
+
+[node name="EnemyTeam" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wvjvs")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6gv1c")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_janl2")
+theme_override_font_sizes/font_size = 16
+text = "Enemy Team"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+
+[node name="TeamIcon" type="TextureRect" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+texture = ExtResource("3_scqv8")
+
+[node name="TeamName" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_janl2")
+theme_override_font_sizes/font_size = 32
+text = "Black Swans"
+
+[node name="RevealButtonContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RevealButton" parent="NinePatchRect/MarginContainer/VBoxContainer/RevealButtonContainer" instance=ExtResource("5_1iv1v")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+action = "Reveal"
+
+[node name="CombatantsContainer" type="GridContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/h_separation = 32
+theme_override_constants/v_separation = 16
+columns = 2
+
+[node name="CombatantTypeTemplate" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/CombatantsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_janl2")
+text = "4 Dwarf warriors"

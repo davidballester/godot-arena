@@ -7,6 +7,7 @@ const INITIAL_COMBATANTS = 3
 @onready var _random_battle: RandomBattle = %RandomBattle
 
 var player_team: Team
+var enemy_team: Team
 var _current_menu: Node
 
 func _ready() -> void:
@@ -34,8 +35,12 @@ func start_random_battle() -> void:
 	
 func stop_random_battle() -> void:
 	_random_battle.stop()
+	
+func start_new_game() -> void:
+	_create_enemy_team()
+	_create_player_team()
 
-func create_player_team() -> void:
+func _create_player_team() -> void:
 	var team_name = GameGlobals.get_teams_data().get_random_team_name()
 	var team_icon_path = GameGlobals.get_teams_data().get_random_icon_path()
 	var team_icon = load(team_icon_path)
@@ -46,12 +51,32 @@ func create_player_team() -> void:
 		team_icon
 	)
 	for i in range(INITIAL_COMBATANTS):
+		_add_random_combatant(player_team)
+
+# TODO
+func _create_enemy_team() -> void:
+	var team_name = GameGlobals.get_teams_data().get_random_team_name()
+	GameGlobals.get_teams_data().mark_team_name_as_used(team_name)
+	var team_icon_path = GameGlobals.get_teams_data().get_random_icon_path()
+	GameGlobals.get_teams_data().mark_team_icon_path_as_used(team_icon_path)
+	var team_icon = load(team_icon_path)
+	enemy_team = Team.new(
+		team_name,
+		team_name,
+		Color.hex(0xff0044),
+		team_icon
+	)
+	for i in range(7):
+		_add_random_combatant(enemy_team)
+
+func _add_random_combatant(team: Team) -> void:
 		var combatant_type = GameGlobals.get_combatants_templates_data().get_random_type()
 		var weapon = GameGlobals.get_weapons_data().get_random_weapon()
 		var combatant = GameGlobals.get_combatants_templates_data().create_random_combatant(
-			player_team,
+			team,
 			combatant_type,
 			null,
 			weapon.model,
 		)
-		player_team.add_combatant(combatant)
+		team.add_combatant(combatant)
+	
