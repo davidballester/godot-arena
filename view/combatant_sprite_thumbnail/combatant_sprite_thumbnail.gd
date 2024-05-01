@@ -1,0 +1,11 @@
+extends MarginContainer
+class_name CombatantSpriteThumbnail
+
+@onready var _combatant_sprite: AnimatedSprite2D = %CombatantSprite
+@onready var _weapon_sprite: AnimatedSprite2D = %WeaponSprite
+
+func initialize(combatant: Combatant, animated: bool) -> void:
+	_combatant_sprite.sprite_frames = combatant.sprite_frames
+	if animated:
+		_combatant_sprite.play("idle")
+	_weapon_sprite.sprite_frames = combatant.weapon.sprite_frames

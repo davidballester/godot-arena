@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dy1oc5vnd2dpg"]
+
+[ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].tres" id="1_c08mf"]
+[ext_resource type="Script" path="res://view/combatant_sprite_thumbnail/combatant_sprite_thumbnail.gd" id="1_ure0b"]
+[ext_resource type="SpriteFrames" uid="uid://cyj2jpkpuk3v6" path="res://assets/weapon/sword_ [iron].tres" id="2_brcgy"]
+
+[node name="CombatantSpriteThumbnail" type="MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_ure0b")
+
+[node name="CombatantSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-3, 0)
+sprite_frames = ExtResource("1_c08mf")
+animation = &"idle"
+offset = Vector2(16, 16)
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(7, 1)
+sprite_frames = ExtResource("2_brcgy")
+animation = &"idle"
+offset = Vector2(16, 16)

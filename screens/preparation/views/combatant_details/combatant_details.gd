@@ -1,8 +1,7 @@
 extends Control
 class_name PreparationScreenCombatantDetails
 
-@onready var _combatant_sprite: AnimatedSprite2D = %CombatantSprite
-@onready var _weapon_sprite: AnimatedSprite2D = %WeaponSprite
+@onready var _combatant_sprite_thumbnail: CombatantSpriteThumbnail = %CombatantSpriteThumbnail
 @onready var _name: Label = %NameDd
 @onready var _type: Label = %TypeDd
 @onready var _hp: Label = %HPDd
@@ -11,9 +10,7 @@ class_name PreparationScreenCombatantDetails
 @onready var _sell_button: SellButton = %SellButton
 
 func initialize(combatant: Combatant) -> void:
-	_combatant_sprite.sprite_frames = combatant.sprite_frames
-	_combatant_sprite.play("idle")
-	_weapon_sprite.sprite_frames = combatant.weapon.sprite_frames
+	_combatant_sprite_thumbnail.initialize(combatant, true)
 	_name.text = combatant.id.capitalize()
 	_type.text = combatant.type.capitalize()
 	_hp.text = str(combatant.health.max_value)
