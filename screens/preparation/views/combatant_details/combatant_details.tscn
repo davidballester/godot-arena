@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://dnt6n70w4pfk1"]
 
-[ext_resource type="Texture2D" uid="uid://clsurgvljtrpd" path="res://assets/hud/wood_popup.png" id="1_4mj7q"]
 [ext_resource type="Script" path="res://screens/preparation/views/combatant_details/combatant_details.gd" id="1_w2it5"]
-[ext_resource type="Texture2D" uid="uid://db28m6nbwqvn7" path="res://assets/hud/overlay.png" id="2_tt75b"]
+[ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="2_mw8ss"]
+[ext_resource type="Texture2D" uid="uid://b0p6lephwu67s" path="res://assets/hud/grey_overlay.png" id="3_d05o2"]
 [ext_resource type="PackedScene" uid="uid://dy1oc5vnd2dpg" path="res://view/combatant_sprite_thumbnail/combatant_sprite_thumbnail.tscn" id="4_wuu0i"]
 [ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/views/price_button/price_button.tscn" id="5_d2a7w"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="5_jd8cs"]
@@ -24,11 +24,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_4mj7q")
-patch_margin_left = 6
-patch_margin_top = 6
-patch_margin_right = 6
-patch_margin_bottom = 6
+texture = ExtResource("2_mw8ss")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 1
@@ -57,11 +57,11 @@ theme_override_constants/separation = 4
 [node name="Control" type="NinePatchRect" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(72, 72)
 layout_mode = 2
-texture = ExtResource("2_tt75b")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
+texture = ExtResource("3_d05o2")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
 
 [node name="CombatantSpriteThumbnail" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/Control" instance=ExtResource("4_wuu0i")]
 unique_name_in_owner = true
