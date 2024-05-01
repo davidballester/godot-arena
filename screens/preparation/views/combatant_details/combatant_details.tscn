@@ -4,8 +4,8 @@
 [ext_resource type="Script" path="res://screens/preparation/views/combatant_details/combatant_details.gd" id="1_w2it5"]
 [ext_resource type="Texture2D" uid="uid://db28m6nbwqvn7" path="res://assets/hud/overlay.png" id="2_tt75b"]
 [ext_resource type="PackedScene" uid="uid://dy1oc5vnd2dpg" path="res://view/combatant_sprite_thumbnail/combatant_sprite_thumbnail.tscn" id="4_wuu0i"]
+[ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/views/price_button/price_button.tscn" id="5_d2a7w"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="5_jd8cs"]
-[ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/views/sell_button/sell_button.tscn" id="6_8jb5h"]
 
 [node name="CombatantDetails" type="Control"]
 texture_filter = 1
@@ -70,7 +70,7 @@ offset_right = 32.0
 offset_bottom = 32.0
 scale = Vector2(2, 2)
 
-[node name="SellButton" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("6_8jb5h")]
+[node name="SellButton" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("5_d2a7w")]
 unique_name_in_owner = true
 layout_mode = 2
 

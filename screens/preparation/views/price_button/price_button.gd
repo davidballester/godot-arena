@@ -1,8 +1,11 @@
 extends Control
-class_name SellButton
+class_name PriceButton
 
 signal pressed()
 
+@export var action: String = "Sell"
+
+@onready var _action_label: Label = %ActionLabel
 @onready var _price_tag: Label = %PriceTag
 @onready var _button: BaseButton = %Button
 @onready var _normal_texture: Control = %NormalTexture
@@ -15,6 +18,7 @@ func _ready() -> void:
 	_button.pressed.connect(func(): pressed.emit())
 	_button.button_down.connect(func(): _is_pressed = true)
 	_button.button_up.connect(func(): _is_pressed = false)
+	_action_label.text = action
 
 func initialize(price: int) -> void:
 	_price_tag.text = str(price)

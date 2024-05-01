@@ -7,7 +7,7 @@ class_name PreparationScreenCombatantDetails
 @onready var _hp: Label = %HPDd
 @onready var _weapon: Label = %WeaponDd
 @onready var _damage: Label = %DamageDd
-@onready var _sell_button: SellButton = %SellButton
+@onready var _sell_button: PriceButton = %SellButton
 
 func initialize(combatant: Combatant) -> void:
 	_combatant_sprite_thumbnail.initialize(combatant, true)
