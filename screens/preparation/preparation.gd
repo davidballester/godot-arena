@@ -5,6 +5,7 @@ class_name PreparationScreen
 @onready var _combatant_details: PreparationScreenCombatantDetails = %CombatantDetails
 @onready var _combatants_for_sale: PreparationScreenCombatantsForSale = %CombatantsForSale
 @onready var _enemy_team: PreparationScreenEnemyTeam = %EnemyTeam
+@onready var _budget: PreparationScreenBudget = %Budget
 
 func initialize(team: Team, enemy_team: Team) -> void:
 	_team_panel.combatant_selected.connect(func(combatant: Combatant):
@@ -13,3 +14,4 @@ func initialize(team: Team, enemy_team: Team) -> void:
 	_team_panel.initialize(team)
 	_combatants_for_sale.initialize(team)
 	_enemy_team.initialize(enemy_team)
+	_budget.set_budget(team.budget)

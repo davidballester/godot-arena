@@ -2,6 +2,7 @@ extends Node
 class_name GameController
 
 const INITIAL_COMBATANTS = 3
+const INITIAL_BUDGET = 10
 
 @onready var _state_machine: GameStateMachine = %StateMachine
 @onready var _random_battle: RandomBattle = %RandomBattle
@@ -48,7 +49,8 @@ func _create_player_team() -> void:
 		"player_team",
 		team_name,
 		Color.from_string("#f77622", Color.DARK_RED),
-		team_icon
+		team_icon,
+		INITIAL_BUDGET
 	)
 	for i in range(INITIAL_COMBATANTS):
 		_add_random_combatant(player_team)

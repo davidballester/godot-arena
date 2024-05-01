@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bid0wwcy1e8gy"]
+[gd_scene load_steps=7 format=3 uid="uid://bid0wwcy1e8gy"]
 
 [ext_resource type="Script" path="res://screens/preparation/views/team_panel/team_panel.gd" id="1_vsrdc"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="2_ct05d"]
 [ext_resource type="PackedScene" uid="uid://cruqoxl3trb06" path="res://screens/preparation/views/team_name/team_name.tscn" id="3_7nnea"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="3_edvpb"]
 [ext_resource type="PackedScene" uid="uid://cstovdutfj2np" path="res://screens/preparation/views/combatant_thumbnail/combatant_thumbnail.tscn" id="5_jfbpt"]
 [ext_resource type="Texture2D" uid="uid://b0p6lephwu67s" path="res://assets/hud/grey_overlay.png" id="5_lm2rx"]
 
@@ -45,6 +46,13 @@ theme_override_constants/margin_bottom = 16
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_edvpb")
+theme_override_font_sizes/font_size = 16
+text = "Your Team"
+horizontal_alignment = 1
 
 [node name="TeamName" parent="NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("3_7nnea")]
 unique_name_in_owner = true
