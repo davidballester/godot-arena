@@ -8,12 +8,13 @@
 
 [node name="TeamPanel" type="Control"]
 texture_filter = 1
+custom_minimum_size = Vector2(456, 0)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 9
 anchor_bottom = 1.0
-grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
 script = ExtResource("1_vsrdc")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
