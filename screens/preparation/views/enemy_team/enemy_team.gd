@@ -11,7 +11,7 @@ class_name PreparationScreenEnemyTeam
 func initialize(team: Team) -> void:
 	_team_icon.texture = team.icon
 	_team_name.text = team.team_name.capitalize()
-	_reveal_button.initialize(2)
+	_reveal_button.initialize(PriceButton.Type.BUY, 2)
 	_reveal_button.pressed.connect(func():
 		_reveal_button_container.hide()
 		_combatants_container.show()

@@ -67,7 +67,7 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = ExtResource("3_3jpjk")
 animation = &"idle"
 
-[node name="BuyButton" parent="." instance=ExtResource("5_uo817")]
+[node name="RenewButton" parent="." instance=ExtResource("5_uo817")]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1

@@ -12,4 +12,4 @@ func initialize(combatant: Combatant) -> void:
 		"font_color", 
 		ColorsData.get_color(combatant.type)
 	)
-	_buy_button.initialize(combatant.price)
+	_buy_button.initialize(PriceButton.Type.BUY, combatant.price)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bpddpej0qo1sh"]
+[gd_scene load_steps=12 format=3 uid="uid://bpddpej0qo1sh"]
 
 [ext_resource type="Script" path="res://screens/preparation/views/price_button/price_button.gd" id="1_8roxv"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_tk3sj"]
 [ext_resource type="Texture2D" uid="uid://drhcolq5aqgoi" path="res://assets/hud/button_normal.png" id="3_ainnn"]
 [ext_resource type="Texture2D" uid="uid://dd0madi0yvxi2" path="res://assets/hud/button_pressed.png" id="4_arqu3"]
 [ext_resource type="Texture2D" uid="uid://bt2g8utepxyyi" path="res://assets/hud/coin.png" id="5_2bawn"]
+[ext_resource type="Texture2D" uid="uid://i7qcndbck06r" path="res://assets/hud/button_disabled.png" id="5_oofhw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3ulda"]
 
@@ -65,6 +66,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_arqu3")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="DisabledTexture" type="NinePatchRect" parent="Button"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_oofhw")
 patch_margin_left = 5
 patch_margin_top = 5
 patch_margin_right = 5

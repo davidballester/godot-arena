@@ -22,5 +22,5 @@ func initialize(combatant: Combatant) -> void:
 	_weapon.text = combatant.weapon.weapon_name.capitalize()
 	_weapon.add_theme_color_override("font_color", ColorsData.get_color(combatant.weapon.weapon_name))
 	@warning_ignore("integer_division")
-	var sell_price = int(floor(combatant.price / 2))
-	_sell_button.initialize(sell_price)
+	var sell_price = max(1, int(ceil(combatant.price / 2)))
+	_sell_button.initialize(PriceButton.Type.SELL, sell_price)
