@@ -61,6 +61,8 @@ layout_mode = 2
 [node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer"]
 layout_mode = 2

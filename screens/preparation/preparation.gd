@@ -12,4 +12,8 @@ func initialize(team: Team, enemy_team: Team) -> void:
 	)
 	_team_panel.initialize(team)
 	_combatants_for_sale.initialize(team)
+	_combatants_for_sale.combatant_bought.connect(func(combatant: Combatant):
+		team.add_combatant(combatant)
+		_team_panel.add_combatant(combatant)
+	)
 	_enemy_team.initialize(enemy_team)

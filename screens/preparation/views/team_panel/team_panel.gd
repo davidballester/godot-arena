@@ -17,13 +17,13 @@ func initialize(team: Team) -> void:
 		team.team_name = team_name
 		team.icon = team_icon
 	)
-	team.combatants.map(_add_combatant_thumbnail)
+	team.combatants.map(add_combatant)
 	_select_combatant_thumbnail(
 		team.combatants[0], 
 		_combatants_container.get_children()[0]
 	)
 	
-func _add_combatant_thumbnail(combatant: Combatant) -> void:
+func add_combatant(combatant: Combatant) -> void:
 	var combatant_thumbnail: PreparationScreenCombatantThumbnail = _combatant_thumbnail_template.duplicate()
 	combatant_thumbnail.ready.connect(func():
 		combatant_thumbnail.initialize(combatant)

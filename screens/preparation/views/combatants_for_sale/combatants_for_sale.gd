@@ -1,6 +1,8 @@
 extends Control
 class_name PreparationScreenCombatantsForSale
 
+signal combatant_bought(Combatant)
+
 const COMBATANTS_COUNT = 3
 const COMBATANT_FOR_SALE_SCENE = preload(
 	"res://screens/preparation/views/combatant_for_sale/combatant_for_sale.tscn"
@@ -44,3 +46,4 @@ func _add_combatant_for_sale() -> void:
 	_combatants_container.add_child(combatant_for_sale)
 	_combatants_container.move_child(combatant_for_sale, 0)
 	combatant_for_sale.initialize(combatant)
+	combatant_for_sale.bought.connect(func(): combatant_bought.emit(combatant))

@@ -18,6 +18,8 @@ signal pressed()
 @onready var _disabled_texture: Control = %DisabledTexture
 @onready var _button_contents: Control = %ButtonContents
 
+var enabled: bool = true
+
 var _is_pressed: bool
 var _price: int = 0
 var _type: Type = Type.SELL
@@ -33,6 +35,8 @@ func initialize(type: Type, price: int) -> void:
 	_price_tag.text = str(price)
 	SignalUtils.disconnect_everything(_button.pressed)
 	_button.pressed.connect(func():
+		if not enabled:
+			return
 		match type:
 			Type.BUY:
 				if not GameGlobals.budget.can_afford(price):
@@ -44,7 +48,7 @@ func initialize(type: Type, price: int) -> void:
 	)
 	
 func _process(_delta: float) -> void:
-	if _type == Type.BUY and not GameGlobals.budget.can_afford(_price):
+	if not enabled or (_type == Type.BUY and not GameGlobals.budget.can_afford(_price)):
 		_normal_texture.hide()
 		_pressed_texture.hide()
 		_disabled_texture.show()
