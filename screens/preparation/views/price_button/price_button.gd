@@ -31,6 +31,7 @@ func initialize(type: Type, price: int) -> void:
 	_price = price
 	_type = type
 	_price_tag.text = str(price)
+	SignalUtils.disconnect_everything(_button.pressed)
 	_button.pressed.connect(func():
 		match type:
 			Type.BUY:
