@@ -4,6 +4,8 @@ class_name GameGlobals
 const VIEWPORT_WIDTH: float = 960
 const VIEWPORT_HEIGHT: float = 540
 
+static var budget: Budget = Budget.new()
+
 static var _database: SQLite
 static var _weapons_data: WeaponsData
 static var _combatants_names_data: CombatantsNamesData

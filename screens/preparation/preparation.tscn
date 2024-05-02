@@ -71,7 +71,6 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Budget" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer2/VBoxContainer" instance=ExtResource("5_lving")]
-unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 
