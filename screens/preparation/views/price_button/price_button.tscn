@@ -112,6 +112,7 @@ text = "Sell"
 [node name="Control" type="Control" parent="Button/ButtonContents/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="Button/ButtonContents/HBoxContainer/Control"]
 layout_mode = 1
