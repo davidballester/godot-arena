@@ -58,13 +58,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-horizontal_scroll_mode = 0
-vertical_scroll_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -74,19 +68,35 @@ patch_margin_top = 7
 patch_margin_right = 7
 patch_margin_bottom = 7
 
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="CombatantsContainer" type="GridContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer/NinePatchRect/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_edvpb")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="CombatantsContainer" type="GridContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -95,7 +105,7 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 2
 
-[node name="CombatantThumbnail" parent="NinePatchRect/MarginContainer/VBoxContainer/ScrollContainer/NinePatchRect/MarginContainer/CombatantsContainer" instance=ExtResource("5_jfbpt")]
+[node name="CombatantThumbnail" parent="NinePatchRect/MarginContainer/VBoxContainer/NinePatchRect/MarginContainer/ScrollContainer/MarginContainer/CombatantsContainer" instance=ExtResource("5_jfbpt")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(192, 48)
 layout_mode = 2

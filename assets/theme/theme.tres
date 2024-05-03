@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://cgj53xbuypu2k"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cgj53xbuypu2k"]
 
 [ext_resource type="FontFile" uid="uid://birw8oglmhe74" path="res://assets/theme/monogram.ttf" id="1_nfbf5"]
 [ext_resource type="StyleBox" uid="uid://c8yvs3f2bqnwm" path="res://assets/theme/progress_bar_background.tres" id="2_v5ilw"]
@@ -11,6 +11,26 @@ border_width_right = 1
 border_width_bottom = 1
 border_color = Color(0.12549, 0.12549, 0.113725, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u4pw"]
+bg_color = Color(0.231373, 0.270588, 0.4, 1)
+shadow_color = Color(0.152941, 0.168627, 0.266667, 1)
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_orahb"]
+bg_color = Color(0.227451, 0.266667, 0.403922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4qoc"]
+bg_color = Color(0.227451, 0.266667, 0.403922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_521vf"]
+bg_color = Color(0.0980392, 0.0823529, 0.141176, 1)
+border_width_left = 8
+border_color = Color(0.0980392, 0.0823529, 0.145098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmx3a"]
+bg_color = Color(0.0980392, 0.0784314, 0.141176, 1)
+border_width_left = 8
+
 [resource]
 Button/font_sizes/font_size = 30
 Button/fonts/font = ExtResource("1_nfbf5")
@@ -20,3 +40,8 @@ ProgressBar/font_sizes/font_size = 16
 ProgressBar/fonts/font = ExtResource("1_nfbf5")
 ProgressBar/styles/background = ExtResource("2_v5ilw")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_q2ent")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_2u4pw")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_orahb")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_i4qoc")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_521vf")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxFlat_nmx3a")
