@@ -12,12 +12,10 @@ const COMBATANT_FOR_SALE_SCENE = preload(
 @onready var _renew_combatants: PreparationScreenRenewCombatantsForSale = %RenewCombatantsForSale
 
 var _team: Team
+var _combatants_bought: int = 0
 
 func _ready() -> void:
-	_renew_combatants.renewed_clicked.connect(func():
-		_remove_combatants_for_sale()
-		_add_combatants_for_sale()
-	)
+	_renew_combatants.renewed_clicked.connect(_reset_roster)
 
 func initialize(team: Team) -> void:
 	_team = team
@@ -46,4 +44,14 @@ func _add_combatant_for_sale() -> void:
 	_combatants_container.add_child(combatant_for_sale)
 	_combatants_container.move_child(combatant_for_sale, 0)
 	combatant_for_sale.initialize(combatant)
-	combatant_for_sale.bought.connect(func(): combatant_bought.emit(combatant))
+	combatant_for_sale.bought.connect(func(): 
+		combatant_bought.emit(combatant)
+		_combatants_bought += 1
+		if _combatants_bought == COMBATANTS_COUNT:
+			_reset_roster()
+	)
+
+func _reset_roster() -> void:
+	_combatants_bought = 0
+	_remove_combatants_for_sale()
+	_add_combatants_for_sale()
