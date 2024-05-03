@@ -17,13 +17,13 @@ func initialize(team: Team) -> void:
 		team.team_name = team_name
 		team.icon = team_icon
 	)
-	team.combatants.map(add_combatant)
+	team.combatants.map(func(combatant): add_combatant(combatant, false))
 	_select_combatant_thumbnail(
 		team.combatants[0], 
 		_combatants_container.get_children()[0]
 	)
 	
-func add_combatant(combatant: Combatant) -> void:
+func add_combatant(combatant: Combatant, select: bool = true) -> void:
 	var combatant_thumbnail: PreparationScreenCombatantThumbnail = _combatant_thumbnail_template.duplicate()
 	combatant_thumbnail.ready.connect(func():
 		combatant_thumbnail.initialize(combatant)
@@ -32,6 +32,8 @@ func add_combatant(combatant: Combatant) -> void:
 	combatant_thumbnail.pressed.connect(func(): 
 		_select_combatant_thumbnail(combatant, combatant_thumbnail)
 	)
+	if select:
+		_select_combatant_thumbnail(combatant, combatant_thumbnail)
 
 func _select_combatant_thumbnail(
 	combatant: Combatant,
