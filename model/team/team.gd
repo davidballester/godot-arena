@@ -22,3 +22,7 @@ func _init(
 func add_combatant(combatant: Combatant) -> void:
 	combatant.team_id = id
 	combatants.append(combatant)
+
+func remove_combatant(combatant: Combatant) -> void:
+	var combatant_position = combatants.find(combatant)
+	combatants.remove_at(combatant_position)

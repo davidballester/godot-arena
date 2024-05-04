@@ -6,6 +6,8 @@ const SELECTED_POPUP_TEXTURE_PATH = preload("res://assets/hud/popup_highlighted.
 
 signal pressed()
 
+var combatant: Combatant
+
 @onready var _combatant_sprite_thumbnail: CombatantSpriteThumbnail = %CombatantSpriteThumbnail
 @onready var _combatant_name: Label = %CombatantName
 @onready var _combatant_type: Label = %CombatantType
@@ -15,6 +17,7 @@ signal pressed()
 func initialize(
 	combatant: Combatant,
 ) -> void:
+	self.combatant = combatant
 	_combatant_sprite_thumbnail.initialize(combatant, false)
 	_combatant_name.text = combatant.id
 	_combatant_type.text = combatant.type.capitalize()

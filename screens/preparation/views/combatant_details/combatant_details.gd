@@ -1,6 +1,8 @@
 extends Control
 class_name PreparationScreenCombatantDetails
 
+signal combatant_sold(Combatant)
+
 @onready var _combatant_sprite_thumbnail: CombatantSpriteThumbnail = %CombatantSpriteThumbnail
 @onready var _name: Label = %NameDd
 @onready var _type: Label = %TypeDd
@@ -9,7 +11,13 @@ class_name PreparationScreenCombatantDetails
 @onready var _damage: Label = %DamageDd
 @onready var _sell_button: PriceButton = %SellButton
 
-func initialize(combatant: Combatant) -> void:
+var _combatant: Combatant
+
+func _ready() -> void:
+	_sell_button.pressed.connect(func(): combatant_sold.emit(_combatant))
+
+func initialize(combatant: Combatant, sell_enabled: bool) -> void:
+	_combatant = combatant
 	_combatant_sprite_thumbnail.initialize(combatant, true)
 	_name.text = combatant.id.capitalize()
 	_type.text = combatant.type.capitalize()
@@ -24,3 +32,4 @@ func initialize(combatant: Combatant) -> void:
 	@warning_ignore("integer_division")
 	var sell_price = max(1, int(ceil(combatant.price / 2)))
 	_sell_button.initialize(PriceButton.Type.SELL, sell_price)
+	_sell_button.enabled = sell_enabled

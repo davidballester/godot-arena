@@ -8,7 +8,7 @@ class_name PreparationScreen
 
 func initialize(team: Team, enemy_team: Team) -> void:
 	_team_panel.combatant_selected.connect(func(combatant: Combatant):
-		_combatant_details.initialize(combatant)
+		_combatant_details.initialize(combatant, team.combatants.size() > 1)
 	)
 	_team_panel.initialize(team)
 	_combatants_for_sale.initialize(team)
@@ -17,3 +17,8 @@ func initialize(team: Team, enemy_team: Team) -> void:
 		_team_panel.add_combatant(combatant)
 	)
 	_enemy_team.initialize(enemy_team)
+	_combatant_details.combatant_sold.connect(func(combatant: Combatant):
+		team.remove_combatant(combatant)
+		_team_panel.remove_combatant(combatant)
+		combatant.queue_free()
+	)
