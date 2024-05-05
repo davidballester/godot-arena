@@ -10,14 +10,12 @@ var _preparation_screen: PreparationScreen
 
 func enter(_args: Array) -> void:
 	_preparation_screen = PREPARATION_SCREEN_RESOURCE.instantiate()
-	_preparation_screen.ready.connect(func():
-		_preparation_screen.initialize(
-			controller.player_team, 
-			controller.enemy_team
-		)
+	_preparation_screen.ready.connect(func(): _preparation_screen.initialize())
+	_preparation_screen.battle_started.connect(func():
+		state_machine.transition_to_state(GameBattleState.get_state_name())
 	)
-	controller.display_menu(_preparation_screen)
+	controller.display_screen(_preparation_screen)
 	
 func exit() -> void:
-	controller.hide_current_battle_screen()
+	controller.hide_current_screen()
 	_preparation_screen.queue_free()

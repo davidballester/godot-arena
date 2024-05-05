@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sw5p772ul8m0"]
+
+[ext_resource type="Script" path="res://screens/battle/battle.gd" id="1_1btwx"]
+
+[node name="Battle" type="CanvasLayer"]
+script = ExtResource("1_1btwx")

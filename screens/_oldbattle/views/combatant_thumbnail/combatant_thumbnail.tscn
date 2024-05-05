@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bs061wl5df2sd"]
 
-[ext_resource type="Script" path="res://screens/battle/views/combatant_thumbnail/combatant_thumbnail.gd" id="1_hgi73"]
+[ext_resource type="Script" path="res://screens/_oldbattle/views/combatant_thumbnail/combatant_thumbnail.gd" id="1_hgi73"]
 [ext_resource type="TileSet" uid="uid://cxbr8p4cloyh3" path="res://assets/hud/overlay.tres" id="2_37b2s"]
 [ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].tres" id="2_xcx0j"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_xrr6q"]

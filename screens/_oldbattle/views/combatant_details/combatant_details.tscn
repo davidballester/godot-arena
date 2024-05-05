@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dr0h4wtpyft5j"]
 
-[ext_resource type="Script" path="res://screens/battle/views/combatant_details/combatant_details.gd" id="1_kpbjq"]
+[ext_resource type="Script" path="res://screens/_oldbattle/views/combatant_details/combatant_details.gd" id="1_kpbjq"]
 [ext_resource type="TileSet" uid="uid://c4wakeswnolih" path="res://assets/hud/popup.tres" id="2_l8pwa"]
 [ext_resource type="PackedScene" uid="uid://d3hgujhlslrnh" path="res://view/styled_button/styled_button.tscn" id="3_j1cmf"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_nfra2"]

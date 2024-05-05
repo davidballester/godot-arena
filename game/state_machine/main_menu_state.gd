@@ -16,7 +16,7 @@ func _init() -> void:
 	)
 
 func enter(_args: Array) -> void:
-	controller.display_menu(_main_menu)
+	controller.display_screen(_main_menu)
 	
 func exit() -> void:
-	controller.hide_current_menu()
+	controller.hide_current_screen()

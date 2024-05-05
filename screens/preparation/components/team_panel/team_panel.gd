@@ -20,13 +20,13 @@ func _ready() -> void:
 		_scroll_container.scroll_vertical = max_scroll_length
 	)
 
-func initialize(team: Team) -> void:
-	_team_name.initialize(team)
+func initialize() -> void:
+	_team_name.initialize(GameGlobals.player_team)
 	_team_name.team_changed.connect(func(team_name, team_icon):
-		team.team_name = team_name
-		team.icon = team_icon
+		GameGlobals.player_team.team_name = team_name
+		GameGlobals.player_team.icon = team_icon
 	)
-	team.combatants.map(func(combatant): add_combatant(combatant, false))
+	GameGlobals.player_team.combatants.map(func(combatant): add_combatant(combatant, false))
 	_select_first_combatant()
 	
 func add_combatant(combatant: Combatant, select: bool = true) -> void:

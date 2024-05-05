@@ -1,18 +1,18 @@
 extends GameState
 class_name GameBattleState
 
-const BATTTLE_CONTROLLER_RESOURCE = preload("res://screens/battle/controller/battle.tscn")
+const BATTLE_SCREEN_SCENE = preload("res://screens/battle/battle.tscn")
 
 static func get_state_name() -> String:
 	return "GameBattleState"
 	
-var _battle_screen_controller: BattleScreenController
+var _battle_screen: BattleScreen
 
 func enter(_args: Array) -> void:
-	_battle_screen_controller = BATTTLE_CONTROLLER_RESOURCE.instantiate()
-	controller.display_battle_screen(_battle_screen_controller)
-	_battle_screen_controller.initialize(controller.player_team)
+	_battle_screen = BATTLE_SCREEN_SCENE.instantiate()
+	controller.display_screen(_battle_screen)
+	_battle_screen.initialize()
 	
 func exit() -> void:
 	controller.hide_current_battle_screen()
-	_battle_screen_controller.queue_free()
+	_battle_screen.queue_free()

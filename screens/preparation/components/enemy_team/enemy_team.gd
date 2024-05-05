@@ -8,15 +8,15 @@ class_name PreparationScreenEnemyTeam
 @onready var _combatants_container: Control = %CombatantsContainer
 @onready var _combatant_type_template: Label = %CombatantTypeTemplate
 
-func initialize(team: Team) -> void:
-	_team_icon.texture = team.icon
-	_team_name.text = team.team_name.capitalize()
+func initialize() -> void:
+	_team_icon.texture = GameGlobals.enemy_team.icon
+	_team_name.text = GameGlobals.enemy_team.team_name.capitalize()
 	_reveal_button.initialize(PriceButton.Type.BUY, 2)
 	_reveal_button.pressed.connect(func():
 		_reveal_button_container.hide()
 		_combatants_container.show()
 	)
-	var combatant_types_to_count: Dictionary = team.combatants.reduce(
+	var combatant_types_to_count: Dictionary = GameGlobals.enemy_team.combatants.reduce(
 		func(acc: Dictionary, combatant: Combatant) -> Dictionary:
 			var combatant_type = combatant.type
 			if not acc.has(combatant_type):

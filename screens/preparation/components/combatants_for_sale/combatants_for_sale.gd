@@ -11,14 +11,12 @@ const COMBATANT_FOR_SALE_SCENE = preload(
 @onready var _combatants_container: Control = %CombatantsContainer
 @onready var _renew_combatants: PreparationScreenRenewCombatantsForSale = %RenewCombatantsForSale
 
-var _team: Team
 var _combatants_bought: int = 0
 
 func _ready() -> void:
 	_renew_combatants.renewed_clicked.connect(_reset_roster)
 
-func initialize(team: Team) -> void:
-	_team = team
+func initialize() -> void:
 	_add_combatants_for_sale()
 		
 func _add_combatants_for_sale() -> void:
@@ -35,9 +33,9 @@ func _add_combatant_for_sale() -> void:
 	var combatant_type = GameGlobals.get_combatants_templates_data().get_random_type()
 	var weapon = GameGlobals.get_weapons_data().get_random_weapon()
 	var combatant = GameGlobals.get_combatants_templates_data().create_random_combatant(
-		_team,
+		GameGlobals.player_team,
 		combatant_type,
-		null,
+		GameGlobals.battle,
 		weapon.model
 	)
 	var combatant_for_sale: PreparationScreenCombatantForSale = COMBATANT_FOR_SALE_SCENE.instantiate()

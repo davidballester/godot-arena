@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://5jqb1vulafoa"]
 
-[ext_resource type="Script" path="res://screens/battle/views/preparation/battle_preparation.gd" id="1_5iy82"]
-[ext_resource type="PackedScene" uid="uid://bss16n450i57d" path="res://screens/battle/views/team/team.tscn" id="2_i86nb"]
+[ext_resource type="Script" path="res://screens/_oldbattle/views/preparation/battle_preparation.gd" id="1_5iy82"]
+[ext_resource type="PackedScene" uid="uid://bss16n450i57d" path="res://screens/_oldbattle/views/team/team.tscn" id="2_i86nb"]
 
 [node name="BattlePreparation" type="CanvasLayer"]
 script = ExtResource("1_5iy82")

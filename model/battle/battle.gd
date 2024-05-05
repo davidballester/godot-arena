@@ -1,7 +1,13 @@
 extends Node
 class_name Battle
 
+var teams: Array = []
 var _id_to_combatant: Dictionary = {}
+
+func add_team(team: Team) -> void:
+	teams.append(team)
+	for combatant: Combatant in team.combatants:
+		add_combatant(combatant)
 
 func add_combatant(combatant: Combatant) -> void:
 	_id_to_combatant[combatant.id] = combatant
