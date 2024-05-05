@@ -2,4 +2,4 @@ extends CanvasLayer
 class_name BattleScreen
 
 func initialize() -> void:
-	pass
+	add_child(GameGlobals.battle.terrain)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://0xb1eevxjdhm"]
 
-[ext_resource type="Script" path="res://game/views/random_battle/random_battle.gd" id="1_hebm7"]
+[ext_resource type="Script" path="res://game/components/random_battle/random_battle.gd" id="1_hebm7"]
 [ext_resource type="TileSet" uid="uid://dqswnggvxf1s3" path="res://assets/terrain/terrain.tres" id="2_m7nad"]
 [ext_resource type="PackedScene" uid="uid://rr0trrk61o2d" path="res://controller/battle/battle_controller.tscn" id="3_laos8"]
 

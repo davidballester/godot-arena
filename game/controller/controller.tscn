@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://game/controller/controller.gd" id="1_pfcox"]
 [ext_resource type="Script" path="res://game/state_machine/state_machine.gd" id="1_u1ebq"]
-[ext_resource type="PackedScene" uid="uid://0xb1eevxjdhm" path="res://game/views/random_battle/random_battle.tscn" id="2_q880f"]
+[ext_resource type="PackedScene" uid="uid://0xb1eevxjdhm" path="res://game/components/random_battle/random_battle.tscn" id="2_q880f"]
 [ext_resource type="Script" path="res://game/state_machine/main_menu_state.gd" id="2_ujaf0"]
 [ext_resource type="Script" path="res://game/state_machine/preparation_state.gd" id="5_t15md"]
 [ext_resource type="Script" path="res://game/state_machine/battle_state.gd" id="6_f4yuq"]

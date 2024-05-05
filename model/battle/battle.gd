@@ -1,6 +1,7 @@
 extends Node
 class_name Battle
 
+var terrain: Terrain
 var teams: Array = []
 var _id_to_combatant: Dictionary = {}
 

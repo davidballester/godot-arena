@@ -38,6 +38,9 @@ func start_new_game() -> void:
 	GameGlobals.player_team = _create_player_team()
 	GameGlobals.enemy_team = _create_enemy_team()
 	GameGlobals.battle = Battle.new()
+	var terrain_path = GameGlobals.get_battles_data().get_random_terrain_path()
+	var terrain = load(terrain_path).instantiate()
+	GameGlobals.battle.terrain = terrain
 	GameGlobals.battle.add_team(GameGlobals.player_team)
 	GameGlobals.battle.add_team(GameGlobals.enemy_team)
 

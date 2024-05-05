@@ -14,6 +14,7 @@ static var _weapons_data: WeaponsData
 static var _combatants_names_data: CombatantsNamesData
 static var _combatants_templates_data: CombatantsTemplatesData
 static var _teams_data: TeamsData
+static var _battles_data: BattlesData
 
 static func exit() -> void:
 	_database.close_db()
@@ -38,6 +39,11 @@ static func get_teams_data() -> TeamsData:
 		_initialize()
 	return _teams_data
 
+static func get_battles_data() -> BattlesData:
+	if not _battles_data:
+		_initialize()
+	return _battles_data
+
 static func _initialize() -> void:
 	_database = SQLController.get_database()
 	_database.open_db()
@@ -48,3 +54,4 @@ static func _initialize() -> void:
 		_combatants_names_data,
 	)
 	_teams_data = TeamsData.new(_database)
+	_battles_data = BattlesData.new()
