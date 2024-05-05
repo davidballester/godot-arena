@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://g5birbmrwbwc"]
 
-[ext_resource type="Script" path="res://screens/preparation/views/renew_combatants_for_sale/renew_combatants_for_sale.gd" id="1_c1144"]
+[ext_resource type="Script" path="res://screens/preparation/components/renew_combatants_for_sale/renew_combatants_for_sale.gd" id="1_c1144"]
 [ext_resource type="Texture2D" uid="uid://b0p6lephwu67s" path="res://assets/hud/grey_overlay.png" id="2_oijfq"]
 [ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].tres" id="3_3jpjk"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_1n4u7"]
-[ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/views/price_button/price_button.tscn" id="5_uo817"]
+[ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/components/price_button/price_button.tscn" id="5_uo817"]
 
 [node name="RenewCombatantsForSale" type="Control"]
 texture_filter = 1

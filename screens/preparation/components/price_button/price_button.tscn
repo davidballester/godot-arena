@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bpddpej0qo1sh"]
 
-[ext_resource type="Script" path="res://screens/preparation/views/price_button/price_button.gd" id="1_8roxv"]
+[ext_resource type="Script" path="res://screens/preparation/components/price_button/price_button.gd" id="1_8roxv"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_tk3sj"]
 [ext_resource type="Texture2D" uid="uid://drhcolq5aqgoi" path="res://assets/hud/button_normal.png" id="3_ainnn"]
 [ext_resource type="Texture2D" uid="uid://dd0madi0yvxi2" path="res://assets/hud/button_pressed.png" id="4_arqu3"]

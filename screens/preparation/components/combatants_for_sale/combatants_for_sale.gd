@@ -5,7 +5,7 @@ signal combatant_bought(Combatant)
 
 const COMBATANTS_COUNT = 3
 const COMBATANT_FOR_SALE_SCENE = preload(
-	"res://screens/preparation/views/combatant_for_sale/combatant_for_sale.tscn"
+	"res://screens/preparation/components/combatant_for_sale/combatant_for_sale.tscn"
 )
 
 @onready var _combatants_container: Control = %CombatantsContainer

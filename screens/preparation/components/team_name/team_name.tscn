@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cruqoxl3trb06"]
 
-[ext_resource type="Script" path="res://screens/preparation/views/team_name/team_name.gd" id="1_ca04a"]
+[ext_resource type="Script" path="res://screens/preparation/components/team_name/team_name.gd" id="1_ca04a"]
 [ext_resource type="Texture2D" uid="uid://bdlp8wkff2hna" path="res://assets/teams_icons/Blue Potion 3.png" id="1_f3183"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_r37lr"]
 [ext_resource type="PackedScene" uid="uid://d3hgujhlslrnh" path="res://view/styled_button/styled_button.tscn" id="4_78gdd"]

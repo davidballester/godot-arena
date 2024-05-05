@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dnt6n70w4pfk1"]
 
-[ext_resource type="Script" path="res://screens/preparation/views/combatant_details/combatant_details.gd" id="1_w2it5"]
+[ext_resource type="Script" path="res://screens/preparation/components/combatant_details/combatant_details.gd" id="1_w2it5"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="2_mw8ss"]
 [ext_resource type="Texture2D" uid="uid://b0p6lephwu67s" path="res://assets/hud/grey_overlay.png" id="3_d05o2"]
 [ext_resource type="PackedScene" uid="uid://dy1oc5vnd2dpg" path="res://view/combatant_sprite_thumbnail/combatant_sprite_thumbnail.tscn" id="4_wuu0i"]
-[ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/views/price_button/price_button.tscn" id="5_d2a7w"]
+[ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/components/price_button/price_button.tscn" id="5_d2a7w"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="5_jd8cs"]
 
 [node name="CombatantDetails" type="Control"]

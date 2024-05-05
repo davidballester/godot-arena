@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bbivcb8hylcsv"]
 
-[ext_resource type="Script" path="res://screens/preparation/views/budget/budget.gd" id="1_1cnjr"]
+[ext_resource type="Script" path="res://screens/preparation/components/budget/budget.gd" id="1_1cnjr"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="1_ecmo1"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_3gktf"]
 

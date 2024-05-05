@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bid0wwcy1e8gy"]
 
-[ext_resource type="Script" path="res://screens/preparation/views/team_panel/team_panel.gd" id="1_vsrdc"]
+[ext_resource type="Script" path="res://screens/preparation/components/team_panel/team_panel.gd" id="1_vsrdc"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="2_ct05d"]
-[ext_resource type="PackedScene" uid="uid://cruqoxl3trb06" path="res://screens/preparation/views/team_name/team_name.tscn" id="3_7nnea"]
+[ext_resource type="PackedScene" uid="uid://cruqoxl3trb06" path="res://screens/preparation/components/team_name/team_name.tscn" id="3_7nnea"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="3_edvpb"]
-[ext_resource type="PackedScene" uid="uid://cstovdutfj2np" path="res://screens/preparation/views/combatant_thumbnail/combatant_thumbnail.tscn" id="5_jfbpt"]
+[ext_resource type="PackedScene" uid="uid://cstovdutfj2np" path="res://screens/preparation/components/combatant_thumbnail/combatant_thumbnail.tscn" id="5_jfbpt"]
 [ext_resource type="Texture2D" uid="uid://b0p6lephwu67s" path="res://assets/hud/grey_overlay.png" id="5_lm2rx"]
 
 [node name="TeamPanel" type="Control"]

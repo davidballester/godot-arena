@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://53upwgx135gx"]
 
-[ext_resource type="Script" path="res://screens/preparation/views/combatants_for_sale/combatants_for_sale.gd" id="1_xyn6c"]
+[ext_resource type="Script" path="res://screens/preparation/components/combatants_for_sale/combatants_for_sale.gd" id="1_xyn6c"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="2_bs2h4"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="3_8qh8i"]
-[ext_resource type="PackedScene" uid="uid://g5birbmrwbwc" path="res://screens/preparation/views/renew_combatants_for_sale/renew_combatants_for_sale.tscn" id="4_8dyhl"]
+[ext_resource type="PackedScene" uid="uid://g5birbmrwbwc" path="res://screens/preparation/components/renew_combatants_for_sale/renew_combatants_for_sale.tscn" id="4_8dyhl"]
 
 [node name="CombatantsForSale" type="Control"]
 texture_filter = 1

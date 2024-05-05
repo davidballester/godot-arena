@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://c67ts4jblm1ga"]
 
 [ext_resource type="Texture2D" uid="uid://b0p6lephwu67s" path="res://assets/hud/grey_overlay.png" id="1_6rmm1"]
-[ext_resource type="Script" path="res://screens/preparation/views/combatant_for_sale/combatant_for_sale.gd" id="1_vq8yf"]
+[ext_resource type="Script" path="res://screens/preparation/components/combatant_for_sale/combatant_for_sale.gd" id="1_vq8yf"]
 [ext_resource type="PackedScene" uid="uid://dy1oc5vnd2dpg" path="res://view/combatant_sprite_thumbnail/combatant_sprite_thumbnail.tscn" id="3_qk8jb"]
-[ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/views/price_button/price_button.tscn" id="4_6d3oy"]
+[ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/components/price_button/price_button.tscn" id="4_6d3oy"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_c4v4n"]
 
 [node name="CombatantForSale" type="Control"]
