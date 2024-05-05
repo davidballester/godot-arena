@@ -32,7 +32,7 @@ func start_random_battle() -> void:
 	_random_battle.start()
 	
 func stop_random_battle() -> void:
-	_random_battle.stop()
+	_random_battle.queue_free()
 	
 func start_new_game() -> void:
 	GameGlobals.player_team = _create_player_team()

@@ -19,9 +19,6 @@ func start() -> void:
 		await _spawn_combatant_for_current_team()
 	_combatant_spawn_timer.timeout.connect(_spawn_combatant_for_current_team)
 	
-func stop() -> void:
-	_combatant_spawn_timer.timeout.disconnect(_spawn_combatant_for_current_team)
-	
 func _spawn_combatant_for_current_team() -> void:
 	if _battle.count_alive_combatants() >= COMBATANTS_CAP:
 		return
