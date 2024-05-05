@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bilyy5eu7pu25"]
+[gd_scene load_steps=12 format=3 uid="uid://bilyy5eu7pu25"]
 
-[ext_resource type="Script" path="res://view/team_score/team_score.gd" id="1_qs5se"]
+[ext_resource type="Script" path="res://screens/battle/components/team_score/team_score.gd" id="1_qs5se"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_6y6k0"]
 [ext_resource type="Texture2D" uid="uid://cq12u5noapyny" path="res://assets/hud/team_score.png" id="3_5n37l"]
 [ext_resource type="Texture2D" uid="uid://cefef8mvxtsxd" path="res://assets/teams_icons/Beer.png" id="4_l7n47"]
@@ -9,6 +9,16 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0xq7"]
 bg_color = Color(1, 0, 0.266667, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68u5y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w84sg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d30mm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_udnsf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7jc56"]
 
 [node name="TeamScore" type="Control"]
 texture_filter = 1
@@ -54,3 +64,17 @@ theme_override_styles/background = SubResource("StyleBoxEmpty_3wtpj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_r0xq7")
 value = 50.0
 show_percentage = false
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_68u5y")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_w84sg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_d30mm")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_udnsf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7jc56")

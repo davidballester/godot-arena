@@ -25,4 +25,12 @@ func initialize() -> void:
 		_team_panel.remove_combatant(combatant)
 		combatant.queue_free()
 	)
-	_start_battle.pressed.connect(func(): battle_started.emit())
+	_start_battle.pressed.connect(func():
+		GameGlobals.get_teams_data().mark_team_icon_path_as_used(
+			GameGlobals.player_team.icon.resource_path
+		)
+		GameGlobals.get_teams_data().mark_team_name_as_used(
+			GameGlobals.player_team.team_name
+		)
+		battle_started.emit()
+	)

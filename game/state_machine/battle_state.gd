@@ -11,7 +11,6 @@ var _battle_screen: BattleScreen
 func enter(_args: Array) -> void:
 	_battle_screen = BATTLE_SCREEN_SCENE.instantiate()
 	controller.display_screen(_battle_screen)
-	_battle_screen.initialize()
 	controller.stop_random_battle()
 	
 func exit() -> void:

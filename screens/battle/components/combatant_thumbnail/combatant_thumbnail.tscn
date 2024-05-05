@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://t8o4xk11k8c0"]
+
+[ext_resource type="Script" path="res://screens/battle/components/combatant_thumbnail/combatant_thumbnail.gd" id="1_fyil0"]
+[ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="1_p3o30"]
+[ext_resource type="PackedScene" uid="uid://dy1oc5vnd2dpg" path="res://view/combatant_sprite_thumbnail/combatant_sprite_thumbnail.tscn" id="2_0ea5f"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_dc0vb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmme8"]
+bg_color = Color(1, 0, 0.266667, 1)
+
+[node name="CombatantThumbnail" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+script = ExtResource("1_fyil0")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_p3o30")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CombatantSpriteThumbnail" parent="NinePatchRect/MarginContainer/HBoxContainer" instance=ExtResource("2_0ea5f")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="CombatantName" type="Label" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("4_dc0vb")
+theme_override_font_sizes/font_size = 16
+text = "Ignotus"
+clip_text = true
+text_overrun_behavior = 3
+
+[node name="HealthBar" type="ProgressBar" parent="NinePatchRect/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme = ExtResource("4_dc0vb")
+theme_override_styles/background = SubResource("StyleBoxFlat_fmme8")
+show_percentage = false

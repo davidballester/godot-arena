@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dbr8wu7wd61yn"]
 
-[ext_resource type="PackedScene" uid="uid://bilyy5eu7pu25" path="res://view/team_score/team_score.tscn" id="1_t2pjw"]
+[ext_resource type="PackedScene" uid="uid://bilyy5eu7pu25" path="res://screens/battle/components/team_score/team_score.tscn" id="1_t2pjw"]
 [ext_resource type="Script" path="res://view/hud/hud.gd" id="1_ugug4"]
 [ext_resource type="PackedScene" uid="uid://cfv115rx3u3fr" path="res://view/combatant_details/combatant_details.tscn" id="3_6i1ko"]
 
