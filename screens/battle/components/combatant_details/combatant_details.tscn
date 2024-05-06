@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://6lknpo3nmdtm"]
+[gd_scene load_steps=8 format=3 uid="uid://6lknpo3nmdtm"]
 
 [ext_resource type="Script" path="res://screens/battle/components/combatant_details/combatant_details.gd" id="1_84s6r"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="1_325si"]
@@ -6,6 +6,9 @@
 [ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].tres" id="4_760g0"]
 [ext_resource type="SpriteFrames" uid="uid://cyj2jpkpuk3v6" path="res://assets/weapon/sword_ [iron].tres" id="5_sc0m6"]
 [ext_resource type="PackedScene" uid="uid://d3hgujhlslrnh" path="res://view/styled_button/styled_button.tscn" id="6_jfwrr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ohtu4"]
+bg_color = Color(1, 0, 0.266667, 1)
 
 [node name="CombatantDetails" type="Control"]
 texture_filter = 1
@@ -57,26 +60,101 @@ text = "Ignotus"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="BoxContainer" type="BoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
-unique_name_in_owner = true
+[node name="SpritesContainer" type="BoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 
-[node name="CombatantSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/VBoxContainer/BoxContainer"]
+[node name="CombatantSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/VBoxContainer/SpritesContainer"]
 unique_name_in_owner = true
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("4_760g0")
 animation = &"idle"
 offset = Vector2(12, 16)
 
-[node name="WeaponSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/VBoxContainer/BoxContainer"]
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/VBoxContainer/SpritesContainer"]
 unique_name_in_owner = true
 scale = Vector2(4, 4)
 sprite_frames = ExtResource("5_sc0m6")
 animation = &"idle"
 offset = Vector2(22, 16)
+
+[node name="HealthBar" type="ProgressBar" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("2_6j3og")
+theme_override_styles/background = SubResource("StyleBoxFlat_ohtu4")
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/HealthBar"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("2_6j3og")
+theme_override_font_sizes/font_size = 16
+text = "10 / 10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 2
+
+[node name="TypeDt" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_6j3og")
+theme_override_font_sizes/font_size = 16
+text = "Type:"
+
+[node name="TypeDd" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_6j3og")
+theme_override_font_sizes/font_size = 16
+text = "Human"
+
+[node name="WeaponDt" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_6j3og")
+theme_override_font_sizes/font_size = 16
+text = "Weapon:"
+
+[node name="WeaponDd" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_6j3og")
+theme_override_font_sizes/font_size = 16
+text = "Sword"
+
+[node name="DamageDt" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme = ExtResource("2_6j3og")
+theme_override_font_sizes/font_size = 16
+text = "Damage:"
+
+[node name="DamageDd" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer/GridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_6j3og")
+theme_override_colors/font_color = Color(1, 0, 0.266667, 1)
+theme_override_font_sizes/font_size = 16
+text = "1-2"
+
+[node name="Spacer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
 [node name="CloseButton" parent="NinePatchRect/MarginContainer" instance=ExtResource("6_jfwrr")]
 unique_name_in_owner = true

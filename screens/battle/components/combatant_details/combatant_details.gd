@@ -7,6 +7,8 @@ class_name BattleScreenCombatantDetails
 @onready var _combatant_sprite: AnimatedSprite2D = %CombatantSprite
 @onready var _weapon_sprite: AnimatedSprite2D = %WeaponSprite
 @onready var _close_button: StyledButton = %CloseButton
+@onready var _health_bar: ProgressBar = %HealthBar
+@onready var _health_label: Label = %HealthLabel
 
 var _combatant: Combatant
 
@@ -32,6 +34,28 @@ func initialize(combatant: Combatant) -> void:
 		_combatant_sprite.play("death", -1.0, true)
 	_weapon_sprite.sprite_frames = combatant.weapon.sprite_frames
 	combatant.state_machine.state_changed.connect(_update_animation_based_on_state)
+	%TypeDd.text = combatant.type.capitalize()
+	%TypeDd.add_theme_color_override("font_color", ColorsData.get_color(combatant.type))
+	%WeaponDd.text = combatant.weapon.weapon_name.capitalize()
+	%WeaponDd.add_theme_color_override(
+		"font_color", 
+		ColorsData.get_color(combatant.weapon.weapon_name)
+	)
+	%DamageDd.text =  "{min}-{max}".format({
+		"min": str(combatant.weapon.damage.min_value),
+		"max": str(combatant.weapon.damage.max_value)
+	})
+	
+func _process(_delta: float) -> void:
+	if not _combatant:
+		return
+	_health_bar.max_value = _combatant.health.max_value
+	_health_bar.min_value = _combatant.health.min_value
+	_health_bar.value = _combatant.health.current_value
+	_health_label.text = "{current} / {max}".format({
+		"current": str(_combatant.health.current_value),
+		"max": str(_combatant.health.max_value)
+	})
 
 func _update_animation_based_on_state(state: CombatantState) -> void:
 		if state is CombatantSeekEnemyState:
