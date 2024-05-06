@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://t8o4xk11k8c0"]
+[gd_scene load_steps=11 format=3 uid="uid://t8o4xk11k8c0"]
 
 [ext_resource type="Script" path="res://screens/battle/components/combatant_thumbnail/combatant_thumbnail.gd" id="1_fyil0"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="1_p3o30"]
@@ -7,6 +7,16 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmme8"]
 bg_color = Color(1, 0, 0.266667, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q840p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cebab"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iy0vr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8fxet"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nwx25"]
 
 [node name="CombatantThumbnail" type="Control"]
 texture_filter = 1
@@ -74,3 +84,17 @@ layout_mode = 2
 theme = ExtResource("4_dc0vb")
 theme_override_styles/background = SubResource("StyleBoxFlat_fmme8")
 show_percentage = false
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_q840p")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_cebab")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iy0vr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_8fxet")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nwx25")

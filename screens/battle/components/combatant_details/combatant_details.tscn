@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://6lknpo3nmdtm"]
+
+[ext_resource type="Script" path="res://screens/battle/components/combatant_details/combatant_details.gd" id="1_84s6r"]
+[ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="1_325si"]
+[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_6j3og"]
+[ext_resource type="SpriteFrames" uid="uid://cs2hy8mpketdk" path="res://assets/combatant/playerSprites_ [version 1.0]/fPlayer_ [dwarf].tres" id="4_760g0"]
+[ext_resource type="SpriteFrames" uid="uid://cyj2jpkpuk3v6" path="res://assets/weapon/sword_ [iron].tres" id="5_sc0m6"]
+[ext_resource type="PackedScene" uid="uid://d3hgujhlslrnh" path="res://view/styled_button/styled_button.tscn" id="6_jfwrr"]
+
+[node name="CombatantDetails" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_84s6r")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_325si")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CombatantName" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("2_6j3og")
+text = "Ignotus"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+
+[node name="CombatantSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/VBoxContainer/BoxContainer"]
+unique_name_in_owner = true
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("4_760g0")
+animation = &"idle"
+offset = Vector2(12, 16)
+
+[node name="WeaponSprite" type="AnimatedSprite2D" parent="NinePatchRect/MarginContainer/VBoxContainer/BoxContainer"]
+unique_name_in_owner = true
+scale = Vector2(4, 4)
+sprite_frames = ExtResource("5_sc0m6")
+animation = &"idle"
+offset = Vector2(22, 16)
+
+[node name="CloseButton" parent="NinePatchRect/MarginContainer" instance=ExtResource("6_jfwrr")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0

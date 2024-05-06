@@ -1,6 +1,8 @@
 extends Control
 class_name BattleScreenTeamPanel
 
+signal combatant_selected(Combatant)
+
 @onready var _team_icon: TextureRect = %TeamIcon
 @onready var _team_name: Label = %TeamName
 @onready var _close_button: StyledButton = %CloseButton
@@ -18,5 +20,6 @@ func add_combatant(combatant: Combatant) -> void:
 	var combatant_thumbnail: BattleScreenCombatantThumbnail = _combatant_thumbnail_template.duplicate()
 	combatant_thumbnail.ready.connect(func():
 		combatant_thumbnail.initialize(combatant)
+		combatant_thumbnail.selected.connect(func(): combatant_selected.emit(combatant))
 	)
 	_combatants_container.add_child(combatant_thumbnail)

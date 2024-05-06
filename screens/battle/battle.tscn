@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://sw5p772ul8m0"]
+[gd_scene load_steps=5 format=3 uid="uid://sw5p772ul8m0"]
 
 [ext_resource type="Script" path="res://screens/battle/battle.gd" id="1_1btwx"]
 [ext_resource type="PackedScene" uid="uid://ca3mogffsrh84" path="res://screens/battle/components/team_panel/team_panel.tscn" id="2_4620u"]
 [ext_resource type="PackedScene" uid="uid://bilyy5eu7pu25" path="res://screens/battle/components/team_score/team_score.tscn" id="2_hwd34"]
+[ext_resource type="PackedScene" uid="uid://6lknpo3nmdtm" path="res://screens/battle/components/combatant_details/combatant_details.tscn" id="3_oq8r0"]
 
 [node name="Battle" type="CanvasLayer"]
 script = ExtResource("1_1btwx")
@@ -20,6 +21,7 @@ theme_override_constants/margin_bottom = 16
 
 [node name="PlayerTeamPanel" parent="MarginContainer" instance=ExtResource("2_4620u")]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(260, 360)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -27,10 +29,26 @@ size_flags_vertical = 4
 
 [node name="EnemyTeamPanel" parent="MarginContainer" instance=ExtResource("2_4620u")]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(260, 360)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+
+[node name="PlayerCombatantDetails" parent="MarginContainer" instance=ExtResource("3_oq8r0")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 360)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="EnemyCombatantDetails" parent="MarginContainer" instance=ExtResource("3_oq8r0")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 360)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+flip_h = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
