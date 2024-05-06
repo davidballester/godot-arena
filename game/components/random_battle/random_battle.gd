@@ -5,13 +5,14 @@ const TEAMS = 3
 const INITIAL_COMBATANTS = 20
 const COMBATANTS_CAP = 80
 
-@onready var _battle: BattleController = %BattleController
 @onready var _combatant_spawn_timer: Timer = %CombatantSpawnTimer
+@onready var _combatants_container: Node = %CombatantsContainer
 
 var _team_index: int = 0
+var _battle: Battle
 
 func start() -> void:
-	_battle.initialize()
+	_battle = Battle.new()
 	for i in range(0, TEAMS):
 		var team = _create_team()
 		_battle.add_team(team)
@@ -20,10 +21,12 @@ func start() -> void:
 	_combatant_spawn_timer.timeout.connect(_spawn_combatant_for_current_team)
 	
 func _spawn_combatant_for_current_team() -> void:
-	if _battle.count_alive_combatants() >= COMBATANTS_CAP:
+	if _count_alive_combatants() >= COMBATANTS_CAP:
 		return
-	var team_id = _battle.get_teams_ids()[_team_index]
-	var combatant = await _battle.add_combatant(team_id)
+	var team: Team = _battle.teams[_team_index]
+	var combatant = await _add_combatant(team)
+	team.add_combatant(combatant.model)
+	_battle.add_combatant(combatant.model)
 	combatant.position = _get_current_team_spawn_position()
 	_team_index = (_team_index + 1) % TEAMS
 	
@@ -57,3 +60,24 @@ func _get_current_team_spawn_position() -> Vector2:
 		GameGlobals.VIEWPORT_WIDTH / 2 + random_x_wiggle, 
 		GameGlobals.VIEWPORT_HEIGHT + 20
 	)
+
+func _count_alive_combatants() -> int:
+	return _battle.teams.reduce(
+		func(alive_combatants: int, team: Team) -> int:
+			var alive_combatants_in_team = team.combatants.filter(func(c: Combatant): c.is_alive()).size()
+			return alive_combatants + alive_combatants_in_team,
+		0
+	)
+	
+func _add_combatant(team: Team) -> CombatantController:
+	var combatant_type = GameGlobals.get_combatants_templates_data().get_random_type()
+	var weapon = GameGlobals.get_weapons_data().get_random_weapon()
+	var combatant = await GameGlobals.get_combatants_templates_data().create_random_combatant_controller(
+		_combatants_container,
+		team,
+		combatant_type,
+		_battle,
+		weapon,
+		false
+	)
+	return combatant
