@@ -14,11 +14,14 @@ var _attacking: bool = false
 func initialize(
 	model: Combatant,
 	team: Team,
-	weapon: WeaponController,
 	hud_enabled: bool = true
 ) -> void:
 	self.model = model
-	self.weapon = weapon
+	var weapon_view: WeaponView = load(model.weapon.view_scene).instantiate()
+	var weapon_animated_sprite = AnimatedSprite2D.new()
+	weapon_animated_sprite.sprite_frames = model.weapon.sprite_frames
+	weapon_view.animated_sprite = weapon_animated_sprite
+	self.weapon = WeaponController.new(model.weapon, weapon_view)
 	id = "%s_controller" % model.id
 	model.state_machine.state_changed.connect(_on_state_changed)
 	model.weapon = weapon.model

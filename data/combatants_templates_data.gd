@@ -1,10 +1,6 @@
 extends Node
 class_name CombatantsTemplatesData
 
-const CONTROLLER_RESOURCE = preload(
-	"res://controller/combatant/combatant_controller.tscn"
-)
-
 var _database: SQLite
 var _type_to_ids: Dictionary
 var _combatants_names_data: CombatantsNamesData
@@ -78,30 +74,3 @@ func create_random_combatant(
 		animated_sprite,
 		dust_animated_sprite
 	)
-	
-func create_random_combatant_controller(
-	container: Node2D,
-	team: Team,
-	type: String, 
-	battle: Battle,
-	weapon: WeaponController,
-	hud_enabled: bool = true
-) -> CombatantController:
-	var combatant = create_random_combatant(
-		team,
-		type,
-		battle,
-		weapon.model
-	)
-	battle.add_combatant(combatant)
-	var controller: CombatantController = CONTROLLER_RESOURCE.instantiate()
-	team.add_combatant(combatant)
-	container.add_child(controller)
-	await container.get_tree().process_frame
-	controller.initialize(
-		combatant, 
-		team, 
-		weapon,
-		hud_enabled
-	)
-	return controller

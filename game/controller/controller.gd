@@ -35,9 +35,9 @@ func stop_random_battle() -> void:
 	_random_battle.queue_free()
 	
 func start_new_game() -> void:
+	GameGlobals.battle = Battle.new()
 	GameGlobals.player_team = _create_player_team()
 	GameGlobals.enemy_team = _create_enemy_team()
-	GameGlobals.battle = Battle.new()
 	var terrain_path = GameGlobals.get_battles_data().get_random_terrain_path()
 	var terrain = load(terrain_path).instantiate()
 	GameGlobals.battle.terrain = terrain
@@ -76,13 +76,13 @@ func _create_enemy_team() -> Team:
 	return team
 
 func _add_random_combatant(team: Team) -> void:
-		var combatant_type = GameGlobals.get_combatants_templates_data().get_random_type()
-		var weapon = GameGlobals.get_weapons_data().get_random_weapon()
-		var combatant = GameGlobals.get_combatants_templates_data().create_random_combatant(
-			team,
-			combatant_type,
-			GameGlobals.battle,
-			weapon.model,
-		)
-		team.add_combatant(combatant)
-	
+	var combatant_type = GameGlobals.get_combatants_templates_data().get_random_type()
+	var weapon = GameGlobals.get_weapons_data().get_random_weapon()
+	var combatant = GameGlobals.get_combatants_templates_data().create_random_combatant(
+		team,
+		combatant_type,
+		GameGlobals.battle,
+		weapon,
+	)
+	team.add_combatant(combatant)
+	GameGlobals.battle.add_combatant(combatant)

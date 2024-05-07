@@ -12,6 +12,9 @@ func add_team(team: Team) -> void:
 
 func add_combatant(combatant: Combatant) -> void:
 	_id_to_combatant[combatant.id] = combatant
+	
+func remove_combatant(combatant: Combatant) -> void:
+	_id_to_combatant.erase(combatant.id)
 
 func get_oponents(combatant_id: String) -> Array[Combatant]:
 	var combatant = _id_to_combatant.get(combatant_id)

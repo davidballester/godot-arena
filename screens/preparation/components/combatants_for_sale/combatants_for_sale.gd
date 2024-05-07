@@ -36,7 +36,7 @@ func _add_combatant_for_sale() -> void:
 		GameGlobals.player_team,
 		combatant_type,
 		GameGlobals.battle,
-		weapon.model
+		weapon
 	)
 	var combatant_for_sale: PreparationScreenCombatantForSale = COMBATANT_FOR_SALE_SCENE.instantiate()
 	_combatants_container.add_child(combatant_for_sale)

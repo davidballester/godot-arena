@@ -11,7 +11,7 @@ func _init(database: SQLite) -> void:
 	var query_result = _database.select_rows(TABLE_NAME, "", ["id"])
 	_weapons_ids = query_result.map(func(row): return row.id)
 	
-func get_random_weapon() -> WeaponController:
+func get_random_weapon() -> Weapon:
 	var id = _weapons_ids.pick_random()
 	var query_result = _database.select_rows(
 		TABLE_NAME, 
@@ -34,14 +34,12 @@ func get_random_weapon() -> WeaponController:
 	var damage = MinMax.create(min_damage, max_damage)
 	var animated_sprite_path = query_result[0].animated_sprite_path
 	var animated_sprite = load(animated_sprite_path)
-	var weapon_model = Weapon.new(
+	var view_path = query_result[0].view_path
+	return Weapon.new(
 		weapon_name, 
 		damage, 
 		attack_duration_s, 
 		reach, 
-		animated_sprite
+		animated_sprite,
+		view_path
 	)
-	var view_path = query_result[0].view_path
-	var weapon_view: WeaponView = load(view_path).instantiate()
-	weapon_view.animated_sprite = animated_sprite
-	return WeaponController.new(weapon_model, weapon_view)

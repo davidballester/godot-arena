@@ -17,11 +17,13 @@ func initialize() -> void:
 	_combatants_for_sale.initialize()
 	_combatants_for_sale.combatant_bought.connect(func(combatant: Combatant):
 		GameGlobals.player_team.add_combatant(combatant)
+		GameGlobals.battle.add_combatant(combatant)
 		_team_panel.add_combatant(combatant)
 	)
 	_enemy_team.initialize()
 	_combatant_details.combatant_sold.connect(func(combatant: Combatant):
 		GameGlobals.player_team.remove_combatant(combatant)
+		GameGlobals.battle.remove_combatant(combatant)
 		_team_panel.remove_combatant(combatant)
 		combatant.queue_free()
 	)
