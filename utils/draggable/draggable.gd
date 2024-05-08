@@ -20,10 +20,10 @@ func _process(_delta: float) -> void:
 	var delta = mouse_position - _last_mouse_position
 	var new_x = movable_control.global_position.x + delta.x
 	var new_y = movable_control.global_position.y + delta.y
-	if new_x + movable_control.size.x > GameGlobals.VIEWPORT_WIDTH:
-		new_x = GameGlobals.VIEWPORT_WIDTH - movable_control.size.x
-	if new_y + movable_control.size.y > GameGlobals.VIEWPORT_HEIGHT:
-		new_y = GameGlobals.VIEWPORT_HEIGHT - movable_control.size.y
+	if new_x + size.x > GameGlobals.VIEWPORT_WIDTH:
+		new_x = GameGlobals.VIEWPORT_WIDTH - size.x
+	if new_y + size.y > GameGlobals.VIEWPORT_HEIGHT:
+		new_y = GameGlobals.VIEWPORT_HEIGHT - size.y
 	movable_control.global_position = Vector2(
 		max(0, new_x),
 		max(0, new_y),
