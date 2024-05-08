@@ -1,12 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://t8o4xk11k8c0"]
+[gd_scene load_steps=10 format=3 uid="uid://t8o4xk11k8c0"]
 
 [ext_resource type="Script" path="res://screens/battle/components/combatant_thumbnail/combatant_thumbnail.gd" id="1_fyil0"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="1_p3o30"]
 [ext_resource type="PackedScene" uid="uid://dy1oc5vnd2dpg" path="res://view/combatant_sprite_thumbnail/combatant_sprite_thumbnail.tscn" id="2_0ea5f"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="4_dc0vb"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fmme8"]
-bg_color = Color(1, 0, 0.266667, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q840p"]
 
@@ -82,7 +79,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 8)
 layout_mode = 2
 theme = ExtResource("4_dc0vb")
-theme_override_styles/background = SubResource("StyleBoxFlat_fmme8")
 show_percentage = false
 
 [node name="Button" type="Button" parent="."]

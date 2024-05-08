@@ -58,13 +58,13 @@ func _process(_delta: float) -> void:
 	})
 
 func _update_animation_based_on_state(state: CombatantState) -> void:
-		if state is CombatantSeekEnemyState:
-			_combatant_sprite.play("run")
-			return
-		if state is CombatantDeadState:
-			_combatant_sprite.play("death")
-			return
-		if state is CombatantHitState:
-			_combatant_sprite.play("hit")
-			await _combatant_sprite.animation_finished
-		_combatant_sprite.play("idle")
+	if state is CombatantSeekEnemyState:
+		_combatant_sprite.play("run")
+		return
+	if state is CombatantDeadState:
+		_combatant_sprite.play("death")
+		return
+	if state is CombatantHitState:
+		_combatant_sprite.play("hit")
+		await _combatant_sprite.animation_finished
+	_combatant_sprite.play("idle")
