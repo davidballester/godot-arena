@@ -2,6 +2,7 @@ extends Control
 class_name BattleScreenCombatantDetails
 
 @export var flip_h: bool = false
+@export var show_actions: bool = true
 
 @onready var _combatant_name: Label = %CombatantName
 @onready var _combatant_sprite: AnimatedSprite2D = %CombatantSprite
@@ -9,6 +10,8 @@ class_name BattleScreenCombatantDetails
 @onready var _close_button: StyledButton = %CloseButton
 @onready var _health_bar: ProgressBar = %HealthBar
 @onready var _health_label: Label = %HealthLabel
+@onready var _actions_container: Control = %ActionsContainer
+@onready var _heal_button: PriceButton = %HealButton
 
 var _combatant: Combatant
 
@@ -20,6 +23,11 @@ func _ready() -> void:
 		# Magic!
 		_combatant_sprite.offset.x = 20
 		_weapon_sprite.offset.x = 10
+	_heal_button.initialize(PriceButton.Type.BUY, 1)
+	_heal_button.pressed.connect(func():
+		_combatant.health.current_value = _combatant.health.max_value
+	)
+	_actions_container.visible = show_actions
 
 func initialize(combatant: Combatant) -> void:
 	if _combatant:
@@ -48,7 +56,9 @@ func initialize(combatant: Combatant) -> void:
 	
 func _process(_delta: float) -> void:
 	if not _combatant:
+		_heal_button.enabled = false
 		return
+	_heal_button.enabled = _combatant.is_alive() and _combatant.health.get_ratio() < 1.0
 	_health_bar.max_value = _combatant.health.max_value
 	_health_bar.min_value = _combatant.health.min_value
 	_health_bar.value = _combatant.health.current_value
