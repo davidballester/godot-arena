@@ -21,6 +21,8 @@
 custom_minimum_size = Vector2(65, 25)
 layout_mode = 3
 anchors_preset = 0
+offset_right = 65.0
+offset_bottom = 25.0
 script = ExtResource("1_8roxv")
 
 [node name="Button" type="Button" parent="."]
@@ -109,25 +111,14 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 16
 text = "Sell"
 
-[node name="Control" type="Control" parent="Button/ButtonContents/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Button/ButtonContents/HBoxContainer"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="Button/ButtonContents/HBoxContainer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 3.0
-offset_right = 16.0
-offset_bottom = 13.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("5_2bawn")
+expand_mode = 4
+stretch_mode = 4
 
 [node name="PriceTag" type="Label" parent="Button/ButtonContents/HBoxContainer"]
 unique_name_in_owner = true

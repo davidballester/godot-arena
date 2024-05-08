@@ -5,6 +5,8 @@ const COMBATANT_CONTROLLER_SCENE = preload(
 	"res://controllers/combatant/combatant_controller.tscn"
 )
 
+@onready var _hud: BattleScreenHud = %HUD
+
 func _ready() -> void:
 	add_child(GameGlobals.battle.terrain)
 	move_child(GameGlobals.battle.terrain, 0)
@@ -19,6 +21,14 @@ func _ready() -> void:
 			GameGlobals.enemy_team,
 			_get_enemy_team_spawn_position
 		)
+	)
+	_hud.combatant_bought.connect(func(c: Combatant):
+		GameGlobals.player_team.add_combatant(c)
+		GameGlobals.battle.add_combatant(c)
+		_create_add_combatant_to_ground(
+			GameGlobals.player_team, 
+			_get_player_team_spawn_position
+		).call(c)
 	)
 
 func _create_add_combatant_to_ground(t: Team, get_spawn_position: Callable):

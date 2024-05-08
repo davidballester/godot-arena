@@ -6,4 +6,5 @@
 [node name="Battle" type="CanvasLayer"]
 script = ExtResource("1_1btwx")
 
-[node name="Hud" parent="." instance=ExtResource("2_hq4v7")]
+[node name="HUD" parent="." instance=ExtResource("2_hq4v7")]
+unique_name_in_owner = true
