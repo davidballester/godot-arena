@@ -36,6 +36,7 @@ func initialize(combatant: Combatant) -> void:
 	_combatant_name.text = combatant.id
 	_combatant_sprite.sprite_frames = combatant.sprite_frames
 	if combatant.is_alive():
+		_combatant_sprite.speed_scale = 1.0
 		_update_animation_based_on_state(combatant.state_machine.current_state)
 	else:
 		_combatant_sprite.speed_scale = 0
