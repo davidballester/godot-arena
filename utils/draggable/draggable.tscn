@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://cggbffv86dixn"]
+
+[ext_resource type="Script" path="res://utils/draggable/draggable.gd" id="1_f4mlt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_shxb0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jyx4i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bk4bv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bp65c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r73yp"]
+
+[node name="Draggable" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_shxb0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_jyx4i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bk4bv")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bp65c")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r73yp")
+script = ExtResource("1_f4mlt")
