@@ -12,6 +12,7 @@ class_name BattleScreenCombatantDetails
 @onready var _health_label: Label = %HealthLabel
 @onready var _actions_container: Control = %ActionsContainer
 @onready var _heal_button: PriceButton = %HealButton
+@onready var _revive_button: PriceButton = %ReviveButton
 
 var _combatant: Combatant
 
@@ -25,6 +26,9 @@ func _ready() -> void:
 		_weapon_sprite.offset.x = 10
 	_heal_button.initialize(PriceButton.Type.BUY, 1)
 	_heal_button.pressed.connect(func():
+		_combatant.health.current_value = _combatant.health.max_value
+	)
+	_revive_button.pressed.connect(func():
 		_combatant.health.current_value = _combatant.health.max_value
 	)
 	_actions_container.visible = show_actions
@@ -54,12 +58,15 @@ func initialize(combatant: Combatant) -> void:
 		"min": str(combatant.weapon.damage.min_value),
 		"max": str(combatant.weapon.damage.max_value)
 	})
+	_revive_button.initialize(PriceButton.Type.BUY, floor(_combatant.price * 1.5))
 	
 func _process(_delta: float) -> void:
 	if not _combatant:
 		_heal_button.enabled = false
+		_revive_button.enabled = false
 		return
 	_heal_button.enabled = _combatant.is_alive() and _combatant.health.get_ratio() < 1.0
+	_revive_button.enabled = not _combatant.is_alive()
 	_health_bar.max_value = _combatant.health.max_value
 	_health_bar.min_value = _combatant.health.min_value
 	_health_bar.value = _combatant.health.current_value

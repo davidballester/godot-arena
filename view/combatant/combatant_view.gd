@@ -41,6 +41,12 @@ func die() -> void:
 	tween.tween_property(self, "modulate:a", 0, 0.5)
 	await tween.finished
 	
+func revive() -> void:
+	dead_icon.hide()
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, 0.5)
+	await tween.finished
+	
 func hit(damage: int) -> void:
 	var prev_animation = combatant.animation
 	if _hud_enabled:

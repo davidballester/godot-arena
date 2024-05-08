@@ -66,6 +66,10 @@ func face(pos: Vector2) -> void:
 func die() -> void:
 	_collision_shape.disabled = true
 	await view.die()
+	
+func revive() -> void:
+	_collision_shape.disabled = false
+	await view.revive()
 		
 func _turn() -> void:
 	_facing_right = not _facing_right
@@ -74,6 +78,9 @@ func _turn() -> void:
 	await view.turn(true)
 
 func _on_state_changed(state: State) -> void:
+	var was_dead = _state_machine.current_state and _state_machine.current_state is CombatantControllerDeadState
+	if was_dead:
+		revive()
 	if state is CombatantApproachEnemyState:
 		_state_machine.transition_to_state(
 			CombatantControllerApproachEnemyState.get_state_name(), 
