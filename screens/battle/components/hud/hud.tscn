@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bilyy5eu7pu25" path="res://screens/battle/components/team_score/team_score.tscn" id="3_gjg7s"]
 [ext_resource type="PackedScene" uid="uid://cggbffv86dixn" path="res://utils/draggable/draggable.tscn" id="5_cg7lt"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qq5xk"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_id2jc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qq5xk"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -38,34 +38,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 
-[node name="PlayerContent" type="PanelContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_styles/panel = SubResource("StyleBoxEmpty_qq5xk")
-
-[node name="PlayerTeamPanel" parent="MarginContainer/PlayerContent" instance=ExtResource("1_wfyy1")]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(260, 360)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="PlayerCombatantDetails" parent="MarginContainer/PlayerContent" instance=ExtResource("2_dglor")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 360)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="Draggable" parent="MarginContainer/PlayerContent" node_paths=PackedStringArray("movable_control") instance=ExtResource("5_cg7lt")]
-custom_minimum_size = Vector2(195, 50)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-movable_control = NodePath("..")
-
 [node name="EnemyContent" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
@@ -90,6 +62,34 @@ flip_h = true
 show_actions = false
 
 [node name="Draggable" parent="MarginContainer/EnemyContent" node_paths=PackedStringArray("movable_control") instance=ExtResource("5_cg7lt")]
+custom_minimum_size = Vector2(195, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+movable_control = NodePath("..")
+
+[node name="PlayerContent" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qq5xk")
+
+[node name="PlayerTeamPanel" parent="MarginContainer/PlayerContent" instance=ExtResource("1_wfyy1")]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(260, 360)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="PlayerCombatantDetails" parent="MarginContainer/PlayerContent" instance=ExtResource("2_dglor")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(260, 360)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Draggable" parent="MarginContainer/PlayerContent" node_paths=PackedStringArray("movable_control") instance=ExtResource("5_cg7lt")]
 custom_minimum_size = Vector2(195, 50)
 layout_mode = 2
 size_flags_horizontal = 4
