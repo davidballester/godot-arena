@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dfruwelxpa3ih"]
+[gd_scene load_steps=7 format=3 uid="uid://dfruwelxpa3ih"]
 
-[ext_resource type="Script" path="res://game/controller/controller.gd" id="1_pfcox"]
+[ext_resource type="Script" path="res://game/game.gd" id="1_pfcox"]
 [ext_resource type="Script" path="res://game/state_machine/state_machine.gd" id="1_u1ebq"]
-[ext_resource type="PackedScene" uid="uid://0xb1eevxjdhm" path="res://game/views/random_battle/random_battle.tscn" id="2_q880f"]
+[ext_resource type="PackedScene" uid="uid://0xb1eevxjdhm" path="res://game/components/random_battle/random_battle.tscn" id="2_q880f"]
 [ext_resource type="Script" path="res://game/state_machine/main_menu_state.gd" id="2_ujaf0"]
-[ext_resource type="Script" path="res://game/state_machine/battle_state.gd" id="4_0otsi"]
+[ext_resource type="Script" path="res://game/state_machine/preparation_state.gd" id="5_t15md"]
+[ext_resource type="Script" path="res://game/state_machine/battle_state.gd" id="6_f4yuq"]
 
 [node name="GameController" type="Node2D"]
 script = ExtResource("1_pfcox")
@@ -20,5 +21,8 @@ controller = NodePath("..")
 [node name="MainMenuState" type="Node" parent="StateMachine"]
 script = ExtResource("2_ujaf0")
 
+[node name="PreparationState" type="Node" parent="StateMachine"]
+script = ExtResource("5_t15md")
+
 [node name="BattleState" type="Node" parent="StateMachine"]
-script = ExtResource("4_0otsi")
+script = ExtResource("6_f4yuq")
