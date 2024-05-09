@@ -16,12 +16,18 @@ func _ready() -> void:
 			_get_player_team_spawn_position
 		)
 	)
-	GameGlobals.enemy_team.combatants.map(
+	for combatant in GameGlobals.enemy_team.combatants:
 		_create_add_combatant_to_ground(
 			GameGlobals.enemy_team,
 			_get_enemy_team_spawn_position
+		).call(combatant)
+		combatant.defeated.connect(func(): 
+			var reward = max(
+				1, 
+				floor(combatant.price * Prices.battle_screen_combatant_defeated_mutliplier)
+			)
+			GameGlobals.budget.add_to_budget(reward)
 		)
-	)
 	_hud.combatant_bought.connect(func(c: Combatant):
 		GameGlobals.player_team.add_combatant(c)
 		GameGlobals.battle.add_combatant(c)

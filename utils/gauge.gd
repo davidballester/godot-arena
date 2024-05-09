@@ -1,6 +1,8 @@
 extends MinMax
 class_name Gauge
 
+signal minimum_reached()
+
 static func create(minv: int, maxv: int) -> Gauge:
 	var gauge = Gauge.new()
 	gauge.min_value = minv
@@ -16,6 +18,8 @@ static func create(minv: int, maxv: int) -> Gauge:
 			current_value = min_value
 		else:
 			current_value = new_value
+		if current_value == min_value:
+			minimum_reached.emit()
 			
 func get_ratio() -> float :
 	@warning_ignore("integer_division")

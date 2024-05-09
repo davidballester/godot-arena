@@ -9,3 +9,4 @@ static var preparation_screen_reveal_cost: int = 2
 static var battle_screen_heal_cost: int = 2
 static var battle_screen_revive_multiplier: float = 1.5
 static var battle_screen_combatant_for_sale_multiplier = 1.5
+static var battle_screen_combatant_defeated_mutliplier = 0.3

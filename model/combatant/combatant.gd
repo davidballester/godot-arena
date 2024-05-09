@@ -1,6 +1,8 @@
 extends Node2D
 class_name Combatant
 
+signal defeated()
+
 var id: String
 var type: String
 var team_id: String
@@ -58,6 +60,7 @@ func _init(
 	if battle:
 		state_machine.initialize()
 		state_machine.transition_to_state(CombatantSeekEnemyState.get_state_name())
+	health.minimum_reached.connect(func(): defeated.emit())
 
 func is_alive() -> bool:
 	return health.current_value > 0
