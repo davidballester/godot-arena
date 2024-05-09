@@ -30,6 +30,13 @@ func initialize(combatant: Combatant, sell_enabled: bool) -> void:
 	_weapon.text = combatant.weapon.weapon_name.capitalize()
 	_weapon.add_theme_color_override("font_color", ColorsData.get_color(combatant.weapon.weapon_name))
 	@warning_ignore("integer_division")
-	var sell_price = max(1, int(ceil(combatant.price / 2)))
+	var sell_price = max(
+		1, 
+		int(
+			ceil(
+				combatant.price * Prices.preparation_screen_combatant_sell_multiplier
+			)
+		)
+	)
 	_sell_button.initialize(PriceButton.Type.SELL, sell_price)
 	_sell_button.enabled = sell_enabled

@@ -32,7 +32,10 @@ func _initialize() -> void:
 	)
 	_combatant_sprite_thumbnail.initialize(_combatant, true)
 	_combatant_type.text = combatant_type.capitalize()
-	_buy_button.initialize(PriceButton.Type.BUY, ceil(_combatant.price * 1.5))
+	_buy_button.initialize(
+		PriceButton.Type.BUY, 
+		ceil(_combatant.price * Prices.battle_screen_combatant_for_sale_multiplier)
+	)
 	show()
 	_progress_bar.value = APPEAR_FOR_SECONDS
 

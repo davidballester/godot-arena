@@ -11,7 +11,10 @@ class_name PreparationScreenEnemyTeam
 func initialize() -> void:
 	_team_icon.texture = GameGlobals.enemy_team.icon
 	_team_name.text = GameGlobals.enemy_team.team_name.capitalize()
-	_reveal_button.initialize(PriceButton.Type.BUY, 2)
+	_reveal_button.initialize(
+		PriceButton.Type.BUY, 
+		Prices.preparation_screen_reveal_cost
+	)
 	_reveal_button.pressed.connect(func():
 		_reveal_button_container.hide()
 		_combatants_container.show()

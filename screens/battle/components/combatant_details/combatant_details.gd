@@ -24,7 +24,10 @@ func _ready() -> void:
 		# Magic!
 		_combatant_sprite.offset.x = 20
 		_weapon_sprite.offset.x = 10
-	_heal_button.initialize(PriceButton.Type.BUY, 1)
+	_heal_button.initialize(
+		PriceButton.Type.BUY, 
+		Prices.battle_screen_heal_cost
+	)
 	_heal_button.pressed.connect(func():
 		_combatant.health.current_value = _combatant.health.max_value
 	)
@@ -58,7 +61,10 @@ func initialize(combatant: Combatant) -> void:
 		"min": str(combatant.weapon.damage.min_value),
 		"max": str(combatant.weapon.damage.max_value)
 	})
-	_revive_button.initialize(PriceButton.Type.BUY, floor(_combatant.price * 1.5))
+	_revive_button.initialize(
+		PriceButton.Type.BUY, 
+		floor(_combatant.price * Prices.battle_screen_revive_multiplier)
+	)
 	
 func _process(_delta: float) -> void:
 	if not _combatant:

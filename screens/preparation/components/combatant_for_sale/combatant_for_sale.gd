@@ -14,7 +14,9 @@ func initialize(combatant: Combatant) -> void:
 		"font_color", 
 		ColorsData.get_color(combatant.type)
 	)
-	_buy_button.initialize(PriceButton.Type.BUY, combatant.price)
+	@warning_ignore("narrowing_conversion")
+	var price = ceil(combatant.price * Prices.preparation_screen_combatant_for_sale_multiplier)
+	_buy_button.initialize(PriceButton.Type.BUY,  price)
 	_buy_button.pressed.connect(func(): 
 		bought.emit()
 		_buy_button.enabled = false

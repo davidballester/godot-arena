@@ -1,9 +1,7 @@
 extends Node
 class_name Budget
 
-const INITIAL_BUDGET = 10
-
-var current: int = INITIAL_BUDGET
+var current: int = Prices.initial_budget
 
 func can_afford(price: int) -> bool:
 	return current - price >= 0
