@@ -16,7 +16,10 @@ func process(_delta: float) -> void:
 	_choose_new_oponent()
 
 func _choose_new_oponent() -> void:
-	var oponents = datastore.battle.get_oponents(datastore.combatant_id)
+	var oponents: Array = datastore.battle.get_oponents(datastore.combatant_id)
+	if oponents.is_empty():
+		state_machine.transition_to_state(CombatantVictoryState.get_state_name())
+		return
 	var perceived_oponents = oponents.map(func(o: Combatant):
 		return datastore.perception_component.perceive_combatant(o)
 	)

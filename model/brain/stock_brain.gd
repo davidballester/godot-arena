@@ -5,11 +5,7 @@ func choose_oponent(
 	_combatant: PerceivedCombatant, 
 	oponents: Array[PerceivedCombatant]
 ) -> PerceivedCombatant:
-	var oponents_sorted_by_distance = Array(oponents)
-	oponents_sorted_by_distance.sort_custom(func(a: PerceivedCombatant, b:PerceivedCombatant):
-		return b.distance < a.distance
-	)
-	return oponents_sorted_by_distance.pop_back()
+	return Array(oponents).pick_random()
 	
 func should_keep_fighting(_combatant: PerceivedCombatant) -> bool:
 	return true
