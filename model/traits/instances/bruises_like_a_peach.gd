@@ -1,14 +1,14 @@
 extends DamageTakenModificationTrait
-class_name ThickSkinned
+class_name BruisesLikeAPeach
 
 func get_trait_name() -> String:
-	return "Thick skinned"
+	return "Bruises like a peach"
 	
 func get_incompatibilities() -> Array:
-	return ["Bruises like a peach"]
+	return ["Thick skinned"]
 	
 func get_description() -> String:
-	return "Words and smacks do not hurt much an oblivious mind"
+	return "The slightest wound is a matter of life or death"
 	
 func modify_damage_taken(damage: int) -> int:
-	return max(0, damage - 1)
+	return max(0, damage + 1)
