@@ -16,6 +16,7 @@ var battle: Battle
 var sprite_frames: SpriteFrames
 var dust_sprite_frames: SpriteFrames
 var price: int
+var traits: Array
 
 var _inmune: bool = false
 var _inmune_time_s: MinMaxFloat = MinMaxFloat.create(0.6, 1.3)
@@ -32,7 +33,8 @@ func _init(
 	health: Gauge,
 	price: int,
 	sprite_frames: SpriteFrames,
-	dust_sprite_frames: SpriteFrames
+	dust_sprite_frames: SpriteFrames,
+	traits: Array = []
 ) -> void:
 	self.id = id
 	self.type = type
@@ -46,6 +48,7 @@ func _init(
 	self.price = price
 	self.sprite_frames = sprite_frames
 	self.dust_sprite_frames = dust_sprite_frames
+	self.traits = traits
 	perception.self_combatant = self
 	state_machine = CombatantStateMachine.new(self, battle)
 	state_machine.id = id + "state_machine"
@@ -80,6 +83,10 @@ func take_damage(damage: int) -> void:
 	get_tree().create_timer(random_inmune_time_s).timeout.connect(
 		func(): _inmune = false
 	)
+	for traitt in traits:
+		if not traitt is DamageTakenModificationTrait:
+			continue
+		damage = traitt.modify_damage_taken(damage)
 	state_machine.transition_to_state(
 		CombatantHitState.get_state_name(), 
 		[damage]

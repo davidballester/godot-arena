@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnt6n70w4pfk1"]
+[gd_scene load_steps=8 format=3 uid="uid://dnt6n70w4pfk1"]
 
 [ext_resource type="Script" path="res://screens/preparation/components/combatant_details/combatant_details.gd" id="1_w2it5"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="2_mw8ss"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dy1oc5vnd2dpg" path="res://view/combatant_sprite_thumbnail/combatant_sprite_thumbnail.tscn" id="4_wuu0i"]
 [ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/components/price_button/price_button.tscn" id="5_d2a7w"]
 [ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="5_jd8cs"]
+[ext_resource type="PackedScene" uid="uid://kstjo3nfpx8k" path="res://view/traits/traits.tscn" id="7_c1pbx"]
 
 [node name="CombatantDetails" type="Control"]
 texture_filter = 1
@@ -158,3 +159,10 @@ theme = ExtResource("5_jd8cs")
 theme_override_colors/font_color = Color(1, 0, 0.266667, 1)
 theme_override_font_sizes/font_size = 16
 text = "1-2"
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="Traits" parent="NinePatchRect/MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer" instance=ExtResource("7_c1pbx")]
+layout_mode = 2

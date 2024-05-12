@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6lknpo3nmdtm"]
+[gd_scene load_steps=9 format=3 uid="uid://6lknpo3nmdtm"]
 
 [ext_resource type="Script" path="res://screens/battle/components/combatant_details/combatant_details.gd" id="1_84s6r"]
 [ext_resource type="Texture2D" uid="uid://6cjmjcfeje3c" path="res://assets/hud/popup.png" id="1_325si"]
@@ -7,6 +7,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cyj2jpkpuk3v6" path="res://assets/weapon/sword_ [iron].tres" id="5_sc0m6"]
 [ext_resource type="PackedScene" uid="uid://bpddpej0qo1sh" path="res://screens/preparation/components/price_button/price_button.tscn" id="6_1lkfv"]
 [ext_resource type="PackedScene" uid="uid://d3hgujhlslrnh" path="res://view/styled_button/styled_button.tscn" id="6_jfwrr"]
+[ext_resource type="PackedScene" uid="uid://kstjo3nfpx8k" path="res://view/traits/traits.tscn" id="7_eqmyu"]
 
 [node name="CombatantDetails" type="Control"]
 texture_filter = 1
@@ -46,6 +47,12 @@ theme_override_constants/margin_bottom = 8
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 8
+
+[node name="CloseButton" parent="NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("6_jfwrr")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
 
 [node name="CombatantName" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -149,6 +156,9 @@ theme_override_colors/font_color = Color(1, 0, 0.266667, 1)
 theme_override_font_sizes/font_size = 16
 text = "1-2"
 
+[node name="Traits" parent="NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("7_eqmyu")]
+layout_mode = 2
+
 [node name="Spacer" type="VBoxContainer" parent="NinePatchRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -169,9 +179,3 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 action = "Revive"
-
-[node name="CloseButton" parent="NinePatchRect/MarginContainer" instance=ExtResource("6_jfwrr")]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0

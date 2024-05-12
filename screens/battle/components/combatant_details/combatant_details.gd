@@ -13,6 +13,7 @@ class_name BattleScreenCombatantDetails
 @onready var _actions_container: Control = %ActionsContainer
 @onready var _heal_button: PriceButton = %HealButton
 @onready var _revive_button: PriceButton = %ReviveButton
+@onready var _traits: TraitsView = %Traits
 
 var _combatant: Combatant
 
@@ -65,6 +66,7 @@ func initialize(combatant: Combatant) -> void:
 		PriceButton.Type.BUY, 
 		floor(_combatant.price * Prices.battle_screen_revive_multiplier)
 	)
+	_traits.initialize(combatant.traits)
 	
 func _process(_delta: float) -> void:
 	if not _combatant:

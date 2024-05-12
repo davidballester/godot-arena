@@ -40,7 +40,9 @@ func create_random_combatant(
 			"min_health",
 			"max_health",
 			"min_price",
-			"max_price"
+			"max_price",
+			"min_traits",
+			"max_traits"
 		]
 	)[0]
 	var sprites_records = _database.select_rows(
@@ -60,6 +62,8 @@ func create_random_combatant(
 	var id = _combatants_names_data.get_random_name(type)
 	var animated_sprite = load(sprite_record.animated_sprite)
 	var dust_animated_sprite = load(sprite_record.dust_animated_sprite)
+	var traits_count = randi_range(type_record.min_traits, type_record.max_traits + 1)
+	var traits = range(traits_count).map(func(_i): return GameGlobals.get_traits_data().get_random_trait())
 	return Combatant.new(
 		id,
 		type,
@@ -72,5 +76,6 @@ func create_random_combatant(
 		health,
 		price,
 		animated_sprite,
-		dust_animated_sprite
+		dust_animated_sprite,
+		traits
 	)

@@ -10,6 +10,7 @@ signal combatant_sold(Combatant)
 @onready var _weapon: Label = %WeaponDd
 @onready var _damage: Label = %DamageDd
 @onready var _sell_button: PriceButton = %SellButton
+@onready var _traits: TraitsView = %Traits
 
 var _combatant: Combatant
 
@@ -40,3 +41,5 @@ func initialize(combatant: Combatant, sell_enabled: bool) -> void:
 	)
 	_sell_button.initialize(PriceButton.Type.SELL, sell_price)
 	_sell_button.enabled = sell_enabled
+	_traits.initialize(combatant.traits)
+	

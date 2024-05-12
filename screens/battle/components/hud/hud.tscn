@@ -36,20 +36,20 @@ theme_override_constants/margin_bottom = 16
 [node name="EnemyContent" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
-size_flags_vertical = 4
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_id2jc")
 
 [node name="EnemyTeamPanel" parent="MarginContainer/EnemyContent" instance=ExtResource("1_wfyy1")]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(260, 360)
+custom_minimum_size = Vector2(260, 410)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 
 [node name="EnemyCombatantDetails" parent="MarginContainer/EnemyContent" instance=ExtResource("2_dglor")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 360)
+custom_minimum_size = Vector2(260, 410)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
@@ -66,20 +66,20 @@ movable_control = NodePath("..")
 [node name="PlayerContent" type="PanelContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 4
+size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_qq5xk")
 
 [node name="PlayerTeamPanel" parent="MarginContainer/PlayerContent" instance=ExtResource("1_wfyy1")]
 unique_name_in_owner = true
 visible = false
-custom_minimum_size = Vector2(260, 360)
+custom_minimum_size = Vector2(260, 410)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 
 [node name="PlayerCombatantDetails" parent="MarginContainer/PlayerContent" instance=ExtResource("2_dglor")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(260, 360)
+custom_minimum_size = Vector2(260, 410)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
