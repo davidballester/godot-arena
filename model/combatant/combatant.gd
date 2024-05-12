@@ -73,7 +73,14 @@ func can_attack(pos: Vector2) -> bool:
 	return distance < weapon.reach
 	
 func attack(pos: Vector2) -> int:
-	return weapon.get_damage() if can_attack(pos) else 0
+	if not can_attack(pos):
+		return 0
+	var damage = weapon.get_damage()
+	for traitt in traits:
+		if not traitt is DamageAppliedModificationTrait:
+			continue
+		damage = traitt.modify_damage_applied(damage)
+	return damage
 	
 func take_damage(damage: int) -> void:
 	if damage == 0 or not is_alive() or _inmune:
