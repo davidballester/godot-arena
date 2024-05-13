@@ -2,16 +2,15 @@ extends Control
 class_name Tooltip
 
 @export var target: BaseButton
+@export var content: Control
 
-@onready var _label: Label = %Label
+@onready var _content_container: Control = %ContentContainer
 
 func _ready() -> void:
 	modulate.a = 0.0
 	hide()
-	
-func initialize(text: String) -> void:
-	_label.text = text
-	size.y = _label.size.y + 8
+	content.get_parent().remove_child(content)
+	_content_container.add_child(content)
 	
 func _fade_in() -> void:
 	show()

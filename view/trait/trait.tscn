@@ -27,7 +27,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("1_jhdcu")
 
-[node name="Tooltip" parent="." node_paths=PackedStringArray("target") instance=ExtResource("4_mhmub")]
+[node name="Tooltip" parent="." node_paths=PackedStringArray("target", "content") instance=ExtResource("4_mhmub")]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(150, 50)
@@ -43,6 +43,31 @@ grow_horizontal = 1
 grow_vertical = 1
 mouse_filter = 1
 target = NodePath("../Button")
+content = NodePath("AttributesContainer")
+
+[node name="AttributesContainer" type="GridContainer" parent="Tooltip"]
+layout_mode = 2
+offset_right = 166.0
+offset_bottom = 13.0
+columns = 4
+
+[node name="DtTemplate" type="Label" parent="Tooltip/AttributesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource("2_vnqv4")
+theme_override_colors/font_color = Color(0.247059, 0.156863, 0.196078, 1)
+theme_override_font_sizes/font_size = 16
+text = "Damage:"
+
+[node name="DdTemplate" type="Label" parent="Tooltip/AttributesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("2_vnqv4")
+theme_override_colors/font_color = Color(0.247059, 0.156863, 0.196078, 1)
+theme_override_font_sizes/font_size = 16
+text = "+2"
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

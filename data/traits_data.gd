@@ -13,18 +13,15 @@ func _init(database: SQLite) -> void:
 			"key", 
 			"incompatibilities",
 			"name",
-			"description",
 			"damage_taken_modifier",
 			"damage_applied_modifier"
 		]
 	)
-	print("TraitsData._init ", traits_results)
 	_traits = traits_results.map(func(trait_result):
 		var traitt = Trait.new()
 		traitt.key = trait_result.key
 		traitt.incompatibilities = Array(trait_result.incompatibilities.split(","))
 		traitt.trait_name = trait_result.name
-		traitt.description = trait_result.description
 		traitt.damage_taken_modifier = trait_result.damage_taken_modifier if trait_result.damage_taken_modifier != null else 0
 		traitt.damage_applied_modifier = trait_result.damage_applied_modifier if trait_result.damage_applied_modifier != null else 0
 		return traitt

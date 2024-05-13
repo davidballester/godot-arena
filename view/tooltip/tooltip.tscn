@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd4y6ks55r3b5"]
+[gd_scene load_steps=3 format=3 uid="uid://dd4y6ks55r3b5"]
 
 [ext_resource type="Texture2D" uid="uid://db28m6nbwqvn7" path="res://assets/hud/overlay.png" id="1_2cd7m"]
 [ext_resource type="Script" path="res://view/tooltip/tooltip.gd" id="1_k43wt"]
-[ext_resource type="Theme" uid="uid://cgj53xbuypu2k" path="res://assets/theme/theme.tres" id="2_xto5a"]
 
 [node name="Tooltip" type="Control"]
 texture_filter = 1
@@ -40,16 +39,6 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="NinePatchRect/MarginContainer/VBoxContainer"]
+[node name="ContentContainer" type="VBoxContainer" parent="NinePatchRect/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-size_flags_vertical = 3
-theme = ExtResource("2_xto5a")
-theme_override_colors/font_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_font_sizes/font_size = 16
-text = "Lorem ipsum dolor sit amet."
-autowrap_mode = 2
