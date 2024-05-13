@@ -41,7 +41,6 @@ func _initialize() -> void:
 	get_tree().create_tween().tween_property(self, "modulate:a", 1.0, 0.1)
 	_progress_bar.value = APPEAR_FOR_SECONDS
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not _active:
 		return

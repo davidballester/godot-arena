@@ -48,8 +48,9 @@ approach_timer = NodePath("ApproachTimer")
 wait_time = 0.5
 autostart = true
 
-[node name="EngageState" type="Node" parent="StateMachine"]
+[node name="EngageState" type="Node" parent="StateMachine" node_paths=PackedStringArray("navigation_agent")]
 script = ExtResource("6_7wdbh")
+navigation_agent = NodePath("../../NavigationAgent2D")
 
 [node name="HitState" type="Node" parent="StateMachine"]
 script = ExtResource("7_4702w")
