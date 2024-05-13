@@ -9,6 +9,7 @@ signal combatant_sold(Combatant)
 @onready var _hp: Label = %HPDd
 @onready var _weapon: Label = %WeaponDd
 @onready var _damage: Label = %DamageDd
+@onready var _defense: Label = %DefenseDd
 @onready var _sell_button: PriceButton = %SellButton
 @onready var _traits: TraitsView = %Traits
 
@@ -23,10 +24,12 @@ func initialize(combatant: Combatant, sell_enabled: bool) -> void:
 	_name.text = combatant.id.capitalize()
 	_type.text = combatant.type.capitalize()
 	_hp.text = str(combatant.health.max_value)
+	var damage_min_max = combatant.get_damage_min_max()
 	_damage.text = "{min}-{max}".format({
-		"min": str(combatant.weapon.damage.min_value),
-		"max": str(combatant.weapon.damage.max_value)
+		"min": str(damage_min_max.min_value),
+		"max": str(damage_min_max.max_value)
 	})
+	_defense.text = str(combatant.get_defense())
 	_type.add_theme_color_override("font_color", ColorsData.get_color(combatant.type))
 	_weapon.text = combatant.weapon.weapon_name.capitalize()
 	_weapon.add_theme_color_override("font_color", ColorsData.get_color(combatant.weapon.weapon_name))

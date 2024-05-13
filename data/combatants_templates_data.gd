@@ -29,7 +29,8 @@ func create_random_combatant(
 	team: Team, 
 	type: String,
 	battle: Battle,
-	weapon: Weapon
+	weapon: Weapon,
+	create_traits: bool = true
 ) -> Combatant:
 	var type_id = _type_to_ids.get(type)
 	var type_record = _database.select_rows(
@@ -63,7 +64,7 @@ func create_random_combatant(
 	var animated_sprite = load(sprite_record.animated_sprite)
 	var dust_animated_sprite = load(sprite_record.dust_animated_sprite)
 	var traits_count = randi_range(type_record.min_traits, type_record.max_traits + 1)
-	var traits = GameGlobals.get_traits_data().get_random_traits(traits_count)
+	var traits = GameGlobals.get_traits_data().get_random_traits(traits_count) if create_traits else []
 	return Combatant.new(
 		id,
 		type,

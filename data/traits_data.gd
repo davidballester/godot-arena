@@ -1,33 +1,44 @@
 extends Node
 class_name TraitsData
 
-const BASE_TRAITS_PATH = "res://model/traits/instances"
+const TRAITS_TABLE = "traits"
 
-var _traits_paths: Array = []
+var _traits: Array
 
-func _init() -> void:
-	var trais_folder: DirAccess = DirAccess.open(BASE_TRAITS_PATH)
-	var all_files_in_folder = trais_folder.get_files()
-	for file_in_folder in all_files_in_folder:
-		if not file_in_folder.ends_with(".gd"):
-			continue
-		var trait_full_path = "%s/%s" % [BASE_TRAITS_PATH, file_in_folder]
-		_traits_paths.append(trait_full_path)
+func _init(database: SQLite) -> void:
+	var traits_results = database.select_rows(
+		TRAITS_TABLE, 
+		"", 
+		[
+			"key", 
+			"incompatibilities",
+			"name",
+			"description",
+			"damage_taken_modifier",
+			"damage_applied_modifier"
+		]
+	)
+	print("TraitsData._init ", traits_results)
+	_traits = traits_results.map(func(trait_result):
+		var traitt = Trait.new()
+		traitt.key = trait_result.key
+		traitt.incompatibilities = Array(trait_result.incompatibilities.split(","))
+		traitt.trait_name = trait_result.name
+		traitt.description = trait_result.description
+		traitt.damage_taken_modifier = trait_result.damage_taken_modifier if trait_result.damage_taken_modifier != null else 0
+		traitt.damage_applied_modifier = trait_result.damage_applied_modifier if trait_result.damage_applied_modifier != null else 0
+		return traitt
+	)
 
-func get_random_traits(count: int) -> Array:
-	var random_traits_paths = _traits_paths.duplicate()
-	random_traits_paths.shuffle()
+func get_random_traits(traits_count: int) -> Array:
+	var shuffled_traits = _traits.duplicate()
+	shuffled_traits.shuffle()
 	var traits = []
-	while traits.size() < count and random_traits_paths.size() > 0:
-		var random_trait_path = random_traits_paths.pop_back()
-		var random_trait = load(random_trait_path).new()
-		if not _is_incompatible(random_trait, traits):
+	while traits.size() < traits_count and shuffled_traits.size() > 0:
+		var random_trait = shuffled_traits.pop_back()
+		if _is_trait_compatible(traits, random_trait):
 			traits.append(random_trait)
 	return traits
 	
-func _is_incompatible(traitt: Trait, traits: Array) -> bool:
-	return traits.reduce(
-		func (is_incompatible: bool, t: Trait) -> bool:
-			return is_incompatible or t.get_incompatibilities().has(traitt.get_trait_name()),
-		false
-	)
+func _is_trait_compatible(traits: Array, random_trait: Trait) -> bool:
+	return traits.all(func(t): return not t.incompatibilities.has(random_trait.key))

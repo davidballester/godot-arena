@@ -67,6 +67,22 @@ func _init(
 
 func is_alive() -> bool:
 	return health.current_value > 0
+	
+func get_damage_min_max() -> MinMax:
+	var damage_modifier = traits.reduce(
+		func(modifier, traitt: Trait): return modifier + traitt.damage_applied_modifier,
+		0
+	)
+	return MinMax.create(
+		max(0, weapon.damage.min_value + damage_modifier),
+		max(1, weapon.damage.max_value + damage_modifier)
+	)
+	
+func get_defense() -> int:
+	return traits.reduce(
+		func(defense, traitt: Trait): return defense - traitt.damage_taken_modifier,
+		0
+	)
 
 func can_attack(pos: Vector2) -> bool:
 	var distance = global_position.distance_to(pos)
@@ -75,12 +91,8 @@ func can_attack(pos: Vector2) -> bool:
 func attack(pos: Vector2) -> int:
 	if not can_attack(pos):
 		return 0
-	var damage = weapon.get_damage()
-	for traitt in traits:
-		if not traitt is DamageAppliedModificationTrait:
-			continue
-		damage = traitt.modify_damage_applied(damage)
-	return damage
+	var damage_min_max = get_damage_min_max()
+	return damage_min_max.get_random_value()
 	
 func take_damage(damage: int) -> void:
 	if damage == 0 or not is_alive() or _inmune:
@@ -90,10 +102,8 @@ func take_damage(damage: int) -> void:
 	get_tree().create_timer(random_inmune_time_s).timeout.connect(
 		func(): _inmune = false
 	)
-	for traitt in traits:
-		if not traitt is DamageTakenModificationTrait:
-			continue
-		damage = traitt.modify_damage_taken(damage)
+	var defense = get_defense()
+	damage = max(0, damage - defense)
 	state_machine.transition_to_state(
 		CombatantHitState.get_state_name(), 
 		[damage]

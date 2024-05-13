@@ -80,7 +80,8 @@ func _create_combatant_controller(team: Team) -> CombatantController:
 		team,
 		combatant_type,
 		_battle,
-		weapon
+		weapon,
+		false
 	)
 	var combatant_controller: CombatantController = COMBATANT_CONTROLLER_SCENE.instantiate()
 	combatant_controller.ready.connect(func():

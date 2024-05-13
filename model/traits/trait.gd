@@ -1,14 +1,16 @@
 extends Node
 class_name Trait
 
-# virtual
-func get_trait_name() -> String:
-	return "Trait"
-	
-# virtual
-func get_incompatibilities() -> Array:
-	return []
+var key: String
+var incompatibilities: Array
+var trait_name: String
+var description: String
+var damage_applied_modifier: int
+var damage_taken_modifier: int
 
-# virtual
-func get_description() -> String:
-	return "Lorem ipsum"
+func _to_string() -> String:
+	return "Trait(key={key}, damage_applied_modifier={damage_applied_modifier}, damage_taken_modifier={damage_taken_modifier})".format({
+		"key": key,
+		"damage_applied_modifier": str(damage_applied_modifier),
+		"damage_taken_modifier": str(damage_taken_modifier)
+	})

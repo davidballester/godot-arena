@@ -61,4 +61,4 @@ static func _initialize() -> void:
 	)
 	_teams_data = TeamsData.new(_database)
 	_battles_data = BattlesData.new()
-	_traits_data = TraitsData.new()
+	_traits_data = TraitsData.new(_database)
