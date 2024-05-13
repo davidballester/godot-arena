@@ -68,8 +68,10 @@ func _get_current_team_spawn_position() -> Vector2:
 func _count_alive_combatants() -> int:
 	return _battle.teams.reduce(
 		func(alive_combatants: int, team: Team) -> int:
-			var alive_combatants_in_team = team.combatants.filter(func(c: Combatant): c.is_alive()).size()
-			return alive_combatants + alive_combatants_in_team,
+			var alive_combatants_in_team = team.combatants.filter(
+				func(c: Combatant): return c.is_alive()
+			)
+			return alive_combatants + alive_combatants_in_team.size(),
 		0
 	)
 	
