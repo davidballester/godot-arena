@@ -12,6 +12,7 @@ const APPEAR_FOR_SECONDS = 5.0
 @onready var _progress_bar: ProgressBar = %ProgressBar
 
 var _combatant: Combatant
+var _active: bool = false
 
 func _ready():
 	_progress_bar.max_value = APPEAR_FOR_SECONDS
@@ -36,17 +37,19 @@ func _initialize() -> void:
 		PriceButton.Type.BUY, 
 		ceil(_combatant.price * Prices.battle_screen_combatant_for_sale_multiplier)
 	)
-	show()
+	_active = true
+	get_tree().create_tween().tween_property(self, "modulate:a", 1.0, 0.1)
 	_progress_bar.value = APPEAR_FOR_SECONDS
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not visible:
+	if not _active:
 		return
 	_progress_bar.value = max(0, _progress_bar.value - delta)
 	if _progress_bar.value == 0:
 		_hide_with_timer()
 	
 func _hide_with_timer() -> void:
-	hide()
+	_active = false
+	get_tree().create_tween().tween_property(self, "modulate:a", 0.0, 0.1)
 	get_tree().create_timer(APPEAR_EVERY_SECONDS).timeout.connect(_initialize)
