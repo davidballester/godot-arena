@@ -1,0 +1,44 @@
+[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://b4q0g5kbu6o0"]
+
+[ext_resource type="Texture2D" uid="uid://cstknq6xh33s8" path="res://assets/weapon/bow.png" id="1_o66j7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t6yl"]
+atlas = ExtResource("1_o66j7")
+region = Rect2(0, 0, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s172b"]
+atlas = ExtResource("1_o66j7")
+region = Rect2(0, 0, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ieku"]
+atlas = ExtResource("1_o66j7")
+region = Rect2(12, 0, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nejs"]
+atlas = ExtResource("1_o66j7")
+region = Rect2(24, 0, 12, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t6yl")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s172b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ieku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1nejs")
+}],
+"loop": false,
+"name": &"shooting",
+"speed": 5.0
+}]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dukg8f33rouqh"]
+
+[ext_resource type="Script" path="res://view/weapon/bow/bow_view.gd" id="1_130w4"]
+[ext_resource type="SpriteFrames" uid="uid://b4q0g5kbu6o0" path="res://assets/weapon/bow.tres" id="2_on0ke"]
+
+[node name="Bow" type="Node2D"]
+texture_filter = 1
+position = Vector2(5, -10)
+script = ExtResource("1_130w4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = ExtResource("2_on0ke")
+animation = &"idle"
