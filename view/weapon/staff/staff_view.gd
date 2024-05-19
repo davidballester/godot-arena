@@ -5,7 +5,7 @@ func _ready() -> void:
 	animated_sprite = %AnimatedSprite2D
 	super._ready()
 
-func attack() -> void:
+func attack(_g_position: Vector2) -> void:
 	animated_sprite.play("swing")
 	var tween: Tween = get_tree().create_tween()
 	tween.tween_property(animated_sprite, "rotation_degrees", 145, 0.1)

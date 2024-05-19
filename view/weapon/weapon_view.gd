@@ -7,7 +7,7 @@ func _ready() -> void:
 	idle()
 
 # virtual
-func attack() -> void:
+func attack(_g_position: Vector2) -> void:
 	await get_tree().create_timer(0.1).timeout
 	pass
 	

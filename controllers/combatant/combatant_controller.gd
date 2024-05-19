@@ -44,7 +44,7 @@ func attack(combatant: Combatant) -> void:
 		return
 	_attacking = true
 	var weapon_animation_start_time_ms = Time.get_ticks_msec()
-	await weapon.attack()
+	await weapon.attack(combatant.global_position)
 	var weapon_animation_time_ms = Time.get_ticks_msec() - weapon_animation_start_time_ms
 	var weapon_animation_time_s = weapon_animation_time_ms / 1e3
 	var attack_time_s = model.weapon.attack_duration_s
