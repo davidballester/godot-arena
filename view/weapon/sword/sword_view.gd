@@ -7,7 +7,7 @@ func _ready() -> void:
 	animated_sprite = %AnimatedSprite2D
 	super._ready()
 
-func attack(_g_position: Vector2) -> void:
+func attack(_attack: Attack) -> void:
 	var random_attack = ATTACKS.pick_random()
 	match random_attack:
 		"swing":

@@ -88,11 +88,19 @@ func can_attack(pos: Vector2) -> bool:
 	var distance = global_position.distance_to(pos)
 	return distance < weapon.reach
 	
-func attack(pos: Vector2) -> int:
-	if not can_attack(pos):
-		return 0
+func attack(oponent: Combatant) -> Attack:
+	if not can_attack(oponent.global_position):
+		return null
 	var damage_min_max = get_damage_min_max()
-	return damage_min_max.get_random_value()
+	var damage = damage_min_max.get_random_value()
+	return Attack.new(
+		self,
+		oponent,
+		damage,
+		# TODO
+		8,
+		150
+	)
 	
 func take_damage(damage: int) -> void:
 	if damage == 0 or not is_alive() or _inmune:

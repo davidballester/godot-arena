@@ -11,8 +11,8 @@ func _init(model: Weapon, view: WeaponView) -> void:
 	add_child(view)
 	view.position.x = 6
 	
-func attack(g_position: Vector2) -> void:
-	await view.attack(g_position)
+func attack(attack: Attack) -> void:
+	await view.attack(attack)
 
 func face(pos: Vector2) -> void:
 	view.face_position(pos)

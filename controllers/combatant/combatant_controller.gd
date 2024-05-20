@@ -44,15 +44,14 @@ func attack(combatant: Combatant) -> void:
 		return
 	_attacking = true
 	var weapon_animation_start_time_ms = Time.get_ticks_msec()
-	await weapon.attack(combatant.global_position)
+	var attack = model.attack(combatant) if _state_machine.current_state is CombatantControllerEngageEnemyState else null
+	if attack:
+		await weapon.attack(attack)
 	var weapon_animation_time_ms = Time.get_ticks_msec() - weapon_animation_start_time_ms
 	var weapon_animation_time_s = weapon_animation_time_ms / 1e3
 	var attack_time_s = model.weapon.attack_duration_s
 	var remaining_time_s = attack_time_s - weapon_animation_time_s
 	await get_tree().create_timer(remaining_time_s).timeout
-	if _state_machine.current_state is CombatantControllerEngageEnemyState:
-		var damage = model.attack(combatant.global_position)
-		combatant.take_damage(damage)
 	_attacking = false
 	
 func face(pos: Vector2) -> void:

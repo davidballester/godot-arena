@@ -7,9 +7,9 @@ func _ready() -> void:
 	animated_sprite = %AnimatedSprite2D
 	super._ready()
 
-func attack(g_position: Vector2) -> void:
+func attack(attack: Attack) -> void:
 	_attacking = true
-	rotation = global_position.angle_to_point(g_position)
+	rotation = global_position.angle_to_point(attack.target.global_position)
 	animated_sprite.play("shooting")
 	await animated_sprite.animation_finished
 	idle()
