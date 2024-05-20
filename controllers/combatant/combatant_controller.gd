@@ -55,7 +55,6 @@ func attack(combatant: Combatant) -> void:
 	_attacking = false
 	
 func face(pos: Vector2) -> void:
-	weapon.face(pos)
 	var should_face_right = global_position.x < pos.x
 	var should_turn = (should_face_right and not _facing_right) or (not should_face_right and _facing_right)
 	if not should_turn:
@@ -72,8 +71,8 @@ func revive() -> void:
 		
 func _turn() -> void:
 	_facing_right = not _facing_right
-	weapon.turn()
 	view.flip_h = not _facing_right
+	weapon.turn()
 	await view.turn(true)
 
 func _on_state_changed(state: State) -> void:

@@ -14,9 +14,6 @@ func _init(model: Weapon, view: WeaponView) -> void:
 func attack(attack: Attack) -> void:
 	await view.attack(attack)
 
-func face(pos: Vector2) -> void:
-	view.face_position(pos)
-	
 func turn() -> void:
 	view.position.x *= -1
-	view.scale.y *= -1
+	view.scale.x *= -1
