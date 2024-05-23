@@ -3,6 +3,7 @@ class_name GameGlobals
 
 const VIEWPORT_WIDTH: float = 960
 const VIEWPORT_HEIGHT: float = 540
+const COMBATANT_HEIGHT: float = 16
 
 static var budget: Budget = Budget.new()
 static var battle: Battle = null

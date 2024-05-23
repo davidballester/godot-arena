@@ -95,11 +95,10 @@ func attack(oponent: Combatant) -> Attack:
 	var damage = damage_min_max.get_random_value()
 	return Attack.new(
 		self,
-		oponent,
+		oponent.global_position,
 		damage,
-		# TODO
-		8,
-		150
+		weapon.effect_radius,
+		weapon.speed
 	)
 	
 func take_damage(damage: int) -> void:

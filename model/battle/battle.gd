@@ -39,3 +39,6 @@ func is_in_attack_range(combatant_id: String, oponent_id: String) -> bool:
 
 func get_combatant(combatant_id: String) -> Combatant:
 	return _id_to_combatant.get(combatant_id)
+
+func get_alive_combatants() -> Array:
+	return _id_to_combatant.values().filter(func(c: Combatant): return c.is_alive())

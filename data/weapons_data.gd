@@ -22,6 +22,8 @@ func get_random_weapon() -> Weapon:
 			"max_damage",
 			"attack_duration_s",
 			"reach",
+			"speed",
+			"effect_radius",
 			"view_path",
 			"animated_sprite_path"
 		]
@@ -31,6 +33,8 @@ func get_random_weapon() -> Weapon:
 	var max_damage = query_result[0].max_damage
 	var attack_duration_s = query_result[0].attack_duration_s
 	var reach = query_result[0].reach
+	var speed = query_result[0].speed
+	var effect_radius = query_result[0].effect_radius
 	var damage = MinMax.create(min_damage, max_damage)
 	var animated_sprite_path = query_result[0].animated_sprite_path
 	var animated_sprite = load(animated_sprite_path)
@@ -40,6 +44,8 @@ func get_random_weapon() -> Weapon:
 		damage, 
 		attack_duration_s, 
 		reach, 
+		speed,
+		effect_radius,
 		animated_sprite,
 		view_path
 	)

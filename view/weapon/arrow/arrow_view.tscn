@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://beu4h56xqrep2"]
+
+[ext_resource type="Script" path="res://view/weapon/arrow/arrow_view.gd" id="1_otkvy"]
+[ext_resource type="Texture2D" uid="uid://dtrcex4nuba6f" path="res://assets/weapon/arrow.png" id="2_5tsjv"]
+
+[node name="Arrow" type="Sprite2D"]
+texture_filter = 1
+rotation = 1.5708
+texture = ExtResource("2_5tsjv")
+script = ExtResource("1_otkvy")

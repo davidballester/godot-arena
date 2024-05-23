@@ -15,6 +15,5 @@ func enter(_args: Array) -> void:
 	)
 	
 func exit() -> void:
-	timer.stop()
-	timer.queue_free()
+	SignalUtils.disconnect_everything(timer.timeout)
 
