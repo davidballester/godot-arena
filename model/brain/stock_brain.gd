@@ -1,14 +1,11 @@
 extends Brain
 class_name StockBrain
 
-func choose_oponent(
-	_combatant: PerceivedCombatant, 
-	oponents: Array[PerceivedCombatant]
-) -> PerceivedCombatant:
+func choose_oponent(_combatant: Combatant, oponents: Array) -> Combatant:
 	return Array(oponents).pick_random()
 	
-func should_keep_fighting(_combatant: PerceivedCombatant) -> bool:
+func should_keep_fighting(_combatant: Combatant) -> bool:
 	return true
 
-func engage(_combatant: PerceivedCombatant, _oponent: PerceivedCombatant) -> EngageAction:
+func engage(_combatant: Combatant, _oponent: Combatant) -> EngageAction:
 	return EngageAction.FIGHT

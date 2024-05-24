@@ -56,7 +56,6 @@ func create_random_combatant(
 	)
 	var sprite_record = sprites_records.pick_random()
 	var brain = StockBrain.new()
-	var perception = CombatantStockPerceptionComponent.new()
 	var max_health = randi_range(type_record.min_health, type_record.max_health)
 	var health = Gauge.create(0, max_health)
 	var price = randi_range(type_record.min_price, type_record.max_price)
@@ -73,7 +72,6 @@ func create_random_combatant(
 		type_record.speed,
 		weapon,
 		brain,
-		perception,
 		health,
 		price,
 		animated_sprite,

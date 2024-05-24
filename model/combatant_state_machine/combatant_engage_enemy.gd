@@ -5,26 +5,25 @@ static func get_state_name() -> String:
 	return "CombatantEngageEnemyState"
 	
 var combatant: Combatant
+var oponent: Combatant
 	
 func enter(args: Array) -> void:
-	var combatant_id: String = args[0]
-	datastore.last_oponent_id = combatant_id
-	combatant = datastore.battle.get_combatant(combatant_id)
+	var oponent_id: String = args[0]
+	datastore.last_oponent_id = oponent_id
+	oponent = datastore.battle.get_combatant(oponent_id)
+	combatant = datastore.battle.get_combatant(datastore.combatant_id)
 	
 func exit() -> void:
-	combatant = null
+	oponent = null
 
 func process(_delta: float) -> void:
-	if not combatant.is_alive():
+	if not oponent.is_alive():
 		state_machine.transition_to_state(CombatantSeekEnemyState.get_state_name())
 		return
-	var self_combatant = datastore.battle.get_combatant(datastore.combatant_id)
-	if not self_combatant.can_attack(combatant.global_position):
+	if not combatant.can_attack(oponent.global_position):
 		state_machine.transition_to_state(CombatantSeekEnemyState.get_state_name())
 		return
-	var perceived_combatant = datastore.perception_component.perceive_combatant(combatant)
-	var self_perceived_combatant = datastore.perception_component.perceive_combatant(self_combatant)
-	var action = datastore.brain.engage(self_perceived_combatant, perceived_combatant)
+	var action = datastore.brain.engage(combatant, oponent)
 	if action == Brain.EngageAction.FLEE:
 		state_machine.transition_to_state(CombatantEscapeState.get_state_name())
 	

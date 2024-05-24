@@ -22,7 +22,6 @@ func _compose_datastore(combatant: Combatant, battle: Battle) -> CombatantStateM
 	datastore.battle = battle
 	datastore.brain = combatant.brain
 	datastore.combatant_id = combatant.id
-	datastore.perception_component = combatant.perception
 	return datastore
 
 func _get_states() -> Array[CombatantState]:

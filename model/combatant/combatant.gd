@@ -9,7 +9,6 @@ var team_id: String
 var speed: float = 40.0
 var weapon: Weapon
 var brain: Brain
-var perception: CombatantPerceptionComponent
 var state_machine: CombatantStateMachine
 var health: Gauge
 var battle: Battle
@@ -29,7 +28,6 @@ func _init(
 	speed: float,
 	weapon: Weapon,
 	brain: Brain,
-	perception: CombatantPerceptionComponent,
 	health: Gauge,
 	price: int,
 	sprite_frames: SpriteFrames,
@@ -42,14 +40,12 @@ func _init(
 	self.speed = speed
 	self.weapon = weapon
 	self.brain = brain
-	self.perception = perception
 	self.health = health
 	self.battle = battle
 	self.price = price
 	self.sprite_frames = sprite_frames
 	self.dust_sprite_frames = dust_sprite_frames
 	self.traits = traits
-	perception.self_combatant = self
 	state_machine = CombatantStateMachine.new(self, battle)
 	state_machine.id = id + "state_machine"
 	state_machine.add_child(CombatantApproachEnemyState.new())
