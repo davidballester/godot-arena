@@ -11,6 +11,10 @@ var model: Combatant
 var _facing_right: bool = true
 var _attacking: bool = false
 
+func _ready() -> void:
+	z_as_relative = true
+	z_index = 5
+
 func initialize(
 	model: Combatant,
 	team: Team,
