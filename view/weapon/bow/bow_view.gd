@@ -16,7 +16,7 @@ func attack(attack: Attack) -> void:
 	animated_sprite.flip_h = rotation < -PI / 2 or rotation > PI / 2
 	animated_sprite.play("shooting")
 	var arrow: ArrowView = ARROW_SCENE_RESOURCE.instantiate()
-	arrow.flip_v = animated_sprite.flip_h
+	arrow.flip_h = animated_sprite.flip_h
 	arrow.ready.connect(func():
 		await get_tree().create_timer(DELAY_ARROW_LAUNCH_SECONDS).timeout
 		var time_seconds = max(0.25, attack.time_to_land - DELAY_ARROW_LAUNCH_SECONDS)
