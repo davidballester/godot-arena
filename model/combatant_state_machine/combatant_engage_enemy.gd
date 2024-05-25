@@ -18,10 +18,7 @@ func process(_delta: float) -> void:
 	if not state_machine.combatant.can_attack(state_machine.last_oponent.global_position):
 		state_machine.transition_to_state(CombatantSeekEnemyState.get_state_name())
 		return
-	var action = state_machine.combatant.brain.engage(
-		state_machine.combatant, 
-		state_machine.last_oponent
-	)
+	var action = state_machine.combatant.brain.engage(state_machine.last_oponent)
 	if action == Brain.EngageAction.FLEE:
 		state_machine.transition_to_state(CombatantEscapeState.get_state_name())
 	

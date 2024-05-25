@@ -40,6 +40,7 @@ func _init(
 	self.speed = speed
 	self.weapon = weapon
 	self.brain = brain
+	self.brain.initialize(self)
 	self.health = health
 	self.battle = battle
 	self.price = price

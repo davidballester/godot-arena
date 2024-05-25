@@ -19,6 +19,7 @@ func process(delta: float) -> void:
 	_active_ms += delta
 	if not state_machine.last_oponent or not state_machine.last_oponent.is_alive() or _active_ms >= SEEK_ENEMY_AFTER_MS:
 		state_machine.transition_to_state(CombatantSeekEnemyState.get_state_name())
+		return
 	if state_machine.combatant.can_attack(state_machine.last_oponent.global_position):
 		state_machine.transition_to_state(
 			CombatantEngageEnemyState.get_state_name(), 

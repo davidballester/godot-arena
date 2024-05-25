@@ -18,10 +18,7 @@ func _choose_new_oponent() -> void:
 	if oponents.is_empty():
 		state_machine.transition_to_state(CombatantVictoryState.get_state_name())
 		return
-	var chosen_oponent = state_machine.combatant.brain.choose_oponent(
-		state_machine.combatant, 
-		oponents
-	)
+	var chosen_oponent = state_machine.combatant.brain.choose_oponent(oponents)
 	if chosen_oponent:
 		state_machine.transition_to_state(
 			CombatantApproachEnemyState.get_state_name(), 

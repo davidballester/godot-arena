@@ -1,11 +1,11 @@
 extends Brain
 class_name TestBrain
 
-func choose_oponent(_combatant: Combatant, _oponents: Array) -> Combatant:
+func choose_oponent(_oponents: Array) -> Combatant:
 	return null
 	
-func should_keep_fighting(_combatant: Combatant) -> bool:
+func should_keep_fighting() -> bool:
 	return false
 
-func engage(_combatant: Combatant, _oponent: Combatant) -> EngageAction:
+func engage(_oponent: Combatant) -> EngageAction:
 	return EngageAction.FIGHT
