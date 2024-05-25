@@ -5,4 +5,4 @@ static func get_state_name() -> String:
 	return "CombatantControllerDeadState"
 
 func enter(_args: Array) -> void:
-	controller.die()
+	state_machine.controller.die()

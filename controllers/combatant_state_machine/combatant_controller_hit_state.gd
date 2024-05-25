@@ -6,4 +6,4 @@ static func get_state_name() -> String:
 
 func enter(args: Array) -> void:
 	var damage = args[0]
-	controller.view.hit(damage)
+	state_machine.controller.view.hit(damage)

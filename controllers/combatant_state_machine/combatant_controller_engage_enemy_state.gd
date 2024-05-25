@@ -19,26 +19,26 @@ func enter(args: Array) -> void:
 	
 func exit() -> void:
 	_combatant = null
-	controller.view.stop_running()
+	state_machine.controller.view.stop_running()
 	
 func process(_delta: float) -> void:
 	if not _combatant:
 		return
-	controller.face(_combatant.global_position)
+	state_machine.controller.face(_combatant.global_position)
 	
 func physics_process(_delta: float) -> void:
 	if not _moving:
 		return
 	await get_tree().physics_frame
 	var next_path_position = navigation_agent.get_next_path_position()
-	var direction = controller.global_position.direction_to(next_path_position)
-	controller.velocity = direction * controller.model.speed
-	controller.move_and_slide()
+	var direction = state_machine.controller.global_position.direction_to(next_path_position)
+	state_machine.controller.velocity = direction * state_machine.controller.model.speed
+	state_machine.controller.move_and_slide()
 	_moving = not navigation_agent.is_target_reached()
 	
 func _attack_loop() -> void:
 	while _combatant:
-		await controller.attack(_combatant)
+		await state_machine.controller.attack(_combatant)
 		if not _moving and _combatant and randf() < MOVING_CHANCE:
 			_move()
 			
@@ -47,13 +47,13 @@ func _move() -> void:
 	var random_angle = randf_range(PI / 3, PI)
 	if randf() < 0.5:
 		random_angle *= -1
-	var angle_to_oponent = controller.global_position.angle_to_point(
+	var angle_to_oponent = state_machine.controller.global_position.angle_to_point(
 		_combatant.global_position
 	)
 	var angle_away_from_oponent = angle_to_oponent + random_angle
 	var magnitude = randi_range(5, 15)
 	var point_in_that_direction = Vector2(
-		controller.global_position.x + magnitude * cos(angle_away_from_oponent),
-		controller.global_position.y + magnitude * sin(angle_away_from_oponent),
+		state_machine.controller.global_position.x + magnitude * cos(angle_away_from_oponent),
+		state_machine.controller.global_position.y + magnitude * sin(angle_away_from_oponent),
 	)
 	navigation_agent.target_position = point_in_that_direction

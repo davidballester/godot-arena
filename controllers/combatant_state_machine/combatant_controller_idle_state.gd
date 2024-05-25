@@ -5,4 +5,4 @@ static func get_state_name() -> String:
 	return "CombatantControllerIdleState"
 
 func enter(_args: Array) -> void:
-	controller.view.idle()
+	state_machine.controller.view.idle()

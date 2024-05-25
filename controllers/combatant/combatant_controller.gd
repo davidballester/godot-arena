@@ -86,7 +86,7 @@ func _on_state_changed(state: State) -> void:
 	if state is CombatantApproachEnemyState:
 		_state_machine.transition_to_state(
 			CombatantControllerApproachEnemyState.get_state_name(), 
-			[state.combatant_id]
+			[state.state_machine.last_oponent]
 		)
 		return
 	if state is CombatantHitState:
@@ -103,7 +103,7 @@ func _on_state_changed(state: State) -> void:
 	if state is CombatantEngageEnemyState:
 		_state_machine.transition_to_state(
 			CombatantControllerEngageEnemyState.get_state_name(),
-			[state.oponent]
+			[state.state_machine.last_oponent]
 		)
 		return
 	if state is CombatantVictoryState:
