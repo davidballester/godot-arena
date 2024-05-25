@@ -20,7 +20,7 @@ texture_filter = 1
 tile_set = ExtResource("1_gje5p")
 format = 2
 layer_0/y_sort_enabled = true
-layer_0/z_index = 6
+layer_0/z_index = 5
 layer_0/tile_data = PackedInt32Array(1376261, 655361, 2, 1376262, 458753, 2, 262154, 458753, 1, 1507338, 524289, 2, 327691, 458753, 2, 262157, 655361, 2, 720922, 65537, 3, 720923, 65537, 4, 524325, 393217, 1, 1572901, 655361, 1, 458790, 393217, 1, 1507366, 458753, 1)
 
 [node name="BattleControllerContainer" type="TileMap" parent="TerrainDetails" groups=["navigation"]]
