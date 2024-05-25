@@ -13,5 +13,5 @@ func react_to_being_engaged(oponents: Array) -> void:
 		[new_oponent]
 	)
 
-func react_to_engagement(_engagig_oponent: Combatant, _engaged_by_oponents: Array) -> void:
-	return
+func react_to_engagement(_engagig_oponent: Combatant, engaged_by_oponents: Array) -> void:
+	react_to_being_engaged(engaged_by_oponents)
