@@ -4,8 +4,8 @@ class_name TestBrain
 func choose_oponent(_oponents: Array) -> Combatant:
 	return null
 	
-func should_keep_fighting() -> bool:
-	return false
+func react_to_being_engaged(_oponents: Array) -> void:
+	return
 
-func engage(_oponent: Combatant) -> EngageAction:
-	return EngageAction.FIGHT
+func react_to_engagement(_engagig_oponent: Combatant, _engaged_by_oponents: Array) -> void:
+	return

@@ -20,7 +20,7 @@ func _ready() -> void:
 	_combatant_a_engage_button.pressed.connect(func():
 		_combatant_a.model.state_machine.transition_to_state(
 			CombatantEngageEnemyState.get_state_name(),
-			[_combatant_b.model.id]
+			[_combatant_b.model]
 		)
 	)
 	
@@ -132,7 +132,7 @@ func _attack_position(combatant: CombatantController, pos: Vector2) -> void:
 	_battle.add_combatant(fake_combatant)
 	combatant.model.state_machine.transition_to_state(
 		CombatantEngageEnemyState.get_state_name(),
-		[fake_combatant.id]
+		[fake_combatant]
 	)
 	await combatant.attack(fake_combatant)
 	combatant.model.state_machine.transition_to_state(
